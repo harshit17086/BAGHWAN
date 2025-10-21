@@ -16,12 +16,13 @@ export default function Header() {
   ];
 
   // Define color classes for easier management
-  const headerDefaultBg = 'bg-[#4A5C2A]'; // Very slightly darker olive
-  const headerScrollBg = 'bg-[#F5F3ED]'; // Beige on scroll
-  const textDefault = 'text-white'; // White text on dark green
-  const textScroll = 'text-[#2F3D24]'; // Dark text on beige
-  const buttonDefaultBg = 'bg-[#C8E86C]'; // Light green button on dark
-  const buttonScrollBg = 'bg-[#2F3D24]'; // Dark green button on beige
+  const headerDefaultBg = 'bg-[#3d5320]'; 
+
+  const headerScrollBg = 'bg-[#faf7ed]'; 
+  const textDefault = 'text-white'; 
+  const textScroll = 'text-[#2F3D24]'; 
+  const buttonDefaultBg = 'bg-[#C8E86C]'; 
+  const buttonScrollBg = 'bg-[#3d5320]'; // Dark green button on beige
   const buttonDefaultText = 'text-[#2F3D24]'; // Dark text on light button
   const buttonScrollText = 'text-white'; // White text on dark button
 
@@ -39,11 +40,11 @@ export default function Header() {
     <header 
       className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
-      <nav className="container mx-auto pl-0 pr-2">
-        <div className="flex justify-between items-center min-h-[80px]"> {/* Increased min-height for better spacing */}
+      <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
+        <div className="flex justify-between items-center min-h-[60px] md:min-h-[70px] lg:min-h-[80px]"> {/* Responsive min-height */}
           {/* Logo */}
-            <a href="#" className="flex items-center -ml-40"> {/* Logo shifted much further left */}
-            <div className="relative h-24 w-64"> {/* Even larger container for maximum logo visibility */}
+            <a href="#" className="flex items-center -ml-4 md:-ml-20 lg:-ml-40"> {/* Responsive left margin */}
+            <div className="relative h-16 w-32 md:h-20 md:w-48 lg:h-24 lg:w-64"> {/* Responsive logo size */}
               <Image 
               src="/logop.png" 
               alt="HRs Logo" 
@@ -54,12 +55,12 @@ export default function Header() {
             </a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center space-x-10 pr-4"> {/* Navigation shifted further right */}
+          <ul className="hidden lg:flex items-center space-x-6 md:space-x-8 lg:space-x-10 pr-4"> {/* Responsive spacing */}
             {navLinks.map((link, index) => (
               <li key={`${link.label}-${index}`}>
                 <a
                   href={link.href}
-                  className={`transition-colors duration-300 font-medium text-sm flex items-center gap-1 ${isScrolled ? textScroll : textDefault} hover:opacity-75`}
+                  className={`transition-colors duration-300 font-medium font-serif text-sm flex items-center gap-1 ${isScrolled ? textScroll : textDefault} hover:opacity-75`}
                 >
                   {link.label}
                   <span className="font-light">+</span>
@@ -71,7 +72,7 @@ export default function Header() {
           {/* CTA Button - Desktop */}
           <a
             href="#"
-            className={`hidden lg:block px-10 py-4 rounded-full transition-colors duration-300 font-medium text-sm ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+            className={`hidden lg:block px-6 md:px-8 lg:px-10 py-3 md:py-4 rounded-full transition-colors duration-300 font-medium font-serif text-sm ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
           >
             Get Started
           </a>
@@ -108,7 +109,7 @@ export default function Header() {
                 <li key={`${link.label}-${index}`}>
                   <a
                     href={link.href}
-                    className={`block transition-colors duration-300 font-medium flex items-center gap-1 ${isScrolled ? textScroll : textDefault}`}
+                    className={`block transition-colors duration-300 font-medium font-serif flex items-center gap-1 ${isScrolled ? textScroll : textDefault}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -119,7 +120,7 @@ export default function Header() {
               <li>
                 <a
                   href="#"
-                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium font-serif ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
