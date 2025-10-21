@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "JungleYatra - Experience the Wild",
-  description: "Explore the wilderness with our expertly curated jungle safaris and luxury accommodations",
+  title: "HRC - Constructions Made Easy",
+  description: "Building your dreams with our expert construction services",
 };
 
 export default function RootLayout({

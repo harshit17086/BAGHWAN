@@ -17,16 +17,16 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full bg-[#F5F3ED] z-50 shadow-sm">
-      <nav className="container mx-auto px-6 py-8">
-        <div className="flex justify-between items-center">
+      <nav className="container mx-auto px-6 py-6">
+        <div className="flex justify-between items-center min-h-[60px]">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image 
-              src="/logo.png" 
+              src="/logop.png" 
               alt="HUTS Logo" 
-              width={160} 
-              height={56}
-              className="h-14 w-auto"
+              width={140} 
+              height={48}
+              className="h-12 w-auto"
               priority
             />
           </Link>
@@ -48,7 +48,7 @@ export default function Header() {
           {/* CTA Button - Desktop */}
           <Link
             href="/contact"
-            className="hidden lg:block bg-[#C8E86C] text-gray-900 px-10 py-4 rounded-full hover:bg-[#b8d85c] transition-colors font-medium text-sm"
+            className="hidden lg:block bg-[#C8E86C] text-gray-900 px-8 py-3 rounded-full hover:bg-[#b8d85c] transition-colors font-medium text-sm"
           >
             Get Started
           </Link>
@@ -95,7 +95,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/contact"
-                  className="block bg-[#C8E86C] text-gray-900 px-10 py-4 rounded-full hover:bg-[#b8d85c] transition-colors text-center font-medium"
+                  className="block bg-[#C8E86C] text-gray-900 px-8 py-3 rounded-full hover:bg-[#b8d85c] transition-colors text-center font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
