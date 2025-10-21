@@ -41,10 +41,10 @@ export default function Header() {
       className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
-        <div className="flex justify-between items-center min-h-[60px] md:min-h-[70px] lg:min-h-[80px]"> {/* Responsive min-height */}
+        <div className="flex justify-between items-center min-h-[70px] md:min-h-[80px] lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
           {/* Logo */}
-            <a href="#" className="flex items-center -ml-4 md:-ml-20 lg:-ml-40"> {/* Responsive left margin */}
-            <div className="relative h-16 w-32 md:h-20 md:w-48 lg:h-24 lg:w-64"> {/* Responsive logo size */}
+            <a href="#" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
+            <div className="relative h-16 w-32 md:h-20 md:w-40 lg:h-24 lg:w-56"> {/* Increased responsive logo size */}
               <Image 
               src="/logop.png" 
               alt="HRs Logo" 
@@ -60,7 +60,7 @@ export default function Header() {
               <li key={`${link.label}-${index}`}>
                 <a
                   href={link.href}
-                  className={`transition-colors duration-300 font-medium font-serif text-sm flex items-center gap-1 ${isScrolled ? textScroll : textDefault} hover:opacity-75`}
+                  className={`transition-colors duration-300 font-medium font-serif text-lg flex items-center gap-1 ${isScrolled ? textScroll : textDefault} hover:opacity-75`}
                 >
                   {link.label}
                   <span className="font-light">+</span>
@@ -72,7 +72,7 @@ export default function Header() {
           {/* CTA Button - Desktop */}
           <a
             href="#"
-            className={`hidden lg:block px-6 md:px-8 lg:px-10 py-3 md:py-4 rounded-full transition-colors duration-300 font-medium font-serif text-sm ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+            className={`hidden lg:block px-6 md:px-8 lg:px-10 py-3 md:py-4 rounded-full transition-colors duration-300 font-medium font-serif text-lg ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
           >
             Get Started
           </a>
@@ -109,7 +109,7 @@ export default function Header() {
                 <li key={`${link.label}-${index}`}>
                   <a
                     href={link.href}
-                    className={`block transition-colors duration-300 font-medium font-serif flex items-center gap-1 ${isScrolled ? textScroll : textDefault}`}
+                    className={`block transition-colors duration-300 font-medium font-serif text-lg flex items-center gap-1 ${isScrolled ? textScroll : textDefault}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -120,7 +120,7 @@ export default function Header() {
               <li>
                 <a
                   href="#"
-                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium font-serif ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium font-serif text-lg ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
