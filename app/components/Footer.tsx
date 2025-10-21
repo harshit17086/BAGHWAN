@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1a2817] text-gray-300">
       {/* CTA Section */}
-      <div className="bg-[#C8E86C] py-16 px-6">
+      <div className="bg-[#C8E86C] py-8 px-6">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-6">
             <div className="w-32 h-32 relative">
@@ -33,8 +33,8 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="container mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo */}
           <div className="lg:col-span-1">
             <div className="text-6xl font-bold text-white mb-4">
@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-16 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-8 pt-4 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex gap-6 text-sm">
             <p>©{new Date().getFullYear()} HRC</p>
             <Link href="/privacy" className="hover:text-[#C8E86C] transition-colors">Privacy Policy</Link>
