@@ -141,59 +141,37 @@ export default function WorksSection() {
           {cards.map((card) => (
             <div
               key={card.id}
-              className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] perspective-1000"
+              className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px]"
             >
-              <div className="relative w-full h-full group">
-                {/* Card - with flip effect */}
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
-                  
-                  {/* Front of card */}
-                  <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-2xl">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={card.image}
-                        alt={card.title}
-                        fill
-                        className="object-cover"
-                      />
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      
-                      {/* Card title on front */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                        <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
-                          {card.title}
-                        </h3>
-                        {card.location && (
-                          <p className="text-sm md:text-base opacity-90 flex items-center gap-2">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                            </svg>
-                            {card.location}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Back of card */}
-                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-2xl bg-[#3d5320]">
-                    <div className="w-full h-full flex flex-col justify-center items-center p-8 text-white">
-                      <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-center">
+              <div className="relative w-full h-full">
+                <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    
+                    {/* Card content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
                         {card.title}
                       </h3>
-                      <p className="text-base md:text-lg text-center mb-4 leading-relaxed">
+                      <p className="text-base md:text-lg mb-2 leading-relaxed">
                         {card.description}
                       </p>
                       {card.location && (
-                        <div className="flex items-center gap-2 text-[#C8E86C] font-medium">
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <p className="text-sm md:text-base opacity-90 flex items-center gap-2 mb-4">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                           </svg>
                           {card.location}
-                        </div>
+                        </p>
                       )}
-                      <button className="mt-6 px-6 py-3 bg-[#C8E86C] text-[#2F3D24] rounded-full font-semibold hover:bg-[#b5d655] transition-colors">
+                      <button className="px-6 py-3 bg-[#C8E86C] text-[#2F3D24] rounded-full font-semibold hover:bg-[#b5d655] transition-colors">
                         View Details
                       </button>
                     </div>
@@ -217,25 +195,6 @@ export default function WorksSection() {
           </div>
         </div>
       </div>
-
-      {/* CSS for 3D flip effect */}
-      <style jsx>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .transform-style-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-        .group:hover .group-hover\\:rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
     </section>
   );
 }
