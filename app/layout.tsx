@@ -1,22 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "BuildPro - Professional Construction Services",
-  description: "Leading European construction company distinguished by innovation, quality and sustainability. Residential, commercial, and infrastructure projects.",
+  title: "JungleYatra - Experience the Wild",
+  description: "Explore the wilderness with our expertly curated jungle safaris and luxury accommodations",
 };
 
 export default function RootLayout({
@@ -26,11 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.className} antialiased bg-slate-50`}>
         <Header />
-        <main className="pt-16">
+        <main className="min-h-screen">
           {children}
         </main>
         <Footer />
