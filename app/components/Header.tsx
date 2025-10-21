@@ -39,23 +39,22 @@ export default function Header() {
     <header 
       className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
-      <nav className="container mx-auto px-6">
+      <nav className="container mx-auto pl-0 pr-2">
         <div className="flex justify-between items-center min-h-[80px]"> {/* Increased min-height for better spacing */}
           {/* Logo */}
-            <a href="#" className="flex items-center">
-            <div className="relative h-16 w-48"> {/* Increased container size for better logo visibility */}
+            <a href="#" className="flex items-center -ml-40"> {/* Logo shifted much further left */}
+            <div className="relative h-24 w-64"> {/* Even larger container for maximum logo visibility */}
               <Image 
               src="/logop.png" 
               alt="HRs Logo" 
-              width={200} 
-              height={80} 
-              className={`w-full h-full object-contain transition-all duration-300 ${isScrolled ? '' : 'filter invert brightness-0'}`}
+              fill
+              className={`object-contain transition-all duration-300 ${isScrolled ? '' : 'filter invert brightness-0'}`}
               />
             </div>
             </a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center space-x-8">
+          <ul className="hidden lg:flex items-center space-x-10 pr-4"> {/* Navigation shifted further right */}
             {navLinks.map((link, index) => (
               <li key={`${link.label}-${index}`}>
                 <a
@@ -72,7 +71,7 @@ export default function Header() {
           {/* CTA Button - Desktop */}
           <a
             href="#"
-            className={`hidden lg:block px-8 py-3 rounded-full transition-colors duration-300 font-medium text-sm ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+            className={`hidden lg:block px-10 py-4 rounded-full transition-colors duration-300 font-medium text-sm ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
           >
             Get Started
           </a>
