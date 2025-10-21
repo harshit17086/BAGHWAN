@@ -36,7 +36,7 @@ export default function CountrySection() {
                 randomRotation={true}
                 sensitivity={180}
                 sendToBackOnClick={false}
-                cardDimensions={{ width: 500, height: 500 }}
+                cardDimensions={{ width: 600, height: 600 }}
                 cardsData={images}
               />
             </div>

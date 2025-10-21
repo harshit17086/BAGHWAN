@@ -6,6 +6,8 @@ import Image from 'next/image';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navLinks = [
     { href: '#', label: 'Housing Solutions' },
@@ -29,16 +31,27 @@ export default function Header() {
   // Handle scroll effect
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 50);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        setIsVisible(false);
+      } else {
+        // Scrolling up or at top
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px] md:min-h-[80px] lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
