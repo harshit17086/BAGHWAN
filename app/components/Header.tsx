@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHeaderHovered, setIsHeaderHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
     { href: '#', label: 'Housing Solutions' },
@@ -16,21 +16,28 @@ export default function Header() {
   ];
 
   // Define color classes for easier management
-  const headerDefaultBg = 'bg-[#F5F3ED]';
-  const headerHoverBg = 'bg-[#4A5C38]';
-  const textDefault = 'text-[#2F3D24]';
-  const textHover = 'text-white';
-  const buttonDefaultBg = 'bg-[#2F3D24]';
-  const buttonHoverBg = 'bg-[#C8E86C]';
-  const buttonDefaultText = 'text-white';
-  const buttonHoverText = 'text-[#2F3D24]';
+  const headerDefaultBg = 'bg-[#4A5C38]'; // Dark green default
+  const headerScrollBg = 'bg-[#F5F3ED]'; // Beige on scroll
+  const textDefault = 'text-white'; // White text on dark green
+  const textScroll = 'text-[#2F3D24]'; // Dark text on beige
+  const buttonDefaultBg = 'bg-[#C8E86C]'; // Light green button on dark
+  const buttonScrollBg = 'bg-[#2F3D24]'; // Dark green button on beige
+  const buttonDefaultText = 'text-[#2F3D24]'; // Dark text on light button
+  const buttonScrollText = 'text-white'; // White text on dark button
+
+  // Handle scroll effect
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isHeaderHovered ? headerHoverBg : headerDefaultBg}`}
-      onMouseEnter={() => setIsHeaderHovered(true)}
-      onMouseLeave={() => setIsHeaderHovered(false)}
+      className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
       <nav className="container mx-auto px-6">
         <div className="flex justify-between items-center min-h-[80px]"> {/* Increased min-height for better spacing */}
@@ -42,18 +49,18 @@ export default function Header() {
               alt="HRs Logo" 
               width={200} 
               height={80} 
-              className={`w-full h-full object-contain transition-all duration-300 ${isHeaderHovered ? 'filter invert brightness-0' : ''}`}
+              className={`w-full h-full object-contain transition-all duration-300 ${isScrolled ? '' : 'filter invert brightness-0'}`}
               />
             </div>
             </a>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
+            {navLinks.map((link, index) => (
+              <li key={`${link.label}-${index}`}>
                 <a
                   href={link.href}
-                  className={`transition-colors duration-300 font-medium text-sm flex items-center gap-1 ${isHeaderHovered ? textHover : textDefault} hover:opacity-75`}
+                  className={`transition-colors duration-300 font-medium text-sm flex items-center gap-1 ${isScrolled ? textScroll : textDefault} hover:opacity-75`}
                 >
                   {link.label}
                   <span className="font-light">+</span>
@@ -65,7 +72,7 @@ export default function Header() {
           {/* CTA Button - Desktop */}
           <a
             href="#"
-            className={`hidden lg:block px-8 py-3 rounded-full transition-colors duration-300 font-medium text-sm ${isHeaderHovered ? `${buttonHoverBg} ${buttonHoverText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+            className={`hidden lg:block px-8 py-3 rounded-full transition-colors duration-300 font-medium text-sm ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
           >
             Get Started
           </a>
@@ -77,17 +84,17 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${isHeaderHovered ? 'bg-white' : 'bg-gray-800'} ${
+              className={`block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-800' : 'bg-white'} ${
                 isMenuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 transition-opacity duration-300 ${isHeaderHovered ? 'bg-white' : 'bg-gray-800'} ${
+              className={`block w-6 h-0.5 transition-opacity duration-300 ${isScrolled ? 'bg-gray-800' : 'bg-white'} ${
                 isMenuOpen ? 'opacity-0' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${isHeaderHovered ? 'bg-white' : 'bg-gray-800'} ${
+              className={`block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-800' : 'bg-white'} ${
                 isMenuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             ></span>
@@ -98,11 +105,11 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden mt-4 pb-4">
             <ul className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+              {navLinks.map((link, index) => (
+                <li key={`${link.label}-${index}`}>
                   <a
                     href={link.href}
-                    className={`block transition-colors duration-300 font-medium flex items-center gap-1 ${isHeaderHovered ? textHover : textDefault}`}
+                    className={`block transition-colors duration-300 font-medium flex items-center gap-1 ${isScrolled ? textScroll : textDefault}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -113,7 +120,7 @@ export default function Header() {
               <li>
                 <a
                   href="#"
-                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium ${isHeaderHovered ? `${buttonHoverBg} ${buttonHoverText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
