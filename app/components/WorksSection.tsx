@@ -127,7 +127,7 @@ export default function WorksSection() {
         </div>
 
         {/* Cards Container */}
-        <div className="cards-container flex gap-8 px-8 overflow-hidden">
+        <div className="cards-container flex gap-8 px-8">
           {cards.map((card) => (
             <div
               key={card.id}
