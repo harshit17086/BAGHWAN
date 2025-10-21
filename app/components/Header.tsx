@@ -16,7 +16,7 @@ export default function Header() {
   ];
 
   // Define color classes for easier management
-  const headerDefaultBg = 'bg-[#4A5C38]'; // Dark green default
+  const headerDefaultBg = 'bg-[#4A5C2A]'; // Very slightly darker olive
   const headerScrollBg = 'bg-[#F5F3ED]'; // Beige on scroll
   const textDefault = 'text-white'; // White text on dark green
   const textScroll = 'text-[#2F3D24]'; // Dark text on beige
