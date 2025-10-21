@@ -82,34 +82,24 @@ export default function WorksSection() {
   ];
 
   useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const sectionTop = container.offsetTop;
+    const sectionHeight = container.offsetHeight;
+    const windowHeight = window.innerHeight;
+
     const handleScroll = () => {
-      if (!scrollContainerRef.current) return;
+      const scrolled = window.scrollY - sectionTop;
+      const maxScroll = sectionHeight - windowHeight;
+      const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
+      setScrollProgress(progress);
 
-      const container = scrollContainerRef.current;
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Check if section is in viewport
-      const isInViewport = rect.top <= 0 && rect.bottom > windowHeight;
-
-      if (isInViewport) {
-        // Calculate scroll progress (0 to 1)
-        const scrolled = Math.abs(rect.top);
-        const maxScroll = rect.height - windowHeight;
-        const progress = Math.min(scrolled / maxScroll, 1);
-        setScrollProgress(progress);
-
-        // Horizontal scroll the cards
-        const scrollContainer = container.querySelector('.cards-container') as HTMLElement;
-        if (scrollContainer) {
-          const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-          scrollContainer.scrollLeft = progress * maxScrollLeft;
-        }
-
-        // Prevent normal scroll until we reach the end
-        if (progress < 1) {
-          // Still scrolling horizontally
-        }
+      // Horizontal scroll the cards
+      const scrollContainer = container.querySelector('.cards-container') as HTMLElement;
+      if (scrollContainer) {
+        const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        scrollContainer.style.transform = `translateX(-${progress * maxScrollLeft}px)`;
       }
     };
 
@@ -137,7 +127,7 @@ export default function WorksSection() {
         </div>
 
         {/* Cards Container */}
-        <div className="cards-container flex gap-8 px-8 overflow-x-hidden scroll-smooth">
+        <div className="cards-container flex gap-8 px-8 overflow-hidden">
           {cards.map((card) => (
             <div
               key={card.id}
