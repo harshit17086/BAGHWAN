@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ease-in-out ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px] md:min-h-[80px] lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
