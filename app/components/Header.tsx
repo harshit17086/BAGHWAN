@@ -1,57 +1,74 @@
 'use client';
 
-import Link from 'next/link';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { useState } from 'react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHeaderHovered, setIsHeaderHovered] = useState(false);
 
   const navLinks = [
-    { href: '/', label: 'Housing Solutions' },
-    { href: '/about', label: 'Standards' },
-    { href: '/services', label: 'How it Works' },
-    { href: '/projects', label: 'Portfolio' },
-    { href: '/contact', label: 'Resources' },
+    { href: '#', label: 'Housing Solutions' },
+    { href: '#', label: 'Standards' },
+    { href: '#', label: 'How it Works' },
+    { href: '#', label: 'Portfolio' },
+    { href: '#', label: 'Resources' },
   ];
 
+  // Define color classes for easier management
+  const headerDefaultBg = 'bg-[#F5F3ED]';
+  const headerHoverBg = 'bg-[#4A5C38]';
+  const textDefault = 'text-[#2F3D24]';
+  const textHover = 'text-white';
+  const buttonDefaultBg = 'bg-[#2F3D24]';
+  const buttonHoverBg = 'bg-[#C8E86C]';
+  const buttonDefaultText = 'text-white';
+  const buttonHoverText = 'text-[#2F3D24]';
+
+
   return (
-    <header className="fixed top-0 w-full bg-[#F5F3ED] z-50 shadow-sm">
-      <nav className="container mx-auto px-6 py-6">
-        <div className="flex justify-between items-center min-h-[60px]">
+    <header 
+      className={`fixed top-0 w-full z-50 shadow-sm transition-colors duration-300 ease-in-out ${isHeaderHovered ? headerHoverBg : headerDefaultBg}`}
+      onMouseEnter={() => setIsHeaderHovered(true)}
+      onMouseLeave={() => setIsHeaderHovered(false)}
+    >
+      <nav className="container mx-auto px-6">
+        <div className="flex justify-between items-center min-h-[80px]"> {/* Increased min-height for better spacing */}
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image 
+            <a href="#" className="flex items-center">
+            <div className="relative h-16 w-48"> {/* Increased container size for better logo visibility */}
+              <Image 
               src="/logop.png" 
-              alt="HUTS Logo" 
-              width={140} 
-              height={48}
-              className="h-12 w-auto"
-              priority
-            />
-          </Link>
+              alt="HRs Logo" 
+              width={200} 
+              height={80} 
+              className={`w-full h-full object-contain transition-all duration-300 ${isHeaderHovered ? 'filter invert brightness-0' : ''}`}
+              />
+            </div>
+            </a>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
-                  className="text-gray-800 hover:text-gray-600 transition-colors font-medium text-sm"
+                  className={`transition-colors duration-300 font-medium text-sm flex items-center gap-1 ${isHeaderHovered ? textHover : textDefault} hover:opacity-75`}
                 >
                   {link.label}
-                </Link>
+                  <span className="font-light">+</span>
+                </a>
               </li>
             ))}
           </ul>
 
           {/* CTA Button - Desktop */}
-          <Link
-            href="/contact"
-            className="hidden lg:block bg-[#C8E86C] text-gray-900 px-8 py-3 rounded-full hover:bg-[#b8d85c] transition-colors font-medium text-sm"
+          <a
+            href="#"
+            className={`hidden lg:block px-8 py-3 rounded-full transition-colors duration-300 font-medium text-sm ${isHeaderHovered ? `${buttonHoverBg} ${buttonHoverText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
           >
             Get Started
-          </Link>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -60,17 +77,17 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-gray-800 transition-transform ${
+              className={`block w-6 h-0.5 transition-all duration-300 ${isHeaderHovered ? 'bg-white' : 'bg-gray-800'} ${
                 isMenuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-gray-800 transition-opacity ${
+              className={`block w-6 h-0.5 transition-opacity duration-300 ${isHeaderHovered ? 'bg-white' : 'bg-gray-800'} ${
                 isMenuOpen ? 'opacity-0' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-gray-800 transition-transform ${
+              className={`block w-6 h-0.5 transition-all duration-300 ${isHeaderHovered ? 'bg-white' : 'bg-gray-800'} ${
                 isMenuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             ></span>
@@ -83,23 +100,24 @@ export default function Header() {
             <ul className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="block text-gray-800 hover:text-gray-600 transition-colors font-medium"
+                    className={`block transition-colors duration-300 font-medium flex items-center gap-1 ${isHeaderHovered ? textHover : textDefault}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
-                  </Link>
+                    <span className="font-light">+</span>
+                  </a>
                 </li>
               ))}
               <li>
-                <Link
-                  href="/contact"
-                  className="block bg-[#C8E86C] text-gray-900 px-8 py-3 rounded-full hover:bg-[#b8d85c] transition-colors text-center font-medium"
+                <a
+                  href="#"
+                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium ${isHeaderHovered ? `${buttonHoverBg} ${buttonHoverText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -108,3 +126,4 @@ export default function Header() {
     </header>
   );
 }
+
