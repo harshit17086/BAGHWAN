@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <div className="w-32 h-32 relative">
               <Image
-                src="/logo.png"
+                src="/logop.png"
                 alt="HRC Construction"
                 fill
                 className="object-contain"
