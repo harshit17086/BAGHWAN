@@ -49,7 +49,7 @@ export default function CountrySection() {
             </h2>
             
             <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed max-w-2xl">
-              We focused exclusively on delivering in rural locations. Coast-to-coast, HUTS crafts beautiful properties through guidance, intent, and care. Have a specific area or state in mind? We&apos;ve either built there, or will soon.
+              We focused exclusively on delivering in rural locations. Coast-to-coast, HRC crafts beautiful properties through guidance, intent, and care. Have a specific area or state in mind? We&apos;ve either built there, or will soon.
             </p>
 
             {/* CTA Buttons */}
