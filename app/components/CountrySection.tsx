@@ -7,7 +7,10 @@ const images = [
   { id: 1, img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format" },
   { id: 2, img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format" },
   { id: 3, img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format" },
-  { id: 4, img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format" }
+  { id: 4, img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format" },
+  { id: 5, img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format" },
+  { id: 6, img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format" },
+  { id: 7, img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format" }
 ];
 
 export default function CountrySection() {
@@ -17,13 +20,26 @@ export default function CountrySection() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           {/* Left side - Stack of images */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <Stack
-              randomRotation={true}
-              sensitivity={180}
-              sendToBackOnClick={false}
-              cardDimensions={{ width: 300, height: 400 }}
-              cardsData={images}
-            />
+            {/* Mobile Stack */}
+            <div className="block lg:hidden">
+              <Stack
+                randomRotation={true}
+                sensitivity={180}
+                sendToBackOnClick={false}
+                cardDimensions={{ width: 260, height: 260 }}
+                cardsData={images}
+              />
+            </div>
+            {/* Desktop Stack */}
+            <div className="hidden lg:block">
+              <Stack
+                randomRotation={true}
+                sensitivity={180}
+                sendToBackOnClick={false}
+                cardDimensions={{ width: 500, height: 500 }}
+                cardsData={images}
+              />
+            </div>
           </div>
 
           {/* Right side - Content */}
