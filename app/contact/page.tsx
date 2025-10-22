@@ -108,7 +108,7 @@ export default function ContactPage() {
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
-          <Link href="/">
+          <Link href="/" className="-ml-16 md:-ml-0">
             <div className="relative h-32 w-64">
               <Image 
                 src="/logop.png" 
@@ -142,7 +142,7 @@ export default function ContactPage() {
               <div className="space-y-4 mt-12">
                 <div className="relative">
                   {formData.firstName && (
-                    <label className="absolute -top-3 left-6 bg-[#FAF8F3] px-2 text-sm text-red-600">
+                    <label className="absolute -top-3 left-6 bg-[#FAF8F3] px-2 text-sm text-[#6B8E23]">
                       First Name*
                     </label>
                   )}
@@ -157,7 +157,7 @@ export default function ContactPage() {
                 
                 <div className="relative">
                   {formData.lastName && (
-                    <label className="absolute -top-3 left-6 bg-[#FAF8F3] px-2 text-sm text-red-600">
+                    <label className="absolute -top-3 left-6 bg-[#FAF8F3] px-2 text-sm text-[#6B8E23]">
                       Last Name*
                     </label>
                   )}
@@ -207,7 +207,7 @@ export default function ContactPage() {
               <div className="text-left">
                 <p className="text-[#6B8E23] text-base mb-3">What are you looking to build</p>
                 <h1 className="text-4xl md:text-5xl font-serif text-[#2C3E1F]">
-                  Which of these HUTS housing solutions sound most like what you need
+                  Which of these HRC housing solutions sound most like what you need?
                 </h1>
               </div>
               
