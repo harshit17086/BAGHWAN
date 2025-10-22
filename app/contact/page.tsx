@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FormData {
   firstName: string;
@@ -107,8 +108,15 @@ export default function ContactPage() {
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
-          <Link href="/" className="text-5xl font-bold text-black">
-            HUTS
+          <Link href="/">
+            <div className="relative h-32 w-64">
+              <Image 
+                src="/logop.png" 
+                alt="Logo" 
+                fill
+                className="object-contain"
+              />
+            </div>
           </Link>
           <div className="flex items-center gap-4">
             <span className="text-base">{currentStep} / {totalSteps}</span>
