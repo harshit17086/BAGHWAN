@@ -84,7 +84,7 @@ export default function Header() {
 
           {/* CTA Button - Desktop */}
           <a
-            href="#"
+            href="/contact"
             className={`hidden lg:block px-6 md:px-8 lg:px-10 py-3 md:py-4 rounded-full transition-colors duration-300 font-medium font-serif text-lg ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
           >
             Get Started
@@ -132,7 +132,7 @@ export default function Header() {
               ))}
               <li>
                 <a
-                  href="#"
+                  href="/contact"
                   className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium font-serif text-lg ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
