@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -14,9 +15,11 @@ export default function Hero() {
         
         {/* CTA Button */}
         <div className="flex justify-center items-center mt-12">
-          <button className="bg-[#C8E86C] text-[#2F3D24] font-serif font-medium text-lg px-8 py-4 rounded-full hover:bg-[#3d5320] hover:text-[#C8E86C] transition-colors duration-300">
-            Get Started
-          </button>
+          <Link href="/contact">
+            <button className="bg-[#C8E86C] text-[#2F3D24] font-serif font-medium text-lg px-8 py-4 rounded-full hover:bg-[#3d5320] hover:text-[#C8E86C] transition-colors duration-300">
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
     </section>
