@@ -6,10 +6,6 @@ export default function ReviewsPage() {
   return (
     <div className="bg-[#faf7ed]">
       <Header />
-      
-      
-       
-
       {/* Customer Satisfaction Section */}
       <CustomerSatisfactionSection />
       
