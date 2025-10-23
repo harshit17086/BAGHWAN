@@ -153,7 +153,7 @@ export default function ParallaxSection() {
       </div>
 
       {/* First big image section */}
-      <div className="relative h-screen w-full">
+      <div className="sticky top-0 h-screen w-full">
         <Image
           src="/slide1.jpeg"
           alt="Blueberry Hill ADU"
@@ -164,7 +164,7 @@ export default function ParallaxSection() {
       </div>
 
       {/* Second big image section */}
-      <div className="relative h-screen w-full">
+      <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
         <Image
           src="/slide6.jpeg"
           alt="Break House"
@@ -174,7 +174,7 @@ export default function ParallaxSection() {
       </div>
 
       {/* Third big image section */}
-      <div className="relative h-screen w-full">
+      <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 2 }}>
         <Image
           src="/slide2.jpeg"
           alt="Modern Villa"
@@ -184,7 +184,7 @@ export default function ParallaxSection() {
       </div>
 
       {/* Fourth big image section */}
-      <div className="relative h-screen w-full">
+      <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 3 }}>
         <Image
           src="/kkk.jpeg"
           alt="Luxury Estate"
