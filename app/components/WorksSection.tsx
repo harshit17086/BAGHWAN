@@ -2,9 +2,11 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { createClient } from '@/lib/supabase/client';
+import Link from 'next/link';
 
 interface CardData {
-  id: number;
+  id: string;
   image: string;
   title: string;
   description: string;
@@ -14,72 +16,121 @@ interface CardData {
 export default function WorksSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [projects, setProjects] = useState<CardData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
 
-  const cards: CardData[] = [
+  // Fallback projects if database is empty
+  const fallbackProjects: CardData[] = [
     {
-      id: 1,
+      id: '1',
       image: '/slide1.jpeg',
       title: 'Modern Residential Complex',
       description: 'A stunning 50-unit residential development featuring sustainable materials and contemporary design principles.',
       location: 'Downtown District'
     },
     {
-      id: 2,
+      id: '2',
       image: '/slide2.jpeg',
       title: 'Luxury Villa Project',
       description: 'Exclusive villa construction with premium finishes, smart home integration, and breathtaking views.',
       location: 'Hillside Estate'
     },
     {
-      id: 3,
+      id: '3',
       image: '/slide3.jpeg',
       title: 'Commercial Office Space',
       description: 'State-of-the-art office building with flexible workspaces and energy-efficient systems.',
       location: 'Business Park'
     },
     {
-      id: 4,
+      id: '4',
       image: '/slide4.jpeg',
       title: 'Urban Housing Development',
       description: 'Affordable housing project combining quality construction with accessible living spaces.',
       location: 'City Center'
     },
     {
-      id: 5,
+      id: '5',
       image: '/slide5.jpeg',
       title: 'Waterfront Apartments',
       description: 'Luxury waterfront living with panoramic views and resort-style amenities.',
       location: 'Marina Bay'
     },
     {
-      id: 6,
+      id: '6',
       image: '/slide6.jpeg',
       title: 'Eco-Friendly Homes',
       description: 'Sustainable housing with solar panels, rainwater harvesting, and green spaces.',
       location: 'Green Valley'
     },
     {
-      id: 7,
+      id: '7',
       image: '/slide8.jpeg',
       title: 'Mixed-Use Development',
       description: 'Integrated commercial and residential spaces creating vibrant community hubs.',
       location: 'Metro Station Area'
     },
     {
-      id: 8,
+      id: '8',
       image: '/slide1.jpeg',
       title: 'Retirement Community',
       description: 'Accessible housing designed for comfort and independence with care facilities.',
       location: 'Suburban Area'
     },
     {
-      id: 9,
+      id: '9',
       image: '/slide2.jpeg',
       title: 'Smart City Project',
       description: 'Innovative development integrating IoT technology and sustainable urban planning.',
       location: 'New Township'
     }
   ];
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('projects')
+          .select(`
+            id,
+            title,
+            description,
+            location,
+            project_images!project_images_project_id_fkey(image_url, is_cover)
+          `)
+          .in('status', ['active', 'completed'])
+          .order('display_order', { ascending: true });
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          const projectsWithImages = data.map((project: any) => {
+            const coverImage = project.project_images?.find((img: any) => img.is_cover);
+            return {
+              id: project.id,
+              title: project.title,
+              description: project.description || '',
+              location: project.location || '',
+              image: coverImage?.image_url || project.project_images?.[0]?.image_url || '/slide1.jpeg',
+            };
+          });
+          setProjects(projectsWithImages);
+        } else {
+          // Use fallback projects if database is empty
+          setProjects(fallbackProjects);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        // Use fallback projects on error
+        setProjects(fallbackProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, [supabase]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -128,70 +179,83 @@ export default function WorksSection() {
 
         {/* Cards Container */}
         <div className="cards-container flex gap-8 px-8">
-          {cards.map((card) => (
-            <div
-              key={card.id}
-              className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] perspective-1000"
-            >
-              <div className="relative w-full h-full group">
-                {/* Card - with flip effect */}
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
-                  
-                  {/* Front of card */}
-                  <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-2xl">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={card.image}
-                        alt={card.title}
-                        fill
-                        className="object-cover"
-                      />
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      
-                      {/* Card title on front */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                        <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
+          {loading ? (
+            // Loading skeleton
+            [...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className="shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] rounded-2xl bg-gray-200 animate-pulse"
+              />
+            ))
+          ) : (
+            projects.map((card) => (
+              <div
+                key={card.id}
+                className="shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] perspective-1000"
+              >
+                <div className="relative w-full h-full group">
+                  {/* Card - with flip effect */}
+                  <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+                    
+                    {/* Front of card */}
+                    <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-2xl">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={card.image}
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+                        
+                        {/* Card title on front */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                          <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
+                            {card.title}
+                          </h3>
+                          {card.location && (
+                            <p className="text-sm md:text-base opacity-90 flex items-center gap-2">
+                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                              </svg>
+                              {card.location}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Back of card */}
+                    <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-2xl bg-[#3d5320]">
+                      <div className="w-full h-full flex flex-col justify-center items-center p-8 text-white">
+                        <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-center">
                           {card.title}
                         </h3>
+                        <p className="text-base md:text-lg text-center mb-4 leading-relaxed">
+                          {card.description}
+                        </p>
                         {card.location && (
-                          <p className="text-sm md:text-base opacity-90 flex items-center gap-2">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <div className="flex items-center gap-2 text-[#C8E86C] font-medium mb-4">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                             </svg>
                             {card.location}
-                          </p>
+                          </div>
                         )}
+                        <Link
+                          href={`/projects/${card.id}`}
+                          className="px-6 py-3 bg-[#C8E86C] text-[#2F3D24] rounded-full font-semibold hover:bg-[#b5d655] transition-colors"
+                        >
+                          View Details
+                        </Link>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Back of card */}
-                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-2xl bg-[#3d5320]">
-                    <div className="w-full h-full flex flex-col justify-center items-center p-8 text-white">
-                      <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-center">
-                        {card.title}
-                      </h3>
-                      <p className="text-base md:text-lg text-center mb-4 leading-relaxed">
-                        {card.description}
-                      </p>
-                      {card.location && (
-                        <div className="flex items-center gap-2 text-[#C8E86C] font-medium mb-4">
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                          </svg>
-                          {card.location}
-                        </div>
-                      )}
-                      <button className="px-6 py-3 bg-[#C8E86C] text-[#2F3D24] rounded-full font-semibold hover:bg-[#b5d655] transition-colors">
-                        View Details
-                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Scroll Indicator */}

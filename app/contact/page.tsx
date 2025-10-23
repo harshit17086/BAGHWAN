@@ -4,6 +4,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { createClient } from '@/lib/supabase/client';
+import { useRouter } from 'next/navigation';
 
 interface FormData {
   firstName: string;
@@ -29,6 +31,9 @@ export default function ContactPage() {
     budget: '',
     location: ''
   });
+  const [submitting, setSubmitting] = useState(false);
+  const router = useRouter();
+  const supabase = createClient();
 
   const services = [
     {
@@ -79,9 +84,37 @@ export default function ContactPage() {
     setFormData({ ...formData, [field]: value });
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    // Handle form submission
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            service: formData.service,
+            query_type: formData.queryType,
+            budget: formData.budget,
+            location: formData.location,
+            status: 'new',
+          }
+        ]);
+
+      if (error) throw error;
+
+      // Success - show confirmation and redirect
+      alert('Thank you! Your inquiry has been submitted successfully. We will contact you soon.');
+      router.push('/');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your inquiry. Please try again or contact us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const canProceed = () => {
@@ -108,7 +141,7 @@ export default function ContactPage() {
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
-          <Link href="/" className="-ml-16 md:-ml-0">
+          <Link href="/" className="-ml-16 md:ml-0">
             <div className="relative h-32 w-64">
               <Image 
                 src="/logop.png" 
@@ -223,7 +256,7 @@ export default function ContactPage() {
                     }`}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0 mt-1">
                         {formData.service === service.id && (
                           <div className="w-4 h-4 rounded-full bg-[#6B8E23]"></div>
                         )}
@@ -277,7 +310,7 @@ export default function ContactPage() {
                     }`}
                   >
                     <div className="flex items-center justify-center gap-3">
-                      <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center flex-shrink-0">
+                      <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0">
                         {formData.budget === budget && (
                           <div className="w-4 h-4 rounded-full bg-[#6B8E23]"></div>
                         )}
@@ -371,17 +404,29 @@ export default function ContactPage() {
 
             <button
               onClick={currentStep === totalSteps ? handleSubmit : handleNext}
-              disabled={!canProceed()}
+              disabled={!canProceed() || submitting}
               className={`px-10 py-4 rounded-full font-semibold transition-all flex items-center gap-3 ${
-                canProceed()
+                canProceed() && !submitting
                   ? 'bg-[#1a2817] text-white hover:bg-[#2F3D24]'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
-              {currentStep === totalSteps ? 'Submit' : 'Next Question'}
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              {submitting ? (
+                <>
+                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Submitting...
+                </>
+              ) : (
+                <>
+                  {currentStep === totalSteps ? 'Submit' : 'Next Question'}
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </>
+              )}
             </button>
           </div>
         </div>
