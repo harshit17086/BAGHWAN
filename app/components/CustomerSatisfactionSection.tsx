@@ -22,10 +22,6 @@ export default function CustomerSatisfactionSection() {
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
 
-  useEffect(() => {
-    fetchCertificates();
-  }, []);
-
   const fetchCertificates = async () => {
     try {
       const { data, error } = await supabase
@@ -67,6 +63,11 @@ export default function CustomerSatisfactionSection() {
     }
   };
 
+  useEffect(() => {
+    fetchCertificates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const filteredCertificates = certificates.filter(cert => {
     if (activeTab === 'all') return true;
     if (activeTab === 'certificates') return cert.type === 'certificate';
@@ -106,7 +107,7 @@ export default function CustomerSatisfactionSection() {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#2F3D24] mb-6">
             Customer Satisfaction
           </h2>
-          <p className="text-lg md:text-xl text-[#6B7555] max-w-3xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-[#6B7555] max-w-3xl mx-auto mb-12 leading-relaxed">
             Our commitment to excellence is reflected in the trust our clients place in us. 
             Explore our certifications, awards, and customer testimonials.
           </p>
@@ -115,30 +116,30 @@ export default function CustomerSatisfactionSection() {
           <div className="flex justify-center gap-4 flex-wrap">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-6 py-3 rounded-full font-serif transition-all duration-300 ${
+              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${
                 activeTab === 'all'
-                  ? 'bg-[#3d5320] text-white'
-                  : 'bg-white text-[#3d5320] hover:bg-[#C8E86C]'
+                  ? 'bg-[#3d5320] text-white shadow-lg'
+                  : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
               }`}
             >
               All
             </button>
             <button
               onClick={() => setActiveTab('certificates')}
-              className={`px-6 py-3 rounded-full font-serif transition-all duration-300 ${
+              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${
                 activeTab === 'certificates'
-                  ? 'bg-[#3d5320] text-white'
-                  : 'bg-white text-[#3d5320] hover:bg-[#C8E86C]'
+                  ? 'bg-[#3d5320] text-white shadow-lg'
+                  : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
               }`}
             >
               Certificates & PDFs
             </button>
             <button
               onClick={() => setActiveTab('photos')}
-              className={`px-6 py-3 rounded-full font-serif transition-all duration-300 ${
+              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${
                 activeTab === 'photos'
-                  ? 'bg-[#3d5320] text-white'
-                  : 'bg-white text-[#3d5320] hover:bg-[#C8E86C]'
+                  ? 'bg-[#3d5320] text-white shadow-lg'
+                  : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
               }`}
             >
               Photos & Testimonials
@@ -220,10 +221,12 @@ export default function CustomerSatisfactionSection() {
                 {/* Type Badge */}
                 <div className="absolute top-3 right-3">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold font-serif ${
                       cert.file_type === 'pdf'
-                        ? 'bg-[#C8E86C] text-[#2F3D24]'
-                        : 'bg-[#3d5320] text-white'
+                        ? 'bg-[#3d5320] text-white'
+                        : cert.type === 'testimonial' 
+                        ? 'bg-[#2F3D24] text-white'
+                        : 'bg-white text-[#2F3D24] border border-[#2F3D24]/30'
                     }`}
                   >
                     {cert.file_type === 'pdf' ? 'PDF' : cert.type === 'testimonial' ? 'Testimonial' : 'Photo'}
@@ -233,46 +236,46 @@ export default function CustomerSatisfactionSection() {
 
               {/* Content */}
               <div className="p-5">
-                <h3 className="text-lg font-serif font-semibold text-[#2F3D24] mb-2">
+                <h3 className="text-lg font-serif font-semibold text-[#2F3D24] mb-2 leading-tight">
                   {cert.title}
                 </h3>
-                <p className="text-sm text-[#6B7555]">{cert.description}</p>
+                <p className="text-sm text-[#6B7555] leading-relaxed">{cert.description}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-[#3d5320]/20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t-2 border-[#3d5320]/20">
           <div className="text-center">
-            <h3 className="text-4xl md:text-5xl font-serif text-[#2F3D24] mb-2">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2F3D24] mb-3 font-bold">
               98%
             </h3>
-            <p className="text-sm md:text-base text-[#6B7555]">
+            <p className="text-sm md:text-base text-[#6B7555] font-medium">
               Customer Satisfaction
             </p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl md:text-5xl font-serif text-[#2F3D24] mb-2">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2F3D24] mb-3 font-bold">
               25+
             </h3>
-            <p className="text-sm md:text-base text-[#6B7555]">
+            <p className="text-sm md:text-base text-[#6B7555] font-medium">
               Industry Certifications
             </p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl md:text-5xl font-serif text-[#2F3D24] mb-2">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2F3D24] mb-3 font-bold">
               500+
             </h3>
-            <p className="text-sm md:text-base text-[#6B7555]">
+            <p className="text-sm md:text-base text-[#6B7555] font-medium">
               Happy Clients
             </p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl md:text-5xl font-serif text-[#2F3D24] mb-2">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2F3D24] mb-3 font-bold">
               15+
             </h3>
-            <p className="text-sm md:text-base text-[#6B7555]">
+            <p className="text-sm md:text-base text-[#6B7555] font-medium">
               Awards & Recognition
             </p>
           </div>
@@ -282,17 +285,18 @@ export default function CustomerSatisfactionSection() {
       {/* Modal for Image View */}
       {selectedItem && selectedItem.file_type === 'image' && (
         <div
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={closeModal}
         >
           <div
-            className="relative max-w-5xl max-h-[90vh] bg-white rounded-lg overflow-hidden"
+            className="relative max-w-5xl max-h-[90vh] bg-[#faf7ed] rounded-2xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 bg-[#3d5320] text-white p-2 rounded-full hover:bg-[#2F3D24] transition-colors"
+              className="absolute top-4 right-4 z-10 bg-[#3d5320] text-white p-3 rounded-full hover:bg-[#2F3D24] transition-colors shadow-lg"
+              aria-label="Close modal"
             >
               <svg
                 className="w-6 h-6"
@@ -310,7 +314,7 @@ export default function CustomerSatisfactionSection() {
             </button>
 
             {/* Image */}
-            <div className="relative w-full h-[70vh]">
+            <div className="relative w-full h-[70vh] bg-white">
               <Image
                 src={selectedItem.file_url}
                 alt={selectedItem.title}
@@ -320,11 +324,11 @@ export default function CustomerSatisfactionSection() {
             </div>
 
             {/* Image Info */}
-            <div className="p-6 bg-[#faf7ed]">
-              <h3 className="text-2xl font-serif font-semibold text-[#2F3D24] mb-2">
+            <div className="p-6 md:p-8 bg-[#faf7ed]">
+              <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#2F3D24] mb-3 leading-tight">
                 {selectedItem.title}
               </h3>
-              <p className="text-[#6B7555]">{selectedItem.description}</p>
+              <p className="text-base md:text-lg text-[#6B7555] leading-relaxed">{selectedItem.description}</p>
             </div>
           </div>
         </div>
