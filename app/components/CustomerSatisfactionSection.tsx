@@ -285,21 +285,21 @@ export default function CustomerSatisfactionSection() {
       {/* Modal for Image View */}
       {selectedItem && selectedItem.file_type === 'image' && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-2 md:p-4"
           onClick={closeModal}
         >
           <div
-            className="relative max-w-5xl max-h-[90vh] bg-[#faf7ed] rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-7xl h-full max-h-full bg-transparent rounded-none md:rounded-2xl overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 bg-[#3d5320] text-white p-3 rounded-full hover:bg-[#2F3D24] transition-colors shadow-lg"
+              className="absolute top-2 right-2 md:top-4 md:right-4 z-10 bg-[#3d5320] text-white p-2 md:p-3 rounded-full hover:bg-[#2F3D24] transition-colors shadow-lg"
               aria-label="Close modal"
             >
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5 md:w-6 md:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -313,22 +313,24 @@ export default function CustomerSatisfactionSection() {
               </svg>
             </button>
 
-            {/* Image */}
-            <div className="relative w-full h-[70vh] bg-white">
+            {/* Image Container - Full screen on mobile, constrained on desktop */}
+            <div className="flex-1 relative bg-black/20 min-h-0">
               <Image
                 src={selectedItem.file_url}
                 alt={selectedItem.title}
                 fill
                 className="object-contain"
+                sizes="(max-width: 768px) 100vw, 80vw"
+                priority
               />
             </div>
 
-            {/* Image Info */}
-            <div className="p-6 md:p-8 bg-[#faf7ed]">
-              <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#2F3D24] mb-3 leading-tight">
+            {/* Image Info - Bottom overlay on mobile, separate section on desktop */}
+            <div className="bg-[#faf7ed] p-4 md:p-6 md:bg-[#faf7ed] md:relative">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-semibold text-[#2F3D24] mb-2 md:mb-3 leading-tight">
                 {selectedItem.title}
               </h3>
-              <p className="text-base md:text-lg text-[#6B7555] leading-relaxed">{selectedItem.description}</p>
+              <p className="text-sm md:text-base lg:text-lg text-[#6B7555] leading-relaxed">{selectedItem.description}</p>
             </div>
           </div>
         </div>
