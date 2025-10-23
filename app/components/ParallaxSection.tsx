@@ -81,7 +81,9 @@ export default function ParallaxSection() {
   const isSectionInView = scrollY >= sectionTop && scrollY <= sectionBottom;
 
   // Both images should always be visible when section is in view
-  const showImages = isSectionInView;
+  // Also check that we've scrolled enough for the section to be visible
+  // And ensure component is mounted and sectionTop has been calculated to prevent initial flash
+  const showImages = mounted && sectionTop > 0 && isSectionInView && scrollY > 0;
   
   // Don't render calculations until mounted
   if (!mounted) {
@@ -145,7 +147,9 @@ export default function ParallaxSection() {
           maxWidth: '70vw',
           maxHeight: '40vh',
           opacity: showImages ? 1 : 0,
+          visibility: showImages ? 'visible' : 'hidden',
           transition: 'opacity 0.3s ease-out',
+          pointerEvents: 'none',
         }}
       >
         {/* First small image - base layer */}
