@@ -145,23 +145,6 @@ export default function ParallaxSection() {
           className="object-cover"
           priority
         />
-        {/* Text overlay - fades out during transition */}
-        <div 
-          className="fixed bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/70 to-transparent p-8 md:p-12 lg:p-16"
-          style={{
-            opacity: showImages ? 1 - progress1 : 0,
-            transition: 'opacity 0.1s ease-out',
-            pointerEvents: progress1 < 1 ? 'auto' : 'none'
-          }}
-        >
-          <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-4">Blueberry Hill ADU</h3>
-          <div className="flex flex-wrap gap-3 text-white text-sm md:text-base">
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">ADU</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">Sleeping Loft</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">1 Bath</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">+500 Sqft</span>
-          </div>
-        </div>
       </div>
 
       {/* Second big image section */}
@@ -172,24 +155,6 @@ export default function ParallaxSection() {
           fill
           className="object-cover"
         />
-        {/* Text overlay - fades in during transition */}
-        <div 
-          className="fixed bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/70 to-transparent p-8 md:p-12 lg:p-16"
-          style={{
-            opacity: showImages && progress1 > 0 && progress2 < 1 ? progress1 * (1 - progress2) : 0,
-            transition: 'opacity 0.1s ease-out',
-            pointerEvents: progress1 > 0 && progress2 < 1 ? 'auto' : 'none'
-          }}
-        >
-          <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-4">Break House</h3>
-          <div className="flex flex-wrap gap-3 text-white text-sm md:text-base">
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">Big Bar</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">2 Bed</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">3 Bath</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">1000-1500 Sqft</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">Hybrid Home</span>
-          </div>
-        </div>
       </div>
 
       {/* Third big image section */}
@@ -200,23 +165,6 @@ export default function ParallaxSection() {
           fill
           className="object-cover"
         />
-        {/* Text overlay - fades in/out during transitions */}
-        <div 
-          className="fixed bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/70 to-transparent p-8 md:p-12 lg:p-16"
-          style={{
-            opacity: showImages && progress2 > 0 && progress3 < 1 ? progress2 * (1 - progress3) : 0,
-            transition: 'opacity 0.1s ease-out',
-            pointerEvents: progress2 > 0 && progress3 < 1 ? 'auto' : 'none'
-          }}
-        >
-          <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-4">Modern Villa</h3>
-          <div className="flex flex-wrap gap-3 text-white text-sm md:text-base">
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">4 Bed</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">3 Bath</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">2500 Sqft</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">Pool</span>
-          </div>
-        </div>
       </div>
 
       {/* Fourth big image section */}
@@ -227,23 +175,6 @@ export default function ParallaxSection() {
           fill
           className="object-cover"
         />
-        {/* Text overlay - fades in during transition */}
-        <div 
-          className="fixed bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/70 to-transparent p-8 md:p-12 lg:p-16"
-          style={{
-            opacity: showImages ? progress3 : 0,
-            transition: 'opacity 0.1s ease-out',
-            pointerEvents: progress3 > 0 ? 'auto' : 'none'
-          }}
-        >
-          <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-4">Luxury Estate</h3>
-          <div className="flex flex-wrap gap-3 text-white text-sm md:text-base">
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">5 Bed</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">4 Bath</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">3500 Sqft</span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">Garden</span>
-          </div>
-        </div>
       </div>
     </section>
   );
