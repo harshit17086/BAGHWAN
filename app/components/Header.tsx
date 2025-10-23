@@ -13,7 +13,7 @@ export default function Header() {
     { href: '#', label: 'Standards' },
     { href: '#', label: 'How it Works' },
     { href: '#', label: 'Portfolio' },
-    { href: '#', label: 'Resources' },
+    { href: '/reviews', label: 'Reviews' },
   ];
 
   // Define color classes for easier management
