@@ -54,10 +54,10 @@ export default function Header() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? headerScrollBg : headerDefaultBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
-        <div className="flex justify-between items-center min-h-[70px] md:min-h-[80px] lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
+        <div className="flex justify-between items-center min-h-[70px]  lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
           {/* Logo */}
             <a href="#" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
-            <div className="relative h-16 w-32 md:h-20 md:w-40 lg:h-24 lg:w-56"> {/* Increased responsive logo size */}
+            <div className="relative h-16 w-32 md:h-20 md:w-40 lg:h-24 lg:w-54"> {/* Increased responsive logo size */}
               <Image 
               src="/logop.png" 
               alt="HRs Logo" 
