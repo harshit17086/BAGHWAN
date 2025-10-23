@@ -5,26 +5,40 @@ import Image from 'next/image';
 
 export default function ParallaxSection() {
   const [scrollY, setScrollY] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(800); // Default fallback
+  const [mounted, setMounted] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Set mounted state and initial window height
+    setMounted(true);
+    setWindowHeight(window.innerHeight);
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const sectionTop = sectionRef.current ? sectionRef.current.offsetTop : 0;
   const relativeScrollY = scrollY - sectionTop;
   
   // Small image positioning - starts within the first big image
-  const stickyTopPosition = window.innerHeight * 0.5 - 175; // Center of screen minus half image height (350px / 2)
-  const smallImageInitialOffset = window.innerHeight * 0.5 - 175; // Start position centered vertically
+  const stickyTopPosition = windowHeight * 0.5 - 175; // Center of screen minus half image height (350px / 2)
+  const smallImageInitialOffset = windowHeight * 0.5 - 175; // Start position centered vertically
   
   // Calculate when we're in the last section (4th big image)
-  const lastSectionStart = 3 * window.innerHeight; // Start of 4th section
+  const lastSectionStart = 3 * windowHeight; // Start of 4th section
   const isInLastSection = relativeScrollY >= lastSectionStart;
   
   // Calculate when small image should become sticky
@@ -48,26 +62,67 @@ export default function ParallaxSection() {
   
   // Calculate progress for each transition (4 big images = 3 transitions)
   // Transition 1: at 1vh (first to second)
-  const transition1Point = window.innerHeight - smallImageCenter;
+  const transition1Point = windowHeight - smallImageCenter;
   const transition1Start = transition1Point - transitionDuration / 2;
   const progress1 = Math.max(0, Math.min(1, (relativeScrollY - transition1Start) / transitionDuration));
   
   // Transition 2: at 2vh (second to third)
-  const transition2Point = (2 * window.innerHeight) - smallImageCenter;
+  const transition2Point = (2 * windowHeight) - smallImageCenter;
   const transition2Start = transition2Point - transitionDuration / 2;
   const progress2 = Math.max(0, Math.min(1, (relativeScrollY - transition2Start) / transitionDuration));
   
   // Transition 3: at 3vh (third to fourth)
-  const transition3Point = (3 * window.innerHeight) - smallImageCenter;
+  const transition3Point = (3 * windowHeight) - smallImageCenter;
   const transition3Start = transition3Point - transitionDuration / 2;
   const progress3 = Math.max(0, Math.min(1, (relativeScrollY - transition3Start) / transitionDuration));
   
   // Check if the parallax section is in view
-  const sectionBottom = sectionTop + 4 * window.innerHeight; // 400vh for 4 sections
+  const sectionBottom = sectionTop + 4 * windowHeight; // 400vh for 4 sections
   const isSectionInView = scrollY >= sectionTop && scrollY <= sectionBottom;
 
   // Both images should always be visible when section is in view
   const showImages = isSectionInView;
+  
+  // Don't render calculations until mounted
+  if (!mounted) {
+    return (
+      <section className="relative" style={{ height: '400vh' }}>
+        <div className="sticky top-0 h-screen w-full">
+          <Image
+            src="/slide1.jpeg"
+            alt="Blueberry Hill ADU"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
+          <Image
+            src="/slide6.jpeg"
+            alt="Break House"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 2 }}>
+          <Image
+            src="/slide2.jpeg"
+            alt="Modern Villa"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 3 }}>
+          <Image
+            src="/kkk.jpeg"
+            alt="Luxury Estate"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </section>
+    );
+  }
   
   return (
     <section 

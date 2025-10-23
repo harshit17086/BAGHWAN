@@ -114,6 +114,14 @@ ALTER TABLE contact_submissions ENABLE ROW LEVEL SECURITY;
 -- ============================================================================
 -- RLS POLICIES - Public Read Access
 -- ============================================================================
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Public can view active projects" ON projects;
+DROP POLICY IF EXISTS "Public can view project images" ON project_images;
+DROP POLICY IF EXISTS "Authenticated users can manage projects" ON projects;
+DROP POLICY IF EXISTS "Authenticated users can manage project images" ON project_images;
+DROP POLICY IF EXISTS "Authenticated users can manage contact submissions" ON contact_submissions;
+DROP POLICY IF EXISTS "Anyone can submit contact form" ON contact_submissions;
+
 -- Allow anyone to read active projects (for public website)
 CREATE POLICY "Public can view active projects"
   ON projects FOR SELECT
@@ -157,11 +165,63 @@ CREATE POLICY "Anyone can submit contact form"
   WITH CHECK (true);
 
 -- ============================================================================
+-- CUSTOMER SATISFACTION TABLE
+-- ============================================================================
+-- Stores certificates, photos, testimonials, and satisfaction items
+CREATE TABLE IF NOT EXISTS customer_satisfaction (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  type VARCHAR(50) NOT NULL CHECK (type IN ('certificate', 'photo', 'testimonial')),
+  file_type VARCHAR(50) NOT NULL CHECK (file_type IN ('image', 'pdf')),
+  file_url TEXT NOT NULL,
+  thumbnail_url TEXT,
+  display_order INTEGER DEFAULT 0,
+  is_featured BOOLEAN DEFAULT false,
+  status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'archived', 'draft')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for faster queries
+CREATE INDEX IF NOT EXISTS idx_customer_satisfaction_type ON customer_satisfaction(type);
+CREATE INDEX IF NOT EXISTS idx_customer_satisfaction_status ON customer_satisfaction(status);
+CREATE INDEX IF NOT EXISTS idx_customer_satisfaction_featured ON customer_satisfaction(is_featured);
+CREATE INDEX IF NOT EXISTS idx_customer_satisfaction_display_order ON customer_satisfaction(display_order);
+
+-- Trigger to update updated_at timestamp
+CREATE TRIGGER update_customer_satisfaction_updated_at
+  BEFORE UPDATE ON customer_satisfaction
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- ============================================================================
+-- ROW LEVEL SECURITY (RLS) - CUSTOMER SATISFACTION
+-- ============================================================================
+ALTER TABLE customer_satisfaction ENABLE ROW LEVEL SECURITY;
+
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Public can view active satisfaction items" ON customer_satisfaction;
+DROP POLICY IF EXISTS "Authenticated users can manage satisfaction items" ON customer_satisfaction;
+
+-- Allow public read access to active satisfaction items
+CREATE POLICY "Public can view active satisfaction items"
+  ON customer_satisfaction FOR SELECT
+  USING (status = 'active');
+
+-- Allow authenticated users (admins) to do everything
+CREATE POLICY "Authenticated users can manage satisfaction items"
+  ON customer_satisfaction FOR ALL
+  USING (auth.role() = 'authenticated')
+  WITH CHECK (auth.role() = 'authenticated');
+
+-- ============================================================================
 -- STORAGE BUCKETS (Run these in Supabase Storage section)
 -- ============================================================================
 -- You'll need to create these buckets in the Supabase Dashboard:
 -- 1. 'project-images' bucket (public)
 -- 2. 'project-videos' bucket (public)
+-- 3. 'satisfaction-files' bucket (public) - for certificates and photos
 
 -- Note: After creating buckets, set them to public and configure policies:
 -- Storage Policy for project-images:

@@ -90,7 +90,7 @@ export default function ProjectDetailPage() {
     <div className="min-h-screen bg-[#faf7ed]">
       <Header />
 
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-6 mt-16 py-16">
         {/* Back Button */}
         <Link
           href="/projects"
