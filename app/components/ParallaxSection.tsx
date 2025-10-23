@@ -20,8 +20,8 @@ export default function ParallaxSection() {
   const relativeScrollY = scrollY - sectionTop;
   
   // Small image positioning - starts within the first big image
-  const stickyTopPosition = 100; // Distance from top when sticky
-  const smallImageInitialOffset = window.innerHeight * 0.4; // Start position (40vh down in first big image)
+  const stickyTopPosition = window.innerHeight * 0.5 - 175; // Center of screen minus half image height (350px / 2)
+  const smallImageInitialOffset = window.innerHeight * 0.5 - 175; // Start position centered vertically
   
   // Calculate when small image should become sticky
   // It becomes sticky when its natural scroll position would be above stickyTopPosition
