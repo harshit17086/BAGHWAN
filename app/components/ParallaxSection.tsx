@@ -19,19 +19,29 @@ export default function ParallaxSection() {
   const sectionTop = sectionRef.current ? sectionRef.current.offsetTop : 0;
   const relativeScrollY = scrollY - sectionTop;
   
-  // Small image positioning
+  // Small image positioning - starts within the first big image
   const stickyTopPosition = 100; // Distance from top when sticky
-  const smallImageInitialOffset = window.innerHeight * 0.3; // Start position relative to first big image (30vh down)
+  const smallImageInitialOffset = window.innerHeight * 0.4; // Start position (40vh down in first big image)
   
-  // Calculate small image position
+  // Calculate small image position - it scrolls up with the page
   const smallImageScrolledTop = sectionTop + smallImageInitialOffset - scrollY;
   const isSmallImageSticky = smallImageScrolledTop <= stickyTopPosition;
   
-  // Transition happens at the intersection of the two big images (at 100vh)
-  const transitionPoint = window.innerHeight; // The intersection point
-  const transitionDuration = 400; // Transition duration in pixels of scroll
-  const transitionStart = transitionPoint - transitionDuration / 2;
-
+  // Calculate the position of the intersection line on viewport
+  // The intersection is at the bottom of first image / top of second image
+  // When relativeScrollY = innerHeight, the intersection is at the bottom of viewport
+  // We want the transition to happen when the intersection line is at the small image position
+  const smallImageActualTop = isSmallImageSticky ? stickyTopPosition : smallImageScrolledTop;
+  
+  // The reveal should happen when the intersection line crosses the small image
+  // Small image height is 350px (or 40vh), so we use its center or range
+  const smallImageCenter = smallImageActualTop + 175; // Center of the 350px tall image
+  const transitionTriggerPoint = window.innerHeight - smallImageCenter;
+  
+  // Progress based on how much the intersection has crossed the small image
+  const transitionDuration = 350; // Match the small image height for smooth reveal
+  const transitionStart = transitionTriggerPoint - transitionDuration / 2;
+  
   // Calculate progress for the transition (0 to 1)
   const progress = Math.max(0, Math.min(1, (relativeScrollY - transitionStart) / transitionDuration));
   
