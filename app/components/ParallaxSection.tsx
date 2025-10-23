@@ -30,10 +30,10 @@ export default function ParallaxSection() {
         <div 
           className="absolute top-1/2 right-8 md:right-16 lg:right-24 transform -translate-y-1/2 z-10"
           style={{
-            width: '280px',
+            width: '600px',
             height: '350px',
-            maxWidth: '40vw',
-            maxHeight: '50vh'
+            maxWidth: '70vw',
+            maxHeight: '40vh'
           }}
         >
           <div className="relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
@@ -71,10 +71,10 @@ export default function ParallaxSection() {
         <div 
           className="absolute top-1/2 right-8 md:right-16 lg:right-24 transform -translate-y-1/2 z-10"
           style={{
-            width: '280px',
+            width: '600px',
             height: '350px',
-            maxWidth: '40vw',
-            maxHeight: '50vh'
+            maxWidth: '70vw',
+            maxHeight: '40vh'
           }}
         >
           <div className="relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
