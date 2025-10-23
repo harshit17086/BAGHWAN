@@ -23,19 +23,13 @@ export default function ParallaxSection() {
   const stickyTopPosition = 100; // Distance from top when sticky
   const smallImageInitialOffset = window.innerHeight * 0.4; // Start position (40vh down in first big image)
   
-  // Calculate small image position - it scrolls up with the page
-  const smallImageScrolledTop = sectionTop + smallImageInitialOffset - scrollY;
-  const isSmallImageSticky = smallImageScrolledTop <= stickyTopPosition;
-  
-  // Calculate the position of the intersection line on viewport
-  // The intersection is at the bottom of first image / top of second image
-  // When relativeScrollY = innerHeight, the intersection is at the bottom of viewport
-  // We want the transition to happen when the intersection line is at the small image position
-  const smallImageActualTop = isSmallImageSticky ? stickyTopPosition : smallImageScrolledTop;
+  // Calculate when small image should become sticky
+  // It becomes sticky when its natural scroll position would be above stickyTopPosition
+  const shouldBeSticky = relativeScrollY >= (smallImageInitialOffset - stickyTopPosition);
   
   // The reveal should happen when the intersection line crosses the small image
   // Small image height is 350px (or 40vh), so we use its center or range
-  const smallImageCenter = smallImageActualTop + 175; // Center of the 350px tall image
+  const smallImageCenter = shouldBeSticky ? stickyTopPosition + 175 : smallImageInitialOffset - relativeScrollY + 175;
   const transitionTriggerPoint = window.innerHeight - smallImageCenter;
   
   // Progress based on how much the intersection has crossed the small image
@@ -60,9 +54,9 @@ export default function ParallaxSection() {
     >
       {/* Container for both small images - they overlap perfectly */}
       <div 
-        className={isSmallImageSticky ? "fixed z-20" : "absolute z-20"}
+        className={shouldBeSticky ? "fixed z-20" : "absolute z-20"}
         style={{
-          top: isSmallImageSticky ? `${stickyTopPosition}px` : `${smallImageScrolledTop}px`,
+          top: shouldBeSticky ? `${stickyTopPosition}px` : `${smallImageInitialOffset}px`,
           right: '2rem',
           width: '600px',
           height: '350px',
