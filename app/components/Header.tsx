@@ -13,7 +13,7 @@ export default function Header() {
     { href: '#', label: 'Housing Solutions' },
     { href: '#', label: 'Standards' },
     { href: '#', label: 'How it Works' },
-    { href: '/portfolio', label: 'Portfolio' },
+    { href: '/projects', label: 'Portfolio' },
     { href: '/reviews', label: 'Reviews' },
   ];
 
