@@ -5,7 +5,6 @@ import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -18,21 +17,15 @@ export default function Header() {
   ];
 
   // Define color classes for easier management
-  const headerDefaultBg = 'bg-[#3d5320]'; 
-
   const headerScrollBg = 'bg-[#faf7ed]'; 
-  const textDefault = 'text-white'; 
   const textScroll = 'text-[#2F3D24]'; 
-  const buttonDefaultBg = 'bg-[#C8E86C]'; 
   const buttonScrollBg = 'bg-[#3d5320]'; // Dark green button on beige
-  const buttonDefaultText = 'text-[#2F3D24]'; // Dark text on light button
   const buttonScrollText = 'text-white'; // White text on dark button
 
   // Handle scroll effect
   React.useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 50);
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down and past 100px
@@ -51,7 +44,7 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? headerScrollBg : headerDefaultBg}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${headerScrollBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px]  lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
@@ -62,7 +55,7 @@ export default function Header() {
               src="/logop.png" 
               alt="HRs Logo" 
               fill
-              className={`object-contain transition-all duration-300 ${isScrolled ? '' : 'filter invert brightness-0'}`}
+              className="object-contain transition-all duration-300"
               />
             </div>
             </a>
@@ -73,7 +66,7 @@ export default function Header() {
               <li key={`${link.label}-${index}`}>
                 <a
                   href={link.href}
-                  className={`transition-colors duration-300 font-medium font-serif text-lg flex items-center gap-1 ${isScrolled ? textScroll : textDefault} hover:opacity-75`}
+                  className={`transition-colors duration-300 font-medium font-serif text-lg flex items-center gap-1 ${textScroll} hover:opacity-75`}
                 >
                   {link.label}
                   <span className="font-light">+</span>
@@ -85,7 +78,7 @@ export default function Header() {
           {/* CTA Button - Desktop */}
           <a
             href="/contact"
-            className={`hidden lg:block px-6 md:px-8 lg:px-10 py-3 md:py-4 rounded-full transition-colors duration-300 font-medium font-serif text-lg ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+            className={`hidden lg:block px-6 md:px-8 lg:px-10 py-3 md:py-4 rounded-full transition-colors duration-300 font-medium font-serif text-lg ${buttonScrollBg} ${buttonScrollText}`}
           >
             Get Started
           </a>
@@ -97,17 +90,17 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-800' : 'bg-white'} ${
+              className={`block w-6 h-0.5 transition-all duration-300 bg-gray-800 ${
                 isMenuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 transition-opacity duration-300 ${isScrolled ? 'bg-gray-800' : 'bg-white'} ${
+              className={`block w-6 h-0.5 transition-opacity duration-300 bg-gray-800 ${
                 isMenuOpen ? 'opacity-0' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-800' : 'bg-white'} ${
+              className={`block w-6 h-0.5 transition-all duration-300 bg-gray-800 ${
                 isMenuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             ></span>
@@ -122,7 +115,7 @@ export default function Header() {
                 <li key={`${link.label}-${index}`}>
                   <a
                     href={link.href}
-                    className={`block transition-colors duration-300 font-medium font-serif text-lg flex items-center gap-1 ${isScrolled ? textScroll : textDefault}`}
+                    className={`block transition-colors duration-300 font-medium font-serif text-lg flex items-center gap-1 ${textScroll}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -133,7 +126,7 @@ export default function Header() {
               <li>
                 <a
                   href="/contact"
-                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium font-serif text-lg ${isScrolled ? `${buttonScrollBg} ${buttonScrollText}` : `${buttonDefaultBg} ${buttonDefaultText}`}`}
+                  className={`block px-8 py-3 mt-4 rounded-full transition-colors duration-300 text-center font-medium font-serif text-lg ${buttonScrollBg} ${buttonScrollText}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
