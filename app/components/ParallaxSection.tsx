@@ -23,13 +23,25 @@ export default function ParallaxSection() {
   const stickyTopPosition = window.innerHeight * 0.5 - 175; // Center of screen minus half image height (350px / 2)
   const smallImageInitialOffset = window.innerHeight * 0.5 - 175; // Start position centered vertically
   
+  // Calculate when we're in the last section (4th big image)
+  const lastSectionStart = 3 * window.innerHeight; // Start of 4th section
+  const isInLastSection = relativeScrollY >= lastSectionStart;
+  
   // Calculate when small image should become sticky
   // It becomes sticky when its natural scroll position would be above stickyTopPosition
-  const shouldBeSticky = relativeScrollY >= (smallImageInitialOffset - stickyTopPosition);
+  // But NOT sticky in the last section - it should scroll with the page
+  const shouldBeSticky = relativeScrollY >= (smallImageInitialOffset - stickyTopPosition) && !isInLastSection;
   
   // The reveal should happen when the intersection line crosses the small image
   // Small image height is 350px (or 40vh), so we use its center or range
-  const smallImageCenter = shouldBeSticky ? stickyTopPosition + 175 : smallImageInitialOffset - relativeScrollY + 175;
+  let smallImageCenter;
+  if (isInLastSection) {
+    // In last section, image scrolls naturally from its last sticky position
+    const scrollIntoLastSection = relativeScrollY - lastSectionStart;
+    smallImageCenter = stickyTopPosition + 175 - scrollIntoLastSection;
+  } else {
+    smallImageCenter = shouldBeSticky ? stickyTopPosition + 175 : smallImageInitialOffset - relativeScrollY + 175;
+  }
   
   // Progress based on how much the intersection has crossed the small image
   const transitionDuration = 350; // Match the small image height for smooth reveal
@@ -67,7 +79,11 @@ export default function ParallaxSection() {
       <div 
         className={shouldBeSticky ? "fixed z-20" : "absolute z-20"}
         style={{
-          top: shouldBeSticky ? `${stickyTopPosition}px` : `${smallImageInitialOffset}px`,
+          top: shouldBeSticky 
+            ? `${stickyTopPosition}px` 
+            : isInLastSection 
+              ? `${lastSectionStart + stickyTopPosition}px`
+              : `${smallImageInitialOffset}px`,
           right: '2rem',
           width: '600px',
           height: '350px',
