@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,7 +50,7 @@ export default function Header() {
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px]  lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
           {/* Logo */}
-            <a href="#" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
+            <Link href="/" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
             <div className="relative h-16 w-32 md:h-20 md:w-40 lg:h-24 lg:w-54"> {/* Increased responsive logo size */}
               <Image 
               src="/logop.png" 
@@ -58,7 +59,7 @@ export default function Header() {
               className="object-contain transition-all duration-300"
               />
             </div>
-            </a>
+            </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-6 md:space-x-8 lg:space-x-10 pr-4"> {/* Responsive spacing */}
