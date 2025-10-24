@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -17,13 +17,30 @@ interface Project {
   cover_image?: string;
 }
 
+interface ProjectImage {
+  image_url: string;
+  is_cover: boolean;
+}
+
+interface ProjectWithImages {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  status: string;
+  featured: boolean;
+  display_order: number;
+  created_at: string;
+  project_images?: ProjectImage[];
+}
+
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>('all');
   const supabase = createClient();
 
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     setLoading(true);
     try {
       let query = supabase
@@ -43,8 +60,8 @@ export default function ProjectsPage() {
       if (error) throw error;
 
       // Map projects with cover images
-      const projectsWithImages = data?.map((project: any) => {
-        const coverImage = project.project_images?.find((img: any) => img.is_cover);
+      const projectsWithImages = data?.map((project: ProjectWithImages) => {
+        const coverImage = project.project_images?.find((img: ProjectImage) => img.is_cover);
         return {
           ...project,
           cover_image: coverImage?.image_url || project.project_images?.[0]?.image_url,
@@ -57,11 +74,11 @@ export default function ProjectsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter, supabase]);
 
   useEffect(() => {
     fetchProjects();
-  }, [filter]);
+  }, [fetchProjects]);
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this project? This will also delete all associated images.')) {
