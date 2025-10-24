@@ -265,3 +265,50 @@ CREATE POLICY "Authenticated users can manage satisfaction items"
 -- LEFT JOIN project_images pi ON p.id = pi.project_id
 -- WHERE p.id = 'YOUR-PROJECT-ID'
 -- GROUP BY p.id;
+
+
+
+-- ============================================================================
+-- SERVICES TABLE
+-- ============================================================================
+-- Stores information about construction services offered
+CREATE TABLE IF NOT EXISTS services (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  image_url TEXT,
+  display_order INTEGER DEFAULT 0,
+  status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'archived', 'draft')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for faster queries
+CREATE INDEX IF NOT EXISTS idx_services_status ON services(status);
+CREATE INDEX IF NOT EXISTS idx_services_display_order ON services(display_order);
+
+-- Trigger to update updated_at timestamp
+CREATE TRIGGER update_services_updated_at
+  BEFORE UPDATE ON services
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- ============================================================================
+-- ROW LEVEL SECURITY (RLS) - SERVICES
+-- ============================================================================
+ALTER TABLE services ENABLE ROW LEVEL SECURITY;
+
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Public can view active services" ON services;
+DROP POLICY IF EXISTS "Authenticated users can manage services" ON services;
+
+-- Allow public read access to active services
+CREATE POLICY "Public can view active services"
+  ON services FOR SELECT
+  USING (status = 'active');
+
+-- Allow authenticated users (admins) to do everything
+CREATE POLICY "Authenticated users can manage services"
+  ON services FOR ALL
+  USING (auth.role() = 'authenticated')
+  WITH CHECK (auth.role() = 'authenticated');
