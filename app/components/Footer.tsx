@@ -46,14 +46,14 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Construction Services</h3>
             <ul className="space-y-3">
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Residential Construction</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Commercial Projects</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Custom Homes</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Renovations</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Design-Build</Link></li>
+              <li><Link href="/residential-construction" className="hover:text-[#C8E86C] transition-colors">Residential Construction</Link></li>
+              <li><Link href="/commercial-projects" className="hover:text-[#C8E86C] transition-colors">Commercial Projects</Link></li>
+              <li><Link href="/custom-homes" className="hover:text-[#C8E86C] transition-colors">Custom Homes</Link></li>
+              <li><Link href="/renovations" className="hover:text-[#C8E86C] transition-colors">Renovations</Link></li>
+              <li><Link href="/design-build" className="hover:text-[#C8E86C] transition-colors">Design-Build</Link></li>
               <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Project Management</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Green Building</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Infrastructure</Link></li>
+              <li><Link href="/green-building" className="hover:text-[#C8E86C] transition-colors">Green Building</Link></li>
+              <li><Link href="/infrastructure" className="hover:text-[#C8E86C] transition-colors">Infrastructure</Link></li>
             </ul>
           </div>
 
