@@ -79,7 +79,7 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-[#faf7ed]">
       {/* Top Navigation */}
-      <nav className="bg-gradient-to-r from-white via-[#faf7ed] to-white border-b-2 border-[#C8E86C] shadow-md sticky top-0 z-50 backdrop-blur-sm relative">
+      <nav className="bg-gradient-to-r from-white via-[#faf7ed] to-white border-b-2 border-[#C8E86C] shadow-sm sticky top-0 z-40 backdrop-blur-sm relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex justify-between items-center h-20">
             {/* Logo Section - Extreme Left */}
@@ -141,7 +141,7 @@ export default function AdminLayout({
       {/* Sidebar and Content */}
       <div className="relative">
         {/* Sidebar Trigger Area */}
-        <div className="fixed left-0 top-16 h-[calc(100vh-64px)] w-16 hover:w-64 bg-white border-r border-[#C8E86C] shadow-sm z-40 transition-all duration-300 group/sidebar overflow-hidden peer">
+        <div className="fixed left-0 top-16 h-[calc(100vh-64px)] w-16 hover:w-64 bg-white border-r border-[#C8E86C] shadow-sm z-50 transition-all duration-300 group/sidebar overflow-hidden peer">
           {/* Collapsed Sidebar (Icons Only) */}
           <nav className="p-2 space-y-2 group-hover/sidebar:opacity-0 group-hover/sidebar:pointer-events-none transition-opacity duration-300">
             <Link
