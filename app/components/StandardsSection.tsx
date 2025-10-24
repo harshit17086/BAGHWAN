@@ -101,9 +101,7 @@ export default function StandardsSection() {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#2F3D24] mb-4">
             It all starts with our Standards...
           </h2>
-          <p className="text-lg md:text-xl text-[#3d5320] font-serif max-w-4xl mx-auto leading-relaxed">
-            They&apos;re more than home plans, they&apos;re home products—designed for real land, real budgets, and real life. HRC Standards combine timeless design with construction-ready details, making it faster and easier to build a home that feels anything but standard.
-          </p>
+          
         </div>
 
         {/* Cards Container */}
