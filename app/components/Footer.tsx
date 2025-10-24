@@ -61,14 +61,13 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Building Standards</h3>
             <ul className="space-y-3">
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Quality Assurance</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Safety Standards</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Building Codes</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Sustainable Materials</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Energy Efficiency</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Structural Integrity</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Certifications</Link></li>
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Premium Finishes</Link></li>
+              <li><Link href="/safety-standards" className="hover:text-[#C8E86C] transition-colors">Safety Standards</Link></li>
+              <li><Link href="/building-codes" className="hover:text-[#C8E86C] transition-colors">Building Codes</Link></li>
+              <li><Link href="/sustainable-materials" className="hover:text-[#C8E86C] transition-colors">Sustainable Materials</Link></li>
+              <li><Link href="/energy-efficiency" className="hover:text-[#C8E86C] transition-colors">Energy Efficiency</Link></li>
+              <li><Link href="/structural-integrity" className="hover:text-[#C8E86C] transition-colors">Structural Integrity</Link></li>
+              <li><Link href="/reviews" className="hover:text-[#C8E86C] transition-colors">Certifications</Link></li>
+              <li><Link href="/premium-finishes" className="hover:text-[#C8E86C] transition-colors">Premium Finishes</Link></li>
             </ul>
           </div>
 
@@ -89,7 +88,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-4 mt-8">Resources</h3>
             <ul className="space-y-3">
               <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Project Gallery</Link></li>
-              <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">Construction Guides</Link></li>
+              <li><Link href="/construction-guides" className="hover:text-[#C8E86C] transition-colors">Construction Guides</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Consultation</Link></li>
             </ul>
           </div>
