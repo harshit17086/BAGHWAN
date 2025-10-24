@@ -79,31 +79,37 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-[#faf7ed]">
       {/* Top Navigation */}
-      <nav className="bg-gradient-to-r from-white via-[#faf7ed] to-white border-b-2 border-[#C8E86C] shadow-md sticky top-0 z-50 backdrop-blur-sm">
+      <nav className="bg-gradient-to-r from-white via-[#faf7ed] to-white border-b-2 border-[#C8E86C] shadow-md sticky top-0 z-50 backdrop-blur-sm relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex justify-between items-center h-20">
-            {/* Logo Section */}
-            <Link href="/admin/dashboard" className="flex items-center gap-4 group cursor-pointer">
-              <div className="relative h-12 w-24 transition-transform duration-300 group-hover:scale-105">
-                <Image
-                  src="/logop.png"
-                  alt="HRC"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-serif font-bold text-[#2F3D24] tracking-tight group-hover:text-[#6B7555] transition-colors">
+            {/* Logo Section - Extreme Left */}
+            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 z-10">
+              <Link href="/admin/dashboard" className="flex items-center gap-4 group cursor-pointer">
+                <div className="relative h-20 w-40 transition-transform duration-300 group-hover:scale-110">
+                  <Image
+                    src="/logop.png"
+                    alt="HRC"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </Link>
+            </div>
+
+            {/* Center Content */}
+            <div className="flex-1 flex justify-center">
+              <div className="flex flex-col items-center text-center">
+                <span className="text-2xl font-serif font-bold text-[#2F3D24] tracking-tight hover:text-[#6B7555] transition-colors cursor-pointer">
                   Admin Panel
                 </span>
                 <span className="text-xs text-[#6B7555] font-medium tracking-wide">
                   Content Management System
                 </span>
               </div>
-            </Link>
+            </div>
 
-            {/* User Section */}
-            <div className="flex items-center gap-6">
+            {/* User Section - Extreme Right */}
+            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 z-10 flex items-center gap-6">
               <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-lg border border-[#C8E86C]/30 shadow-sm">
                 <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#C8E86C] to-[#6B7555] rounded-full">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,7 +123,7 @@ export default function AdminLayout({
                   </span>
                 </div>
               </div>
-              
+
               <button
                 onClick={handleLogout}
                 className="group relative px-6 py-2.5 bg-[#2F3D24] text-white rounded-lg hover:bg-[#6B7555] transition-all duration-300 text-sm font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center gap-2"
