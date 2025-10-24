@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -26,11 +26,7 @@ export default function SatisfactionManagement() {
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const supabase = createClient();
 
-  useEffect(() => {
-    fetchItems();
-  }, [filterType, filterStatus]);
-
-  const fetchItems = async () => {
+  const fetchItems = useCallback(async () => {
     try {
       let query = supabase
         .from('customer_satisfaction')
@@ -56,7 +52,11 @@ export default function SatisfactionManagement() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filterType, filterStatus, supabase]);
+
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems]);
 
   const handleDelete = async (id: string, fileUrl: string, thumbnailUrl: string | null) => {
     if (!confirm('Are you sure you want to delete this item?')) return;

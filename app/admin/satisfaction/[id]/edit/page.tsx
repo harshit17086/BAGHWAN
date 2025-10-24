@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, useCallback, FormEvent } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -31,11 +31,7 @@ export default function EditSatisfactionItem() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  useEffect(() => {
-    fetchItem();
-  }, [id]);
-
-  const fetchItem = async () => {
+  const fetchItem = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('customer_satisfaction')
@@ -53,7 +49,11 @@ export default function EditSatisfactionItem() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, router, supabase]);
+
+  useEffect(() => {
+    fetchItem();
+  }, [fetchItem]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

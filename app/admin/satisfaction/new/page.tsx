@@ -61,7 +61,7 @@ export default function NewSatisfactionItem() {
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
       const filePath = `${formData.type}/${fileName}`;
 
-      const { error: uploadError, data } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('satisfaction-files')
         .upload(filePath, selectedFile);
 

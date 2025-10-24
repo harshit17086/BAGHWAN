@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
@@ -13,6 +13,19 @@ interface CardData {
   location?: string;
 }
 
+interface ProjectImage {
+  image_url: string;
+  is_cover: boolean;
+}
+
+interface ProjectWithImages {
+  id: string;
+  title: string;
+  description: string | null;
+  location: string | null;
+  project_images?: ProjectImage[];
+}
+
 export default function WorksSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -20,8 +33,8 @@ export default function WorksSection() {
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
 
-  // Fallback projects if database is empty
-  const fallbackProjects: CardData[] = [
+    // Fallback projects if database is empty
+  const fallbackProjects: CardData[] = useMemo(() => [
     {
       id: '1',
       image: '/slide1.jpeg',
@@ -32,60 +45,18 @@ export default function WorksSection() {
     {
       id: '2',
       image: '/slide2.jpeg',
-      title: 'Luxury Villa Project',
-      description: 'Exclusive villa construction with premium finishes, smart home integration, and breathtaking views.',
-      location: 'Hillside Estate'
+      title: 'Commercial Office Tower',
+      description: 'A 25-story commercial building with state-of-the-art facilities and energy-efficient systems.',
+      location: 'Business District'
     },
     {
       id: '3',
       image: '/slide3.jpeg',
-      title: 'Commercial Office Space',
-      description: 'State-of-the-art office building with flexible workspaces and energy-efficient systems.',
-      location: 'Business Park'
-    },
-    {
-      id: '4',
-      image: '/slide4.jpeg',
-      title: 'Urban Housing Development',
-      description: 'Affordable housing project combining quality construction with accessible living spaces.',
-      location: 'City Center'
-    },
-    {
-      id: '5',
-      image: '/slide5.jpeg',
-      title: 'Waterfront Apartments',
-      description: 'Luxury waterfront living with panoramic views and resort-style amenities.',
-      location: 'Marina Bay'
-    },
-    {
-      id: '6',
-      image: '/slide6.jpeg',
-      title: 'Eco-Friendly Homes',
-      description: 'Sustainable housing with solar panels, rainwater harvesting, and green spaces.',
-      location: 'Green Valley'
-    },
-    {
-      id: '7',
-      image: '/slide8.jpeg',
-      title: 'Mixed-Use Development',
-      description: 'Integrated commercial and residential spaces creating vibrant community hubs.',
-      location: 'Metro Station Area'
-    },
-    {
-      id: '8',
-      image: '/slide1.jpeg',
-      title: 'Retirement Community',
-      description: 'Accessible housing designed for comfort and independence with care facilities.',
-      location: 'Suburban Area'
-    },
-    {
-      id: '9',
-      image: '/slide2.jpeg',
-      title: 'Smart City Project',
-      description: 'Innovative development integrating IoT technology and sustainable urban planning.',
-      location: 'New Township'
+      title: 'Luxury Villa Estate',
+      description: 'Exclusive residential villas with premium finishes and panoramic views of the city.',
+      location: 'Hillside Area'
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -105,8 +76,8 @@ export default function WorksSection() {
         if (error) throw error;
 
         if (data && data.length > 0) {
-          const projectsWithImages = data.map((project: any) => {
-            const coverImage = project.project_images?.find((img: any) => img.is_cover);
+          const projectsWithImages = data.map((project: ProjectWithImages) => {
+            const coverImage = project.project_images?.find((img: ProjectImage) => img.is_cover);
             return {
               id: project.id,
               title: project.title,
@@ -130,7 +101,7 @@ export default function WorksSection() {
     };
 
     fetchProjects();
-  }, [supabase]);
+  }, [supabase, fallbackProjects]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
