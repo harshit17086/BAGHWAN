@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
@@ -18,6 +18,15 @@ interface FormData {
   location: string;
 }
 
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  image_url: string;
+  display_order: number;
+  status: string;
+}
+
 export default function ContactPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 7;
@@ -32,31 +41,35 @@ export default function ContactPage() {
     location: ''
   });
   const [submitting, setSubmitting] = useState(false);
+  const [services, setServices] = useState<Service[]>([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
   const router = useRouter();
   const supabase = createClient();
 
-  const services = [
-    {
-      id: 'residential',
-      title: 'Residential Construction',
-      icon: '🏠'
-    },
-    {
-      id: 'commercial',
-      title: 'Commercial Projects',
-      icon: '🏢'
-    },
-    {
-      id: 'custom',
-      title: 'Custom Homes',
-      icon: '🏡'
-    },
-    {
-      id: 'renovation',
-      title: 'Renovations',
-      icon: '🔨'
-    }
-  ];
+  // Fetch services from database
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('services')
+          .select('*')
+          .eq('status', 'active')
+          .order('display_order', { ascending: true });
+
+        if (error) {
+          console.error('Error fetching services:', error);
+        } else if (data) {
+          setServices(data);
+        }
+      } catch (error) {
+        console.error('Error fetching services:', error);
+      } finally {
+        setServicesLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, [supabase]);
 
   const budgetOptions = [
     'Under $300k',
@@ -244,31 +257,61 @@ export default function ContactPage() {
                 </h1>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                {services.map((service) => (
-                  <button
-                    key={service.id}
-                    onClick={() => updateFormData('service', service.id)}
-                    className={`p-10 rounded-3xl border-2 transition-all text-left ${
-                      formData.service === service.id
-                        ? 'border-[#6B8E23] bg-[#E8F5E9]'
-                        : 'border-gray-300 bg-white hover:border-[#6B8E23]'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0 mt-1">
-                        {formData.service === service.id && (
-                          <div className="w-4 h-4 rounded-full bg-[#6B8E23]"></div>
-                        )}
+              {servicesLoading ? (
+                <div className="flex items-center justify-center py-20">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#6B8E23] mx-auto"></div>
+                    <p className="mt-4 text-[#6B8E23]">Loading services...</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                  {services.map((service) => (
+                    <button
+                      key={service.id}
+                      onClick={() => updateFormData('service', service.id)}
+                      className={`rounded-3xl border-2 transition-all text-left overflow-hidden ${
+                        formData.service === service.id
+                          ? 'border-[#6B8E23] bg-[#E8F5E9]'
+                          : 'border-gray-300 bg-white hover:border-[#6B8E23]'
+                      }`}
+                    >
+                      {/* Image Section */}
+                      {service.image_url && (
+                        <div className="relative h-40 w-full overflow-hidden">
+                          <Image
+                            src={service.image_url}
+                            alt={service.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
+                      
+                      {/* Content Section */}
+                      <div className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0 mt-1">
+                            {formData.service === service.id && (
+                              <div className="w-3.5 h-3.5 rounded-full bg-[#6B8E23]"></div>
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-serif font-semibold text-[#2C3E1F] mb-2">
+                              {service.name}
+                            </h3>
+                            {service.description && (
+                              <p className="text-sm text-[#6B8E23] leading-relaxed line-clamp-3">
+                                {service.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <div className="text-7xl mb-6">{service.icon}</div>
-                        <h3 className="text-xl font-serif text-[#2C3E1F]">{service.title}</h3>
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
