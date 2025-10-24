@@ -114,9 +114,9 @@ export default function AdminLayout({
       {/* Sidebar and Content */}
       <div className="relative">
         {/* Sidebar Trigger Area */}
-        <div className="fixed left-0 top-16 h-[calc(100vh-64px)] w-16 bg-white border-r border-[#C8E86C] shadow-sm z-40 group/sidebar">
+        <div className="fixed left-0 top-16 h-[calc(100vh-64px)] w-16 hover:w-64 bg-white border-r border-[#C8E86C] shadow-sm z-40 transition-all duration-300 group/sidebar overflow-hidden peer">
           {/* Collapsed Sidebar (Icons Only) */}
-          <nav className="p-2 space-y-2 group-hover/sidebar:hidden">
+          <nav className="p-2 space-y-2 group-hover/sidebar:opacity-0 group-hover/sidebar:pointer-events-none transition-opacity duration-300">
             <Link
               href="/admin/dashboard"
               className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-[#C8E86C] hover:text-[#2F3D24] transition-all duration-200 text-[#6B7555] group"
@@ -183,7 +183,7 @@ export default function AdminLayout({
           </nav>
 
           {/* Expanded Sidebar (Full Navigation) */}
-          <aside className="hidden group-hover/sidebar:block absolute left-0 top-0 w-64 bg-white border-r border-[#C8E86C] min-h-[calc(100vh-64px)] shadow-sm">
+          <aside className="opacity-0 group-hover/sidebar:opacity-100 pointer-events-none group-hover/sidebar:pointer-events-auto absolute left-0 top-0 w-64 bg-white border-r border-[#C8E86C] min-h-[calc(100vh-64px)] shadow-sm transition-opacity duration-300">
             <nav className="p-4 space-y-2">
               <Link
                 href="/admin/dashboard"
@@ -253,7 +253,7 @@ export default function AdminLayout({
         </div>
 
         {/* Main Content */}
-        <main className="ml-16 p-8">
+        <main className="ml-16 peer-hover:ml-64 p-8 transition-all duration-300">
           {children}
         </main>
       </div>
