@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 interface ContactSubmission {
@@ -26,9 +26,29 @@ export default function ContactsPage() {
   const [selectedContact, setSelectedContact] = useState<ContactSubmission | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [notes, setNotes] = useState('');
+  const [serviceNames, setServiceNames] = useState<Record<string, string>>({});
   const supabase = createClient();
 
-  const fetchContacts = async () => {
+  const fetchServiceNames = useCallback(async (serviceIds: string[]) => {
+    try {
+      const { data, error } = await supabase
+        .from('services')
+        .select('id, name')
+        .in('id', serviceIds);
+
+      if (error) throw error;
+
+      const namesMap: Record<string, string> = {};
+      data?.forEach(service => {
+        namesMap[service.id] = service.name;
+      });
+      setServiceNames(namesMap);
+    } catch (error) {
+      console.error('Error fetching service names:', error);
+    }
+  }, [supabase]);
+
+  const fetchContacts = useCallback(async () => {
     setLoading(true);
     try {
       let query = supabase
@@ -45,16 +65,22 @@ export default function ContactsPage() {
       if (error) throw error;
 
       setContacts(data || []);
+
+      // Fetch service names for all unique service IDs
+      const serviceIds = [...new Set(data?.map(contact => contact.service).filter(Boolean) || [])];
+      if (serviceIds.length > 0) {
+        await fetchServiceNames(serviceIds);
+      }
     } catch (error) {
       console.error('Error fetching contacts:', error);
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter, supabase, fetchServiceNames]);
 
   useEffect(() => {
     fetchContacts();
-  }, [filter]);
+  }, [fetchContacts]);
 
   const updateStatus = async (id: string, newStatus: string) => {
     try {
@@ -233,7 +259,9 @@ export default function ContactsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{contact.service}</div>
+                      <div className="text-sm text-gray-900">
+                        {serviceNames[contact.service] || contact.service}
+                      </div>
                       {contact.location && (
                         <div className="text-sm text-gray-500">{contact.location}</div>
                       )}
@@ -328,7 +356,9 @@ export default function ContactsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium text-gray-500">Service</label>
-                    <p className="text-gray-900">{selectedContact.service}</p>
+                    <p className="text-gray-900">
+                      {serviceNames[selectedContact.service] || selectedContact.service}
+                    </p>
                   </div>
                   <div>
                     <label className="text-sm font-medium text-gray-500">Query Type</label>
