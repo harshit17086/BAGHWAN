@@ -72,12 +72,12 @@ export default function ContactPage() {
   }, [supabase]);
 
   const budgetOptions = [
-    'Under $300k',
-    '$300k - $500k',
-    '$500k - $750k',
-    '$750k - $1mm',
-    '$1mm - $1.5mm',
-    '$1.5mm or above',
+    'Under ₹50 lakhs',
+    '₹50 lakhs - ₹1 crore',
+    '₹1 crore - ₹2 crores',
+    '₹2 crores - ₹5 crores',
+    '₹5 crores - ₹10 crores',
+    '₹10 crores or above',
     'I\'m really not sure'
   ];
 
