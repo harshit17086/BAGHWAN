@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useParams } from 'next/navigation';
 import Image from 'next/image';
@@ -15,6 +15,8 @@ interface ProjectImage {
 export default function EditProjectPage() {
   const params = useParams();
   const projectId = params?.id as string;
+  const router = useRouter();
+  const supabase = createClient();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -29,16 +31,8 @@ export default function EditProjectPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploadProgress, setUploadProgress] = useState<string>('');
-  const router = useRouter();
-  const supabase = createClient();
 
-  useEffect(() => {
-    if (projectId) {
-      fetchProject();
-    }
-  }, [projectId]);
-
-  const fetchProject = async () => {
+  const fetchProject = useCallback(async () => {
     try {
       const { data: project, error: projectError } = await supabase
         .from('projects')
@@ -73,7 +67,13 @@ export default function EditProjectPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [projectId, router, supabase]);
+
+  useEffect(() => {
+    if (projectId) {
+      fetchProject();
+    }
+  }, [projectId, fetchProject]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
