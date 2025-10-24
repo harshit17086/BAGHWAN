@@ -98,7 +98,7 @@ export default function AdminDashboard() {
           Dashboard
         </h1>
         <p className="text-gray-600 mt-2">
-          Welcome back! Here's an overview of your construction website.
+          Welcome back! Here&apos;s an overview of your construction website.
         </p>
       </div>
 
