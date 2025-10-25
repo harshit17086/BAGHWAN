@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import HeroSection from '../components/HeroSection';
 
 interface Project {
   id: string;
@@ -89,16 +90,17 @@ export default function ProjectsPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-[#faf7ed] pt-32 pb-16 md:pt-40 md:pb-20">
+      <HeroSection
+        title="Our Projects"
+        subtitle="Explore our portfolio of exceptional construction projects that showcase our commitment to quality and innovation."
+        backgroundImage="/image2.jpeg"
+        height="h-96"
+      />
+
+      {/* Filters Section */}
+      <section className="relative bg-[#faf7ed] pt-16 pb-16 md:pt-20 md:pb-20">
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#2F3D24] mb-6">
-              Our Projects
-            </h1>
-            <p className="text-lg md:text-xl text-[#6B7555] leading-relaxed mb-12">
-              Explore our portfolio of exceptional construction projects that showcase our commitment to quality and innovation.
-            </p>
-
             {/* Filters */}
             <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
               <button

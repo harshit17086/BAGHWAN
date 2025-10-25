@@ -10,9 +10,9 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const navLinks = [
-    { href: '#', label: 'Housing Solutions' },
-    { href: '#', label: 'Standards' },
-    { href: '#', label: 'How it Works' },
+    { href: '#', label: 'Instagram' },
+    { href: '#', label: 'YouTube' },
+    // { href: '#', label: 'How it Works' },
     { href: '/projects', label: 'Portfolio' },
     { href: '/reviews', label: 'Reviews' },
   ];

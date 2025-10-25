@@ -17,47 +17,47 @@ export default function StandardsSection() {
     {
       id: 1,
       image: '/slide1.jpeg',
-      title: 'HRC Standard 1'
+      title: ''
     },
     {
       id: 2,
       image: '/slide2.jpeg',
-      title: 'HRC Standard 2'
+      title: ''
     },
     {
       id: 3,
       image: '/slide3.jpeg',
-      title: 'HRC Standard 3'
+      title: ''
     },
     {
       id: 4,
       image: '/slide4.jpeg',
-      title: 'HRC Standard 4'
+      title: ''
     },
     {
       id: 5,
       image: '/slide5.jpeg',
-      title: 'HRC Standard 5'
+      title: ''
     },
     {
       id: 6,
       image: '/slide6.jpeg',
-      title: 'HRC Standard 6'
+      title: ''
     },
     {
       id: 7,
       image: '/slide8.jpeg',
-      title: 'HRC Standard 7'
+      title: ''
     },
     {
       id: 8,
       image: '/slide1.jpeg',
-      title: 'HRC Standard 8'
+      title: ''
     },
     {
       id: 9,
       image: '/slide2.jpeg',
-      title: 'HRC Standard 9'
+      title: ''
     }
   ];
 
