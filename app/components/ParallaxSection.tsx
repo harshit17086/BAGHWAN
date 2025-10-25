@@ -91,7 +91,7 @@ export default function ParallaxSection() {
       <section className="relative" style={{ height: '400vh' }}>
         <div className="sticky top-0 h-screen w-full">
           <Image
-            src="/slide1.jpeg"
+            src="/image1.jpeg"
             alt="Blueberry Hill ADU"
             fill
             className="object-cover"
@@ -100,7 +100,7 @@ export default function ParallaxSection() {
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
           <Image
-            src="/slide6.jpeg"
+            src="/image2.jpeg"
             alt="Break House"
             fill
             className="object-cover"
@@ -108,7 +108,7 @@ export default function ParallaxSection() {
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 2 }}>
           <Image
-            src="/slide2.jpeg"
+            src="/image3.jpeg"
             alt="Modern Villa"
             fill
             className="object-cover"
@@ -116,7 +116,7 @@ export default function ParallaxSection() {
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 3 }}>
           <Image
-            src="/kkk.jpeg"
+            src="/image4.jpeg"
             alt="Luxury Estate"
             fill
             className="object-cover"
@@ -155,7 +155,7 @@ export default function ParallaxSection() {
         {/* First small image - base layer */}
         <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
           <Image
-            src="/over2.jpeg"
+            src="/image5.jpeg"
             alt="Interior Detail"
             fill
             className="object-cover"
@@ -171,7 +171,7 @@ export default function ParallaxSection() {
           }}
         >
           <Image
-            src="/slide4.jpeg"
+            src="/image6.jpeg"
             alt="Architectural Detail"
             fill
             className="object-cover"
@@ -187,7 +187,7 @@ export default function ParallaxSection() {
           }}
         >
           <Image
-            src="/nnn.jpeg"
+            src="/slide8.jpeg"
             alt="Third Detail"
             fill
             className="object-cover"
@@ -245,7 +245,7 @@ export default function ParallaxSection() {
       {/* Fourth big image section */}
       <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 3 }}>
         <Image
-          src="/kkk.jpeg"
+          src="/image6.jpeg"
           alt="Luxury Estate"
           fill
           className="object-cover"

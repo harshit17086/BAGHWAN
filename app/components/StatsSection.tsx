@@ -1,6 +1,67 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+// Counter animation hook
+function useCounter(end: number, duration: number = 2000, shouldStart: boolean = true) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!shouldStart) return;
+
+    let startTime: number;
+    let animationFrameId: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = (currentTime - startTime) / duration;
+
+      if (progress < 1) {
+        setCount(Math.floor(end * progress));
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [end, duration, shouldStart]);
+
+  return count;
+}
+
+// Component to handle intersection observer for triggering animation
+function AnimatedStat({ end, duration, suffix = '', children }: { end: number; duration?: number; suffix?: string; children?: React.ReactNode }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const count = useCounter(end, duration, isVisible);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      {count.toLocaleString()}
+      {suffix}
+    </div>
+  );
+}
 
 export default function StatsSection() {
   return (
@@ -20,7 +81,7 @@ export default function StatsSection() {
             {/* Stat 1 */}
             <div className="border-b border-[#3d5320]/20 pb-12">
               <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
-                200K+
+                <AnimatedStat end={200} suffix="K+" />
               </h3>
               <p className="text-base md:text-lg text-[#6B7555]">
                 square feet currently under construction
@@ -30,7 +91,7 @@ export default function StatsSection() {
             {/* Stat 2 */}
             <div className="border-b border-[#3d5320]/20 pb-12">
               <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
-                5.0%
+                <AnimatedStat end={5} suffix=".0%" duration={2000} />
               </h3>
               <p className="text-base md:text-lg text-[#6B7555]">
                 Average build costs are within 5% of our pre-design estimates
@@ -44,7 +105,7 @@ export default function StatsSection() {
             <div className="border-b border-[#3d5320]/20 pb-12">
               <div className="flex items-start gap-4 mb-4">
                 <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24]">
-                  18
+                  <AnimatedStat end={18} duration={1500} />
                 </h3>
                 {/* Decorative stars */}
                 
@@ -58,7 +119,7 @@ export default function StatsSection() {
             <div className="border-b border-[#3d5320]/20 pb-12">
               <div className="flex items-start gap-4 mb-4">
                 <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24]">
-                  5,000+
+                  <AnimatedStat end={5000} suffix="+" duration={2500} />
                 </h3>
                 
                 
