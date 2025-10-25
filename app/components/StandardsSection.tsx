@@ -26,7 +26,7 @@ export default function StandardsSection() {
     },
     {
       id: 3,
-      image: '/slide3.jpeg',
+      image: '/image1.jpeg',
       title: ''
     },
     {
