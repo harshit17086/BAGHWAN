@@ -203,7 +203,7 @@ export default function ParallaxSection() {
           }}
         >
           <Image
-            src="/ppp.jpeg"
+            src="/nnn.jpeg"
             alt="Fourth Detail"
             fill
             className="object-cover"
