@@ -32,6 +32,7 @@ function useCounter(end: number, duration: number = 2000, shouldStart: boolean =
 }
 
 // Component to handle intersection observer for triggering animation
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function AnimatedStat({ end, duration, suffix = '', children }: { end: number; duration?: number; suffix?: string; children?: React.ReactNode }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
