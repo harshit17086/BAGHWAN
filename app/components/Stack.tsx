@@ -69,7 +69,7 @@ export default function Stack({
           },
           {
             id: 3,
-            img: '/slide3.jpeg'
+            img: '/ppp.jpeg'
           },
           {
             id: 4,

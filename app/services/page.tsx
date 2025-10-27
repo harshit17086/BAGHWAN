@@ -42,7 +42,7 @@ export default function ServicesPage() {
       id: '3',
       name: 'Renovation & Remodeling',
       description: 'Transform existing spaces with our expert renovation services. Modern upgrades, structural improvements, and aesthetic enhancements.',
-      image_url: '/slide3.jpeg',
+      image_url: '/ppp.jpeg',
       display_order: 3,
       status: 'active'
     },

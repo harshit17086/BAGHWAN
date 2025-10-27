@@ -6,7 +6,7 @@ import Stack from './Stack';
 const images = [
   { id: 1, img: "/slide1.jpeg" },
   { id: 2, img: "/slide2.jpeg" },
-  { id: 3, img: "/slide3.jpeg" },
+  { id: 3, img: "/ppp.jpeg" },
   { id: 4, img: "/slide4.jpeg" },
   { id: 5, img: "/slide5.jpeg" },
   { id: 6, img: "/slide6.jpeg" },
