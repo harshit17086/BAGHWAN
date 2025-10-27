@@ -6,7 +6,7 @@ The Customer Satisfaction feature allows you to upload and manage:
 - **Photos** (project photos, completed work)
 - **Testimonials** (customer reviews, appreciation letters)
 
-Files can be either **images** (JPG, PNG) or **PDFs**.
+Files can be either **images**dfdf (JPG, PNG) or **PDFs**.
 
 ---
 
