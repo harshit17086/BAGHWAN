@@ -83,18 +83,7 @@ export default function AdminLayout({
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex justify-between items-center h-20">
             {/* Logo Section - Extreme Left */}
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 z-10">
-              <Link href="/admin/dashboard" className="flex items-center gap-4 group cursor-pointer">
-                <div className="relative h-20 w-40 transition-transform duration-300 group-hover:scale-110">
-                  <Image
-                    src="/logop.png"
-                    alt="HRC"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </Link>
-            </div>
+           
 
             {/* Center Content */}
             <div className="flex-1 flex justify-center">

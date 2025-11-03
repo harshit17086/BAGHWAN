@@ -155,12 +155,12 @@ export default function ContactPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <Link href="/" className="-ml-16 md:ml-0">
-            <div className="relative h-32 w-64">
+            <div className="relative h-40 w-80">
               <Image 
-                src="/logop.png" 
+                src="/logofinal.png" 
                 alt="Logo" 
                 fill
-                className="object-contain"
+                className="object-cover object-center"
               />
             </div>
           </Link>

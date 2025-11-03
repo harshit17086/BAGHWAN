@@ -51,14 +51,14 @@ export default function AdminLoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-block bg-white rounded-2xl p-6 mb-4">
-            <div className="relative h-20 w-40">
+            <div className="relative h-24 w-48">
               <Image
-                src="/logop.png"
+                src="/logofinal.png"
                 alt="HRC Construction"
                 fill
-                sizes="160px"
+                sizes="192px"
                 priority
-                className="object-contain"
+                className="object-cover object-center"
               />
             </div>
           </div>
