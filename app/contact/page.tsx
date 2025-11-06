@@ -157,7 +157,11 @@ export default function ContactPage() {
           <Link href="/" className="-ml-16 md:ml-0">
             <div className="relative h-40 w-80">
               <Image 
+<<<<<<< HEAD
                 src="/logofinal.png" 
+=======
+                src="/logo12.png" 
+>>>>>>> 8621800 (chage)
                 alt="Logo" 
                 fill
                 className="object-cover object-center"

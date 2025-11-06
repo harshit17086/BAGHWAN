@@ -53,7 +53,7 @@ export default function Header() {
             <Link href="/" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
             <div className="relative h-16 w-32 md:h-20 md:w-40 lg:h-24 lg:w-54 mt-1 mb-1"> {/* Increased responsive logo size */}
               <Image 
-              src="/Screenshot from 2025-10-27 11-07-54.png" 
+              src="/logo12.png" 
               alt="HRs Logo" 
               fill
               className="object-contain transition-all duration-300"

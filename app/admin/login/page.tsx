@@ -53,7 +53,11 @@ export default function AdminLoginPage() {
           <div className="inline-block bg-white rounded-2xl p-6 mb-4">
             <div className="relative h-24 w-48">
               <Image
+<<<<<<< HEAD
                 src="/logofinal.png"
+=======
+                src="/logo12.png"
+>>>>>>> 8621800 (chage)
                 alt="HRC Construction"
                 fill
                 sizes="192px"
