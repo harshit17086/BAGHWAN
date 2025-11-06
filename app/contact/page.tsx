@@ -150,17 +150,17 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F3] px-6 py-8">
+    <div className="min-h-screen bg-[#FAF8F3] px-6">
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <Link href="/" className="-ml-16 md:ml-0">
-            <div className="relative h-40 w-80">
+        <div className="flex items-center justify-between mb-12 pt-5">
+          <Link href="/" className="-ml-16  md:ml-0">
+            <div className="relative h-28 w-40">
               <Image 
                 src="/logo12.png" 
                 alt="Logo" 
                 fill
-                className="object-cover object-center"
+                className="object-contain"
               />
             </div>
           </Link>
