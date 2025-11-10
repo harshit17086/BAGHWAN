@@ -97,7 +97,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="mailto:hello@hrc.com" className="hover:text-[#C8E86C] transition-colors">hello@hrc.com</a></li>
+              <li><a href="mailto:infohomerootsconstructions@gmail.com" className="hover:text-[#C8E86C] transition-colors">infohomerootsconstructions@gmail.com</a></li>
               <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">For Partners</Link></li>
             </ul>
           </div>
