@@ -37,6 +37,34 @@ export default function WorksSection() {
       title: 'Serene Landscapes',
       description: 'Immerse yourself in lush greenery, scenic views, and the tranquil atmosphere of our outdoor spaces.',
       location: 'Resort Grounds'
+    },
+    {
+      id: '4',
+      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.30 PM.jpeg',
+      title: 'Outdoor Dining',
+      description: 'Savour gourmet meals under the open sky with curated menus and a breathtaking ambience.',
+      location: 'Baghvan Restaurant'
+    },
+    {
+      id: '5',
+      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.35.03 PM.jpeg',
+      title: 'Spa & Wellness',
+      description: 'Rejuvenate your body and mind with holistic spa treatments, yoga, and wellness therapies.',
+      location: 'Wellness Centre'
+    },
+    {
+      id: '6',
+      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.48 PM.jpeg',
+      title: 'Nature Trails',
+      description: 'Explore guided walks through lush forests, discover local wildlife, and reconnect with nature.',
+      location: 'Forest Reserve'
+    },
+    {
+      id: '7',
+      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.20 PM (2).jpeg',
+      title: 'Private Pool Access',
+      description: 'Unwind at our stunning private and infinity pools surrounded by panoramic greenery.',
+      location: 'Pool Deck'
     }
   ], []);
 
