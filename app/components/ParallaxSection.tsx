@@ -37,8 +37,8 @@ export default function ParallaxSection() {
   const stickyTopPosition = windowHeight * 0.5 - 175; // Center of screen minus half image height (350px / 2)
   const smallImageInitialOffset = windowHeight * 0.5 - 175; // Start position centered vertically
 
-  // Calculate when we're in the last section (4th big image)
-  const lastSectionStart = 3 * windowHeight; // Start of 4th section
+  // Calculate when we're in the last section (5th big image)
+  const lastSectionStart = 4 * windowHeight; // Start of 5th section
   const isInLastSection = relativeScrollY >= lastSectionStart;
 
   // Calculate when small image should become sticky
@@ -60,7 +60,7 @@ export default function ParallaxSection() {
   // Progress based on how much the intersection has crossed the small image
   const transitionDuration = 350; // Match the small image height for smooth reveal
 
-  // Calculate progress for each transition (4 big images = 3 transitions)
+  // Calculate progress for each transition (5 big images = 4 transitions)
   // Transition 1: at 1vh (first to second)
   const transition1Point = windowHeight - smallImageCenter;
   const transition1Start = transition1Point - transitionDuration / 2;
@@ -76,8 +76,13 @@ export default function ParallaxSection() {
   const transition3Start = transition3Point - transitionDuration / 2;
   const progress3 = Math.max(0, Math.min(1, (relativeScrollY - transition3Start) / transitionDuration));
 
+  // Transition 4: at 4vh (fourth to fifth)
+  const transition4Point = (4 * windowHeight) - smallImageCenter;
+  const transition4Start = transition4Point - transitionDuration / 2;
+  const progress4 = Math.max(0, Math.min(1, (relativeScrollY - transition4Start) / transitionDuration));
+
   // Check if the parallax section is in view
-  const sectionBottom = sectionTop + 4 * windowHeight; // 400vh for 4 sections
+  const sectionBottom = sectionTop + 5 * windowHeight; // 500vh for 5 sections
   const isSectionInView = scrollY >= sectionTop && scrollY <= sectionBottom;
 
   // Both images should always be visible when section is in view
@@ -88,11 +93,11 @@ export default function ParallaxSection() {
   // Don't render calculations until mounted
   if (!mounted) {
     return (
-      <section className="relative" style={{ height: '400vh' }}>
+      <section className="relative" style={{ height: '500vh' }}>
         <div className="sticky top-0 h-screen w-full">
           <Image
-            src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.30 PM.jpeg"
-            alt="Resort Exterior"
+            src="/property_exteriros/propertynight.jpeg"
+            alt="Resort at Night"
             fill
             className="object-cover"
             priority
@@ -100,24 +105,32 @@ export default function ParallaxSection() {
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
           <Image
-            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.34.43 PM.jpeg"
-            alt="Resort Interior"
+            src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg"
+            alt="Resort Exterior"
             fill
             className="object-cover"
           />
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 2 }}>
           <Image
-            src="/property_random/WhatsApp Image 2026-03-10 at 12.36.59 PM.jpeg"
-            alt="Resort Garden"
+            src="/property_exteriros/nightswimmingpool.jpeg"
+            alt="Night Swimming Pool"
             fill
             className="object-cover"
           />
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 3 }}>
           <Image
-            src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.26 PM.jpeg"
-            alt="Resort Pool"
+            src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.31 PM.jpeg"
+            alt="Resort Pathway"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 4 }}>
+          <Image
+            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.34.54 PM.jpeg"
+            alt="Resort Lounge"
             fill
             className="object-cover"
           />
@@ -130,9 +143,9 @@ export default function ParallaxSection() {
     <section
       ref={sectionRef}
       className="relative"
-      style={{ height: '400vh' }} // Changed from 200vh to 400vh for 4 sections
+      style={{ height: '500vh' }} // 500vh for 5 sections
     >
-      {/* Container for both small images - they overlap perfectly */}
+      {/* Container for small images - they overlap perfectly */}
       <div
         className={shouldBeSticky ? "fixed z-20" : "absolute z-20"}
         style={{
@@ -155,8 +168,8 @@ export default function ParallaxSection() {
         {/* First small image - base layer */}
         <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
           <Image
-            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.35.03 PM.jpeg"
-            alt="Room Detail"
+            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.34.54 PM.jpeg"
+            alt="Resort Lounge"
             fill
             className="object-cover"
           />
@@ -171,8 +184,8 @@ export default function ParallaxSection() {
           }}
         >
           <Image
-            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.35.05 PM.jpeg"
-            alt="Suite Detail"
+            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.34.58 PM.jpeg"
+            alt="Interior View"
             fill
             className="object-cover"
           />
@@ -187,8 +200,8 @@ export default function ParallaxSection() {
           }}
         >
           <Image
-            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.35.07 PM.jpeg"
-            alt="Lounge Area"
+            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.36.07 PM.jpeg"
+            alt="Suite Interior"
             fill
             className="object-cover"
           />
@@ -203,8 +216,24 @@ export default function ParallaxSection() {
           }}
         >
           <Image
-            src="/property_random/WhatsApp Image 2026-03-10 at 12.37.09 PM.jpeg"
-            alt="Landscape"
+            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.35.03 PM.jpeg"
+            alt="Room Detail"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Fifth small image - reveals from bottom to top at transition 4 */}
+        <div
+          className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
+          style={{
+            clipPath: `inset(${100 - progress4 * 100}% 0 0 0)`,
+            transition: 'clip-path 0.05s linear',
+          }}
+        >
+          <Image
+            src="/property_interiors/WhatsApp Image 2026-03-10 at 12.35.07 PM.jpeg"
+            alt="Living Space"
             fill
             className="object-cover"
           />
@@ -214,8 +243,8 @@ export default function ParallaxSection() {
       {/* First big image section */}
       <div className="sticky top-0 h-screen w-full">
         <Image
-          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.20 PM (2).jpeg"
-          alt="Resort Entrance"
+          src="/property_exteriros/propertynight.jpeg"
+          alt="Resort at Night"
           fill
           className="object-cover"
           priority
@@ -225,8 +254,8 @@ export default function ParallaxSection() {
       {/* Second big image section */}
       <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
         <Image
-          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.31 PM.jpeg"
-          alt="Resort Pathway"
+          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg"
+          alt="Resort Exterior"
           fill
           className="object-cover"
         />
@@ -235,8 +264,8 @@ export default function ParallaxSection() {
       {/* Third big image section */}
       <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 2 }}>
         <Image
-          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.21 PM (1).jpeg"
-          alt="Resort Villa"
+          src="/property_exteriros/nightswimmingpool.jpeg"
+          alt="Night Swimming Pool"
           fill
           className="object-cover"
         />
@@ -245,8 +274,18 @@ export default function ParallaxSection() {
       {/* Fourth big image section */}
       <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 3 }}>
         <Image
-          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.32 PM.jpeg"
-          alt="Resort Grounds"
+          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.31 PM.jpeg"
+          alt="Resort Pathway"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Fifth big image section */}
+      <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 4 }}>
+        <Image
+          src="/property_interiors/WhatsApp Image 2026-03-10 at 12.34.54 PM.jpeg"
+          alt="Resort Lounge"
           fill
           className="object-cover"
         />
