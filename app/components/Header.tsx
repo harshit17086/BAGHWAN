@@ -13,13 +13,13 @@ export default function Header() {
     { href: '#', label: 'Instagram' },
     { href: '#', label: 'YouTube' },
     // { href: '#', label: 'How it Works' },
-    { href: '/projects', label: 'Portfolio' },
+    { href: '/projects', label: 'Gallery' },
     { href: '/reviews', label: 'Reviews' },
   ];
 
   // Define color classes for easier management
-  const headerScrollBg = 'bg-[#faf7ed]'; 
-  const textScroll = 'text-[#2F3D24]'; 
+  const headerScrollBg = 'bg-[#faf7ed]';
+  const textScroll = 'text-[#2F3D24]';
   const buttonScrollBg = 'bg-[#3d5320]'; // Dark green button on beige
   const buttonScrollText = 'text-white'; // White text on dark button
 
@@ -44,22 +44,22 @@ export default function Header() {
 
 
   return (
-    <header 
+    <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${headerScrollBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px]  lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}
           {/* Logo */}
-            <Link href="/" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
+          <Link href="/" className="flex items-center -ml-2 md:-ml-8 lg:-ml-16"> {/* Reduced responsive left margin to prevent hiding on zoom */}
             <div className="relative h-16 w-32 md:h-20 md:w-40 lg:h-24 lg:w-54 mt-1 mb-1"> {/* Increased responsive logo size */}
-              <Image 
-              src="/logo12.png" 
-              alt="HRs Logo" 
-              fill
-              className="object-contain transition-all duration-300"
+              <Image
+                src="/logo12.png"
+                alt="Baghvan Resort"
+                fill
+                className="object-contain transition-all duration-300"
               />
             </div>
-            </Link>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-6 md:space-x-8 lg:space-x-10 pr-4"> {/* Responsive spacing */}
@@ -91,19 +91,16 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 bg-gray-800 ${
-                isMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
+              className={`block w-6 h-0.5 transition-all duration-300 bg-gray-800 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 transition-opacity duration-300 bg-gray-800 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}
+              className={`block w-6 h-0.5 transition-opacity duration-300 bg-gray-800 ${isMenuOpen ? 'opacity-0' : ''
+                }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 bg-gray-800 ${
-                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
+              className={`block w-6 h-0.5 transition-all duration-300 bg-gray-800 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
             ></span>
           </button>
         </div>

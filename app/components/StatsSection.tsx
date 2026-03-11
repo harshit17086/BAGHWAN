@@ -71,7 +71,7 @@ export default function StatsSection() {
         {/* Section Header */}
         <div className="mb-16">
           <h2 className="text-2xl md:text-3xl text-[#6B7555] mb-12">
-            Still don&apos;t believe it?
+            The Baghvan experience in numbers
           </h2>
         </div>
 
@@ -82,20 +82,20 @@ export default function StatsSection() {
             {/* Stat 1 */}
             <div className="border-b border-[#3d5320]/20 pb-12">
               <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
-                <AnimatedStat end={200} suffix="K+" />
+                <AnimatedStat end={10} suffix="K+" />
               </h3>
               <p className="text-base md:text-lg text-[#6B7555]">
-                square feet currently under construction
+                happy guests hosted at our resort
               </p>
             </div>
 
             {/* Stat 2 */}
             <div className="border-b border-[#3d5320]/20 pb-12">
               <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
-                <AnimatedStat end={5} suffix=".0%" duration={2000} />
+                <AnimatedStat end={4} suffix=".9★" duration={2000} />
               </h3>
               <p className="text-base md:text-lg text-[#6B7555]">
-                Average build costs are within 5% of our pre-design estimates
+                Average guest rating across all platforms
               </p>
             </div>
           </div>
@@ -106,13 +106,13 @@ export default function StatsSection() {
             <div className="border-b border-[#3d5320]/20 pb-12">
               <div className="flex items-start gap-4 mb-4">
                 <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24]">
-                  <AnimatedStat end={18} duration={1500} />
+                  <AnimatedStat end={25} duration={1500} />
                 </h3>
                 {/* Decorative stars */}
-                
+
               </div>
               <p className="text-base md:text-lg text-[#6B7555]">
-                States with active home design & development projects
+                Luxury rooms & suites available for your perfect getaway
               </p>
             </div>
 
@@ -120,13 +120,13 @@ export default function StatsSection() {
             <div className="border-b border-[#3d5320]/20 pb-12">
               <div className="flex items-start gap-4 mb-4">
                 <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24]">
-                  <AnimatedStat end={5000} suffix="+" duration={2500} />
+                  <AnimatedStat end={50} suffix="+" duration={2500} />
                 </h3>
-                
-                
+
+
               </div>
               <p className="text-base md:text-lg text-[#6B7555]">
-                land parcels evaluated
+                curated experiences and activities to choose from
               </p>
             </div>
           </div>

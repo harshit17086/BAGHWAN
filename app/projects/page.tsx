@@ -24,29 +24,29 @@ export default function ProjectsPage() {
   const allProjects: Project[] = [
     {
       id: '1',
-      title: 'Modern Residential Complex',
-      description: 'A stunning 50-unit residential development featuring sustainable materials and contemporary design principles.',
-      location: 'Downtown District',
+      title: 'Luxury Villa Stays',
+      description: 'Experience unparalleled comfort in our thoughtfully designed private villas, surrounded by nature.',
+      location: 'Baghvan Resort',
       status: 'completed',
-      cover_image: '/slide1.jpeg',
+      cover_image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.21 PM.jpeg',
       image_count: 5
     },
     {
       id: '2',
-      title: 'Commercial Office Tower',
-      description: 'A 25-story commercial building with state-of-the-art facilities and energy-efficient systems.',
-      location: 'Business District',
+      title: 'Elegant Interiors',
+      description: 'Relax in our premium rooms featuring contemporary amenities seamlessly blended with rustic charm.',
+      location: 'Baghvan Accommodations',
       status: 'active',
-      cover_image: '/slide2.jpeg',
+      cover_image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.45 PM.jpeg',
       image_count: 3
     },
     {
       id: '3',
-      title: 'Luxury Villa Estate',
-      description: 'Exclusive residential villas with premium finishes and panoramic views of the city.',
-      location: 'Hillside Area',
+      title: 'Serene Landscapes',
+      description: 'Immerse yourself in lush greenery, scenic views, and the tranquil atmosphere of our outdoor spaces.',
+      location: 'Resort Grounds',
       status: 'completed',
-      cover_image: '/slide3.jpeg',
+      cover_image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.57 PM.jpeg',
       image_count: 8
     }
   ];
@@ -61,9 +61,9 @@ export default function ProjectsPage() {
 
       {/* Hero Section */}
       <HeroSection
-        title="Our Projects"
-        subtitle="Explore our portfolio of exceptional construction projects that showcase our commitment to quality and innovation."
-        backgroundImage="/image2.jpeg"
+        title="Our Gallery"
+        subtitle="Explore our resort through stunning images that capture the essence of Baghvan."
+        backgroundImage="/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.20 PM (2).jpeg"
         height="h-96"
       />
 

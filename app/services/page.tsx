@@ -13,49 +13,49 @@ export default function ServicesPage() {
   const fallbackServices = useMemo(() => [
     {
       id: '1',
-      name: 'Residential Construction',
-      description: 'Custom home building with premium materials and modern design principles. From concept to completion, we create dream homes that reflect your lifestyle.',
-      image_url: '/slide1.jpeg',
+      name: 'Luxury Villas',
+      description: 'Stay in our exquisite private villas with premium amenities, private pools, and breathtaking views of nature.',
+      image_url: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.21 PM.jpeg',
       display_order: 1,
       status: 'active'
     },
     {
       id: '2',
-      name: 'Commercial Projects',
-      description: 'Office buildings, retail spaces, and commercial facilities built to the highest standards. We ensure functionality meets aesthetic excellence.',
-      image_url: '/slide2.jpeg',
+      name: 'Fine Dining',
+      description: 'Savour gourmet cuisine crafted by expert chefs using locally sourced ingredients in our elegant dining spaces.',
+      image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.39 PM.jpeg',
       display_order: 2,
       status: 'active'
     },
     {
       id: '3',
-      name: 'Renovation & Remodeling',
-      description: 'Transform existing spaces with our expert renovation services. Modern upgrades, structural improvements, and aesthetic enhancements.',
-      image_url: '/ppp.jpeg',
+      name: 'Spa & Wellness',
+      description: 'Rejuvenate your body and mind with our holistic spa treatments, yoga sessions, and wellness programs.',
+      image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.55 PM.jpeg',
       display_order: 3,
       status: 'active'
     },
     {
       id: '4',
-      name: 'Infrastructure Development',
-      description: 'Large-scale infrastructure projects including roads, bridges, and public facilities. Engineering excellence with community impact.',
-      image_url: '/slide4.jpeg',
+      name: 'Nature Trails',
+      description: 'Explore guided nature walks through lush forests, discover local wildlife, and absorb the beauty of the outdoors.',
+      image_url: '/property_random/WhatsApp Image 2026-03-10 at 12.36.48 PM.jpeg',
       display_order: 4,
       status: 'active'
     },
     {
       id: '5',
-      name: 'Sustainable Building',
-      description: 'Eco-friendly construction using green materials and energy-efficient designs. Building for the future with environmental responsibility.',
-      image_url: '/slide5.jpeg',
+      name: 'Private Pools',
+      description: 'Relax and unwind at our private and infinity pools surrounded by panoramic greenery and tranquil ambiance.',
+      image_url: '/property_random/WhatsApp Image 2026-03-10 at 12.36.35 PM.jpeg',
       display_order: 5,
       status: 'active'
     },
     {
       id: '6',
-      name: 'Project Management',
-      description: 'Comprehensive project management services ensuring timelines, budgets, and quality standards are met. Your peace of mind guaranteed.',
-      image_url: '/slide6.jpeg',
+      name: 'Event Hosting',
+      description: 'Host unforgettable weddings, retreats, and celebrations in our elegant banquet halls and outdoor venues.',
+      image_url: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.30 PM.jpeg',
       display_order: 6,
       status: 'active'
     }
@@ -72,11 +72,11 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#2F3D24] mb-6 leading-tight">
-              Our Services
+              Our Experiences
             </h1>
             <p className="text-xl text-[#6B7555] leading-relaxed">
-              From residential homes to commercial complexes, we deliver excellence in every project.
-              Discover our comprehensive range of construction services designed to bring your vision to life.
+              From luxury stays to curated adventures, we offer a world of experiences.
+              Discover everything Baghvan Resort has to offer for an unforgettable getaway.
             </p>
           </div>
         </div>

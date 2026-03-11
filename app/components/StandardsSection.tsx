@@ -16,48 +16,48 @@ export default function StandardsSection() {
   const cards: CardData[] = [
     {
       id: 1,
-      image: '/slide1.jpeg',
-      title: ''
+      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.39 PM.jpeg',
+      title: 'Luxury Stays'
     },
     {
       id: 2,
-      image: '/slide2.jpeg',
-      title: ''
+      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.40 PM.jpeg',
+      title: 'Comfortable Living'
     },
     {
       id: 3,
-      image: '/image1.jpeg',
-      title: ''
+      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.35 PM.jpeg',
+      title: 'Private Pool'
     },
     {
       id: 4,
-      image: '/slide4.jpeg',
-      title: ''
+      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.48 PM.jpeg',
+      title: 'Outdoor Dining'
     },
     {
       id: 5,
-      image: '/slide5.jpeg',
-      title: ''
+      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg',
+      title: 'Open Spaces'
     },
     {
       id: 6,
-      image: '/slide6.jpeg',
-      title: ''
+      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.27 PM.jpeg',
+      title: 'Tranquil Ambience'
     },
     {
       id: 7,
-      image: '/slide8.jpeg',
-      title: ''
+      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.58 PM.jpeg',
+      title: 'Exquisite Decor'
     },
     {
       id: 8,
-      image: '/slide1.jpeg',
-      title: ''
+      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.35.41 PM.jpeg',
+      title: 'Modern Aesthetics'
     },
     {
       id: 9,
-      image: '/slide2.jpeg',
-      title: ''
+      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.25 PM.jpeg',
+      title: 'Scenic Views'
     }
   ];
 
@@ -99,9 +99,9 @@ export default function StandardsSection() {
         {/* Section Header */}
         <div className="text-center mb-8 px-4">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#2F3D24] mb-4">
-            It all starts with our Standards...
+            World-class Amenities...
           </h2>
-          
+
         </div>
 
         {/* Cards Container */}

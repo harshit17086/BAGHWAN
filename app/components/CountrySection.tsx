@@ -4,13 +4,13 @@ import React from 'react';
 import Stack from './Stack';
 
 const images = [
-  { id: 1, img: "/slide1.jpeg" },
-  { id: 2, img: "/slide2.jpeg" },
-  { id: 3, img: "/ppp.jpeg" },
-  { id: 4, img: "/slide4.jpeg" },
-  { id: 5, img: "/slide5.jpeg" },
-  { id: 6, img: "/slide6.jpeg" },
-  { id: 7, img: "/slide8.jpeg" }
+  { id: 1, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.42 PM.jpeg" },
+  { id: 2, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.43 PM.jpeg" },
+  { id: 3, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.48 PM.jpeg" },
+  { id: 4, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.50 PM.jpeg" },
+  { id: 5, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.51 PM.jpeg" },
+  { id: 6, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.52 PM.jpeg" },
+  { id: 7, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.55 PM.jpeg" }
 ];
 
 export default function CountrySection() {
@@ -45,24 +45,24 @@ export default function CountrySection() {
           {/* Right side - Content */}
           <div className="w-full lg:w-1/2 space-y-6">
             <h2 className="text-[#2F3D24] text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
-              We do it across the country
+              A Destination Like No Other
             </h2>
-            
+
             <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed max-w-2xl">
-              We focused exclusively on delivering in rural locations. Coast-to-coast, HRC crafts beautiful properties through guidance, intent, and care. Have a specific area or state in mind? We&apos;ve either built there, or will soon.
+              Tucked away from the bustling city, Baghvan Resort offers a peaceful escape surrounded by nature. Experience the perfect blend of wildlife, luxury, and tranquility.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-4 pt-4">
               <button className="bg-transparent border-2 border-[#2F3D24] text-[#2F3D24] font-medium text-base md:text-lg px-8 py-3 rounded-full hover:bg-[#2F3D24] hover:text-white transition-all duration-300">
-                See Our Projects
+                Explore The Resort
               </button>
               <div className="bg-transparent border-2 border-[#2F3D24] rounded-full p-3 hover:bg-[#2F3D24] hover:text-white transition-all duration-300 cursor-pointer group">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-6 w-6 text-[#2F3D24] group-hover:text-white" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-[#2F3D24] group-hover:text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
                 >

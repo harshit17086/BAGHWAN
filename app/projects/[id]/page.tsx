@@ -38,37 +38,42 @@ export default function ProjectDetailPage() {
       const allProjects = [
         {
           id: '1',
-          title: 'Modern Residential Complex',
-          description: 'A stunning 50-unit residential development featuring sustainable materials and contemporary design principles. This project incorporated state-of-the-art energy-efficient systems and premium finishes throughout.',
-          location: 'Downtown District',
+          title: 'Luxury Villa Stays',
+          description: 'Experience unparalleled comfort in our thoughtfully designed private villas, surrounded by nature. Each villa features premium furnishings, private outdoor spaces, and modern amenities for the perfect retreat.',
+          location: 'Baghvan Resort',
           status: 'completed',
           created_at: new Date().toISOString(),
           images: [
-            { id: 'img1', image_url: '/slide1.jpeg', caption: 'Front Elevation', display_order: 1 },
-            { id: 'img2', image_url: '/image2.jpeg', caption: 'Interior View', display_order: 2 }
+            { id: 'img1', image_url: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.21 PM.jpeg', caption: 'Villa Exterior', display_order: 1 },
+            { id: 'img2', image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.39 PM.jpeg', caption: 'Villa Interior', display_order: 2 },
+            { id: 'img3', image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.40 PM.jpeg', caption: 'Bedroom Suite', display_order: 3 },
+            { id: 'img4', image_url: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.20 PM.jpeg', caption: 'Garden View', display_order: 4 }
           ]
         },
         {
           id: '2',
-          title: 'Commercial Office Tower',
-          description: 'A 25-story commercial building with state-of-the-art facilities and energy-efficient systems. Designed for modern businesses requiring flexible workspaces.',
-          location: 'Business District',
+          title: 'Elegant Interiors',
+          description: 'Relax in our premium rooms featuring contemporary amenities seamlessly blended with rustic charm. Every detail has been curated to ensure your comfort and delight.',
+          location: 'Baghvan Accommodations',
           status: 'active',
           created_at: new Date().toISOString(),
           images: [
-            { id: 'img3', image_url: '/slide2.jpeg', caption: 'Exterior View', display_order: 1 }
+            { id: 'img5', image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.45 PM.jpeg', caption: 'Living Area', display_order: 1 },
+            { id: 'img6', image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.47 PM.jpeg', caption: 'Suite Detail', display_order: 2 },
+            { id: 'img7', image_url: '/property_interiors/WhatsApp Image 2026-03-10 at 12.35.03 PM.jpeg', caption: 'Bathroom', display_order: 3 }
           ]
         },
         {
           id: '3',
-          title: 'Luxury Villa Estate',
-          description: 'Exclusive residential villas with premium finishes and panoramic views of the city. Each villa is uniquely designed to maximize natural light and space.',
-          location: 'Hillside Area',
+          title: 'Serene Landscapes',
+          description: 'Immerse yourself in lush greenery, scenic views, and the tranquil atmosphere of our outdoor spaces. The resort grounds are designed to be a sanctuary of peace and natural beauty.',
+          location: 'Resort Grounds',
           status: 'completed',
           created_at: new Date().toISOString(),
           images: [
-            { id: 'img4', image_url: '/slide3.jpeg', caption: 'Main Entrance', display_order: 1 },
-            { id: 'img5', image_url: '/slide4.jpeg', caption: 'Living Area', display_order: 2 }
+            { id: 'img8', image_url: '/property_random/WhatsApp Image 2026-03-10 at 12.36.57 PM.jpeg', caption: 'Landscape View', display_order: 1 },
+            { id: 'img9', image_url: '/property_random/WhatsApp Image 2026-03-10 at 12.36.50 PM.jpeg', caption: 'Garden Path', display_order: 2 },
+            { id: 'img10', image_url: '/property_random/WhatsApp Image 2026-03-10 at 12.36.51 PM.jpeg', caption: 'Outdoor Seating', display_order: 3 }
           ]
         }
       ];

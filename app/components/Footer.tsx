@@ -11,20 +11,20 @@ export default function Footer() {
             <div className="w-32 h-32 relative">
               <Image
                 src="/logo12.png"
-                alt="HRC Construction"
+                alt="Baghvan Resort"
                 fill
                 className="object-contain"
               />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#1a2817] max-w-2xl">
-              Let&apos;s build that dream home you&apos;ve been planning
+              Ready to plan your perfect resort getaway?
             </h2>
           </div>
-          <Link 
+          <Link
             href="/contact"
             className="bg-[#1a2817] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#2F3D24] transition-colors flex items-center gap-2 whitespace-nowrap"
           >
-            Get Started
+            Book Now
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -38,66 +38,60 @@ export default function Footer() {
           {/* Logo */}
           <div className="lg:col-span-1">
             <div className="text-6xl font-bold text-white mb-4">
-              HRC
+              Baghvan
             </div>
           </div>
 
-          {/* Construction Services */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Construction Services</h3>
+            <h3 className="text-white font-semibold text-lg mb-4">Resort Experiences</h3>
             <ul className="space-y-3">
-              <li><Link href="/residential-construction" className="hover:text-[#C8E86C] transition-colors">Residential Construction</Link></li>
-              <li><Link href="/commercial-projects" className="hover:text-[#C8E86C] transition-colors">Commercial Projects</Link></li>
-              <li><Link href="/custom-homes" className="hover:text-[#C8E86C] transition-colors">Custom Homes</Link></li>
-              <li><Link href="/renovations" className="hover:text-[#C8E86C] transition-colors">Renovations</Link></li>
-              <li><Link href="/design-build" className="hover:text-[#C8E86C] transition-colors">Design-Build</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Project Management</Link></li>
-              <li><Link href="/green-building" className="hover:text-[#C8E86C] transition-colors">Green Building</Link></li>
-              <li><Link href="/infrastructure" className="hover:text-[#C8E86C] transition-colors">Infrastructure</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Luxury Stays</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Fine Dining</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Spa & Wellness</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Nature Trails</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Private Pools</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Event Hosting</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Wildlife Safaris</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Yoga & Meditation</Link></li>
             </ul>
           </div>
 
-          {/* Building Standards */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Building Standards</h3>
+            <h3 className="text-white font-semibold text-lg mb-4">Guest Services</h3>
             <ul className="space-y-3">
-              <li><Link href="/safety-standards" className="hover:text-[#C8E86C] transition-colors">Safety Standards</Link></li>
-              <li><Link href="/building-codes" className="hover:text-[#C8E86C] transition-colors">Building Codes</Link></li>
-              <li><Link href="/sustainable-materials" className="hover:text-[#C8E86C] transition-colors">Sustainable Materials</Link></li>
-              <li><Link href="/energy-efficiency" className="hover:text-[#C8E86C] transition-colors">Energy Efficiency</Link></li>
-              <li><Link href="/structural-integrity" className="hover:text-[#C8E86C] transition-colors">Structural Integrity</Link></li>
-              <li><Link href="/reviews" className="hover:text-[#C8E86C] transition-colors">Certifications</Link></li>
-              <li><Link href="/premium-finishes" className="hover:text-[#C8E86C] transition-colors">Premium Finishes</Link></li>
+              <li><Link href="/reviews" className="hover:text-[#C8E86C] transition-colors">Guest Reviews</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Room Categories</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Special Packages</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Group Bookings</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Wedding Planning</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Concierge</Link></li>
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Company</h3>
+            <h3 className="text-white font-semibold text-lg mb-4">About Baghvan</h3>
             <ul className="space-y-3">
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Portfolio</Link></li>
-              <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">About Us</Link></li>
+              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Gallery</Link></li>
+              <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">Our Story</Link></li>
             </ul>
-            
-            <h3 className="text-white font-semibold text-lg mb-4 mt-8">How it Works</h3>
+
+            <h3 className="text-white font-semibold text-lg mb-4 mt-8">Plan Your Visit</h3>
             <ul className="space-y-3">
-              <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">Our Process</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Construction Services</Link></li>
+              <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">How to Reach</Link></li>
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Resort Amenities</Link></li>
             </ul>
 
             <h3 className="text-white font-semibold text-lg mb-4 mt-8">Resources</h3>
             <ul className="space-y-3">
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Project Gallery</Link></li>
-              <li><Link href="/construction-guides" className="hover:text-[#C8E86C] transition-colors">Construction Guides</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Consultation</Link></li>
+              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Photo Gallery</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Reservations</Link></li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="mailto:infohomerootsconstructions@gmail.com" className="hover:text-[#C8E86C] transition-colors">infohomerootsconstructions@gmail.com</a></li>
+              <li><a href="mailto:info@baghvanresort.com" className="hover:text-[#C8E86C] transition-colors">info@baghvanresort.com</a></li>
               <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">For Partners</Link></li>
             </ul>
           </div>
@@ -106,7 +100,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="mt-8 pt-4 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex gap-6 text-sm">
-            <p>©{new Date().getFullYear()} HRC</p>
+            <p>©{new Date().getFullYear()} Baghvan Resort</p>
             <Link href="/privacy" className="hover:text-[#C8E86C] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[#C8E86C] transition-colors">Terms of Use</Link>
           </div>
@@ -115,7 +109,7 @@ export default function Footer() {
           <div className="flex gap-4">
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
             </a>
             {/* <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">
@@ -125,7 +119,7 @@ export default function Footer() {
             </a> */}
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </a>
             {/* <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">
@@ -135,7 +129,7 @@ export default function Footer() {
             </a> */}
             <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
               </svg>
             </a>
             {/* <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">

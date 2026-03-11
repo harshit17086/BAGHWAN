@@ -19,24 +19,24 @@ export default function WorksSection() {
   const projects: CardData[] = useMemo(() => [
     {
       id: '1',
-      image: '/slide1.jpeg',
-      title: 'Modern Residential Complex',
-      description: 'A stunning 50-unit residential development featuring sustainable materials and contemporary design principles.',
-      location: 'Downtown District'
+      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.21 PM.jpeg',
+      title: 'Luxury Villa Stays',
+      description: 'Experience unparalleled comfort in our thoughtfully designed private villas, surrounded by nature.',
+      location: 'Baghvan Resort'
     },
     {
       id: '2',
-      image: '/slide2.jpeg',
-      title: 'Commercial Office Tower',
-      description: 'A 25-story commercial building with state-of-the-art facilities and energy-efficient systems.',
-      location: 'Business District'
+      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.45 PM.jpeg',
+      title: 'Elegant Interiors',
+      description: 'Relax in our premium rooms featuring contemporary amenities seamlessly blended with rustic charm.',
+      location: 'Baghvan Accommodations'
     },
     {
       id: '3',
-      image: '/slide3.jpeg',
-      title: 'Luxury Villa Estate',
-      description: 'Exclusive residential villas with premium finishes and panoramic views of the city.',
-      location: 'Hillside Area'
+      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.57 PM.jpeg',
+      title: 'Serene Landscapes',
+      description: 'Immerse yourself in lush greenery, scenic views, and the tranquil atmosphere of our outdoor spaces.',
+      location: 'Resort Grounds'
     }
   ], []);
 
@@ -78,10 +78,10 @@ export default function WorksSection() {
         {/* Section Header */}
         <div className="text-center mb-8 px-4">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#2F3D24] mb-4">
-            Our Works
+            Experience Baghvan
           </h2>
           <p className="text-lg md:text-xl text-[#3d5320] font-serif">
-            Building dreams, one project at a time
+            Immerse yourself in nature's luxury
           </p>
         </div>
 
