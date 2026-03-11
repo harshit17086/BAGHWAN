@@ -1,10 +1,9 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
 interface FormData {
@@ -41,35 +40,58 @@ export default function ContactPage() {
     location: ''
   });
   const [submitting, setSubmitting] = useState(false);
-  const [services, setServices] = useState<Service[]>([]);
-  const [servicesLoading, setServicesLoading] = useState(true);
   const router = useRouter();
-  const supabase = createClient();
 
-  // Fetch services from database
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('services')
-          .select('*')
-          .eq('status', 'active')
-          .order('display_order', { ascending: true });
-
-        if (error) {
-          console.error('Error fetching services:', error);
-        } else if (data) {
-          setServices(data);
-        }
-      } catch (error) {
-        console.error('Error fetching services:', error);
-      } finally {
-        setServicesLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, [supabase]);
+  const services: Service[] = [
+    {
+      id: '1',
+      name: 'Residential Construction',
+      description: 'Custom home building with premium materials and modern design principles. From concept to completion, we create dream homes that reflect your lifestyle.',
+      image_url: '/slide1.jpeg',
+      display_order: 1,
+      status: 'active'
+    },
+    {
+      id: '2',
+      name: 'Commercial Projects',
+      description: 'Office buildings, retail spaces, and commercial facilities built to the highest standards. We ensure functionality meets aesthetic excellence.',
+      image_url: '/slide2.jpeg',
+      display_order: 2,
+      status: 'active'
+    },
+    {
+      id: '3',
+      name: 'Renovation & Remodeling',
+      description: 'Transform existing spaces with our expert renovation services. Modern upgrades, structural improvements, and aesthetic enhancements.',
+      image_url: '/ppp.jpeg',
+      display_order: 3,
+      status: 'active'
+    },
+    {
+      id: '4',
+      name: 'Infrastructure Development',
+      description: 'Large-scale infrastructure projects including roads, bridges, and public facilities. Engineering excellence with community impact.',
+      image_url: '/slide4.jpeg',
+      display_order: 4,
+      status: 'active'
+    },
+    {
+      id: '5',
+      name: 'Sustainable Building',
+      description: 'Eco-friendly construction using green materials and energy-efficient designs. Building for the future with environmental responsibility.',
+      image_url: '/slide5.jpeg',
+      display_order: 5,
+      status: 'active'
+    },
+    {
+      id: '6',
+      name: 'Project Management',
+      description: 'Comprehensive project management services ensuring timelines, budgets, and quality standards are met. Your peace of mind guaranteed.',
+      image_url: '/slide6.jpeg',
+      display_order: 6,
+      status: 'active'
+    }
+  ];
 
   const budgetOptions = [
     'Under ₹50 lakhs',
@@ -99,35 +121,13 @@ export default function ContactPage() {
 
   const handleSubmit = async () => {
     setSubmitting(true);
-    
-    try {
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            email: formData.email,
-            phone: formData.phone,
-            service: formData.service,
-            query_type: formData.queryType,
-            budget: formData.budget,
-            location: formData.location,
-            status: 'new',
-          }
-        ]);
 
-      if (error) throw error;
-
-      // Success - show confirmation and redirect
+    // Simulate an API call
+    setTimeout(() => {
+      setSubmitting(false);
       alert('Thank you! Your inquiry has been submitted successfully. We will contact you soon.');
       router.push('/');
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your inquiry. Please try again or contact us directly.');
-    } finally {
-      setSubmitting(false);
-    }
+    }, 1500);
   };
 
   const canProceed = () => {
@@ -156,9 +156,9 @@ export default function ContactPage() {
         <div className="flex items-center justify-between mb-12 pt-5">
           <Link href="/" className="-ml-16  md:ml-0">
             <div className="relative h-28 w-40">
-              <Image 
-                src="/logo12.png" 
-                alt="Logo" 
+              <Image
+                src="/logo12.png"
+                alt="Logo"
                 fill
                 className="object-contain"
               />
@@ -184,7 +184,7 @@ export default function ContactPage() {
                 <p className="text-[#6B8E23] text-base mb-3">Great to meet you!</p>
                 <h1 className="text-5xl md:text-6xl font-serif text-[#2C3E1F]">What&apos;s your name?</h1>
               </div>
-              
+
               <div className="space-y-4 mt-12">
                 <div className="relative">
                   {formData.firstName && (
@@ -200,7 +200,7 @@ export default function ContactPage() {
                     className="w-full px-8 py-5 rounded-full border-2 border-gray-300 focus:border-[#6B8E23] focus:outline-none text-lg bg-white transition-all"
                   />
                 </div>
-                
+
                 <div className="relative">
                   {formData.lastName && (
                     <label className="absolute -top-3 left-6 bg-[#FAF8F3] px-2 text-sm text-[#6B8E23]">
@@ -226,7 +226,7 @@ export default function ContactPage() {
                 <p className="text-[#6B8E23] text-base mb-3">Let&apos;s Connect</p>
                 <h1 className="text-5xl md:text-6xl font-serif text-[#2C3E1F]">What&apos;s the best way to get in touch?</h1>
               </div>
-              
+
               <div className="space-y-4 mt-12">
                 <input
                   type="email"
@@ -235,7 +235,7 @@ export default function ContactPage() {
                   onChange={(e) => updateFormData('email', e.target.value)}
                   className="w-full px-8 py-5 rounded-full border-2 border-gray-300 focus:border-[#6B8E23] focus:outline-none text-lg bg-white transition-all"
                 />
-                
+
                 <input
                   type="tel"
                   placeholder="Phone"
@@ -256,62 +256,52 @@ export default function ContactPage() {
                   Which of these HRC housing solutions sound most like what you need?
                 </h1>
               </div>
-              
-              {servicesLoading ? (
-                <div className="flex items-center justify-center py-20">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#6B8E23] mx-auto"></div>
-                    <p className="mt-4 text-[#6B8E23]">Loading services...</p>
-                  </div>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                  {services.map((service) => (
-                    <button
-                      key={service.id}
-                      onClick={() => updateFormData('service', service.id)}
-                      className={`rounded-3xl border-2 transition-all text-left overflow-hidden ${
-                        formData.service === service.id
-                          ? 'border-[#6B8E23] bg-[#E8F5E9]'
-                          : 'border-gray-300 bg-white hover:border-[#6B8E23]'
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                {services.map((service) => (
+                  <button
+                    key={service.id}
+                    onClick={() => updateFormData('service', service.id)}
+                    className={`rounded-3xl border-2 transition-all text-left overflow-hidden ${formData.service === service.id
+                      ? 'border-[#6B8E23] bg-[#E8F5E9]'
+                      : 'border-gray-300 bg-white hover:border-[#6B8E23]'
                       }`}
-                    >
-                      {/* Image Section */}
-                      {service.image_url && (
-                        <div className="relative h-40 w-full overflow-hidden">
-                          <Image
-                            src={service.image_url}
-                            alt={service.name}
-                            fill
-                            className="object-cover"
-                          />
+                  >
+                    {/* Image Section */}
+                    {service.image_url && (
+                      <div className="relative h-40 w-full overflow-hidden">
+                        <Image
+                          src={service.image_url}
+                          alt={service.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+
+                    {/* Content Section */}
+                    <div className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0 mt-1">
+                          {formData.service === service.id && (
+                            <div className="w-3.5 h-3.5 rounded-full bg-[#6B8E23]"></div>
+                          )}
                         </div>
-                      )}
-                      
-                      {/* Content Section */}
-                      <div className="p-6">
-                        <div className="flex items-start gap-4">
-                          <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0 mt-1">
-                            {formData.service === service.id && (
-                              <div className="w-3.5 h-3.5 rounded-full bg-[#6B8E23]"></div>
-                            )}
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-serif font-semibold text-[#2C3E1F] mb-2">
-                              {service.name}
-                            </h3>
-                            {service.description && (
-                              <p className="text-sm text-[#6B8E23] leading-relaxed line-clamp-3">
-                                {service.description}
-                              </p>
-                            )}
-                          </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-serif font-semibold text-[#2C3E1F] mb-2">
+                            {service.name}
+                          </h3>
+                          {service.description && (
+                            <p className="text-sm text-[#6B8E23] leading-relaxed line-clamp-3">
+                              {service.description}
+                            </p>
+                          )}
                         </div>
                       </div>
-                    </button>
-                  ))}
-                </div>
-              )}
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
@@ -322,7 +312,7 @@ export default function ContactPage() {
                 <p className="text-[#6B8E23] text-base mb-3">Tell us more</p>
                 <h1 className="text-5xl md:text-6xl font-serif text-[#2C3E1F]">What would you like to discuss?</h1>
               </div>
-              
+
               <textarea
                 placeholder="Describe your project needs, goals, timeline, or any specific questions you have..."
                 value={formData.queryType}
@@ -340,17 +330,16 @@ export default function ContactPage() {
                 <p className="text-[#6B8E23] text-base mb-3">Understanding the Cost</p>
                 <h1 className="text-5xl md:text-6xl font-serif text-[#2C3E1F]">Do you have a target budget in mind?</h1>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
                 {budgetOptions.map((budget, index) => (
                   <button
                     key={index}
                     onClick={() => updateFormData('budget', budget)}
-                    className={`p-6 rounded-full border-2 transition-all text-center ${
-                      formData.budget === budget
-                        ? 'border-[#6B8E23] bg-[#E8F5E9]'
-                        : 'border-gray-300 bg-white hover:border-[#6B8E23]'
-                    }`}
+                    className={`p-6 rounded-full border-2 transition-all text-center ${formData.budget === budget
+                      ? 'border-[#6B8E23] bg-[#E8F5E9]'
+                      : 'border-gray-300 bg-white hover:border-[#6B8E23]'
+                      }`}
                   >
                     <div className="flex items-center justify-center gap-3">
                       <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center shrink-0">
@@ -373,7 +362,7 @@ export default function ContactPage() {
                 <p className="text-[#6B8E23] text-base mb-3">Project Location</p>
                 <h1 className="text-5xl md:text-6xl font-serif text-[#2C3E1F]">Where is your project located?</h1>
               </div>
-              
+
               <input
                 type="text"
                 placeholder="City, State or Full Address"
@@ -391,7 +380,7 @@ export default function ContactPage() {
                 <p className="text-[#6B8E23] text-base mb-3">Almost there!</p>
                 <h1 className="text-5xl md:text-6xl font-serif text-[#2C3E1F]">Review your information</h1>
               </div>
-              
+
               <div className="space-y-4 bg-white p-8 rounded-3xl border-2 border-gray-300">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -434,11 +423,10 @@ export default function ContactPage() {
             <button
               onClick={handleBack}
               disabled={currentStep === 1}
-              className={`w-14 h-14 rounded-full border-2 border-black flex items-center justify-center transition-all ${
-                currentStep === 1
-                  ? 'opacity-0 pointer-events-none'
-                  : 'hover:bg-black hover:text-white'
-              }`}
+              className={`w-14 h-14 rounded-full border-2 border-black flex items-center justify-center transition-all ${currentStep === 1
+                ? 'opacity-0 pointer-events-none'
+                : 'hover:bg-black hover:text-white'
+                }`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -448,11 +436,10 @@ export default function ContactPage() {
             <button
               onClick={currentStep === totalSteps ? handleSubmit : handleNext}
               disabled={!canProceed() || submitting}
-              className={`px-10 py-4 rounded-full font-semibold transition-all flex items-center gap-3 ${
-                canProceed() && !submitting
-                  ? 'bg-[#1a2817] text-white hover:bg-[#2F3D24]'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
+              className={`px-10 py-4 rounded-full font-semibold transition-all flex items-center gap-3 ${canProceed() && !submitting
+                ? 'bg-[#1a2817] text-white hover:bg-[#2F3D24]'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
             >
               {submitting ? (
                 <>

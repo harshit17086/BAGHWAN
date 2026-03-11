@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { createClient } from '@/lib/supabase/client';
 
 interface Certificate {
   id: string;
@@ -18,55 +17,29 @@ interface Certificate {
 export default function CustomerSatisfactionSection() {
   const [selectedItem, setSelectedItem] = useState<Certificate | null>(null);
   const [activeTab, setActiveTab] = useState<'all' | 'certificates' | 'photos'>('all');
-  const [certificates, setCertificates] = useState<Certificate[]>([]);
-  const [loading, setLoading] = useState(true);
-  const supabase = createClient();
 
-  const fetchCertificates = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('customer_satisfaction')
-        .select('*')
-        .eq('status', 'active')
-        .order('display_order', { ascending: true })
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setCertificates(data || []);
-    } catch (error) {
-      console.error('Error fetching satisfaction items:', error);
-      // Fallback to sample data if error
-      setCertificates([
-        {
-          id: '1',
-          type: 'certificate',
-          file_type: 'pdf',
-          title: 'ISO 9001:2015 Certification',
-          description: 'Quality Management System Certification',
-          file_url: '/certificates/iso-cert.jpg',
-          thumbnail_url: '/certificates/iso-cert.jpg',
-          display_order: 0
-        },
-        {
-          id: '2',
-          type: 'photo',
-          file_type: 'image',
-          title: 'Customer Review - Project Alpha',
-          description: 'Residential Complex - Delhi',
-          file_url: '/satisfaction/review-1.jpg',
-          thumbnail_url: '/satisfaction/review-1.jpg',
-          display_order: 1
-        }
-      ]);
-    } finally {
-      setLoading(false);
+  const certificates: Certificate[] = [
+    {
+      id: '1',
+      type: 'certificate',
+      file_type: 'pdf',
+      title: 'ISO 9001:2015 Certification',
+      description: 'Quality Management System Certification',
+      file_url: '/certificates/iso-cert.jpg',
+      thumbnail_url: '/certificates/iso-cert.jpg',
+      display_order: 0
+    },
+    {
+      id: '2',
+      type: 'photo',
+      file_type: 'image',
+      title: 'Customer Review - Project Alpha',
+      description: 'Residential Complex - Delhi',
+      file_url: '/satisfaction/review-1.jpg',
+      thumbnail_url: '/satisfaction/review-1.jpg',
+      display_order: 1
     }
-  };
-
-  useEffect(() => {
-    fetchCertificates();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  ];
 
   const filteredCertificates = certificates.filter(cert => {
     if (activeTab === 'all') return true;
@@ -87,18 +60,6 @@ export default function CustomerSatisfactionSection() {
     setSelectedItem(null);
   };
 
-  if (loading) {
-    return (
-      <section className="relative bg-[#faf7ed] py-20 md:py-32">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center">
-            <div className="text-xl text-[#6B7555]">Loading...</div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="relative bg-[#faf7ed] py-20 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
@@ -108,7 +69,7 @@ export default function CustomerSatisfactionSection() {
             Customer Satisfaction
           </h2>
           <p className="text-lg md:text-xl text-[#6B7555] max-w-3xl mx-auto mb-12 leading-relaxed">
-            Our commitment to excellence is reflected in the trust our clients place in us. 
+            Our commitment to excellence is reflected in the trust our clients place in us.
             Explore our certifications, awards, and customer testimonials.
           </p>
 
@@ -116,31 +77,28 @@ export default function CustomerSatisfactionSection() {
           <div className="flex justify-center gap-4 flex-wrap">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${
-                activeTab === 'all'
+              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${activeTab === 'all'
                   ? 'bg-[#3d5320] text-white shadow-lg'
                   : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
-              }`}
+                }`}
             >
               All
             </button>
             <button
               onClick={() => setActiveTab('certificates')}
-              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${
-                activeTab === 'certificates'
+              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${activeTab === 'certificates'
                   ? 'bg-[#3d5320] text-white shadow-lg'
                   : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
-              }`}
+                }`}
             >
               Certificates & PDFs
             </button>
             <button
               onClick={() => setActiveTab('photos')}
-              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${
-                activeTab === 'photos'
+              className={`px-8 py-3 rounded-full font-serif text-base md:text-lg font-medium transition-all duration-300 ${activeTab === 'photos'
                   ? 'bg-[#3d5320] text-white shadow-lg'
                   : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
-              }`}
+                }`}
             >
               Photos & Testimonials
             </button>
@@ -217,17 +175,16 @@ export default function CustomerSatisfactionSection() {
                     )}
                   </div>
                 </div>
-                
+
                 {/* Type Badge */}
                 <div className="absolute top-3 right-3">
                   <span
-                    className={`px-4 py-1.5 rounded-full text-xs font-semibold font-serif ${
-                      cert.file_type === 'pdf'
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold font-serif ${cert.file_type === 'pdf'
                         ? 'bg-[#3d5320] text-white'
-                        : cert.type === 'testimonial' 
-                        ? 'bg-[#2F3D24] text-white'
-                        : 'bg-white text-[#2F3D24] border border-[#2F3D24]/30'
-                    }`}
+                        : cert.type === 'testimonial'
+                          ? 'bg-[#2F3D24] text-white'
+                          : 'bg-white text-[#2F3D24] border border-[#2F3D24]/30'
+                      }`}
                   >
                     {cert.file_type === 'pdf' ? 'PDF' : cert.type === 'testimonial' ? 'Testimonial' : 'Photo'}
                   </span>

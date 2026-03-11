@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+
 
 interface ProjectImage {
   id: string;
@@ -32,30 +32,54 @@ export default function ProjectDetailPage() {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const supabase = createClient();
-
   const fetchProject = async () => {
     try {
-      const { data: projectData, error: projectError } = await supabase
-        .from('projects')
-        .select('*')
-        .eq('id', projectId)
-        .single();
+      // Hardcoded data substitution
+      const allProjects = [
+        {
+          id: '1',
+          title: 'Modern Residential Complex',
+          description: 'A stunning 50-unit residential development featuring sustainable materials and contemporary design principles. This project incorporated state-of-the-art energy-efficient systems and premium finishes throughout.',
+          location: 'Downtown District',
+          status: 'completed',
+          created_at: new Date().toISOString(),
+          images: [
+            { id: 'img1', image_url: '/slide1.jpeg', caption: 'Front Elevation', display_order: 1 },
+            { id: 'img2', image_url: '/image2.jpeg', caption: 'Interior View', display_order: 2 }
+          ]
+        },
+        {
+          id: '2',
+          title: 'Commercial Office Tower',
+          description: 'A 25-story commercial building with state-of-the-art facilities and energy-efficient systems. Designed for modern businesses requiring flexible workspaces.',
+          location: 'Business District',
+          status: 'active',
+          created_at: new Date().toISOString(),
+          images: [
+            { id: 'img3', image_url: '/slide2.jpeg', caption: 'Exterior View', display_order: 1 }
+          ]
+        },
+        {
+          id: '3',
+          title: 'Luxury Villa Estate',
+          description: 'Exclusive residential villas with premium finishes and panoramic views of the city. Each villa is uniquely designed to maximize natural light and space.',
+          location: 'Hillside Area',
+          status: 'completed',
+          created_at: new Date().toISOString(),
+          images: [
+            { id: 'img4', image_url: '/slide3.jpeg', caption: 'Main Entrance', display_order: 1 },
+            { id: 'img5', image_url: '/slide4.jpeg', caption: 'Living Area', display_order: 2 }
+          ]
+        }
+      ];
 
-      if (projectError) throw projectError;
+      const foundProject = allProjects.find(p => p.id === projectId);
 
-      const { data: imagesData, error: imagesError } = await supabase
-        .from('project_images')
-        .select('*')
-        .eq('project_id', projectId)
-        .order('display_order', { ascending: true });
+      if (!foundProject) {
+        throw new Error('Project not found');
+      }
 
-      if (imagesError) throw imagesError;
-
-      setProject({
-        ...projectData,
-        images: imagesData || [],
-      });
+      setProject(foundProject);
     } catch (error) {
       console.error('Error fetching project:', error);
       alert('Project not found');
@@ -126,11 +150,10 @@ export default function ProjectDetailPage() {
                 )}
               </div>
               <div>
-                <span className={`px-6 py-2.5 rounded-full text-sm font-semibold font-serif ${
-                  project.status === 'active' 
-                    ? 'bg-[#3d5320] text-white' 
-                    : 'bg-[#2F3D24] text-white'
-                }`}>
+                <span className={`px-6 py-2.5 rounded-full text-sm font-semibold font-serif ${project.status === 'active'
+                  ? 'bg-[#3d5320] text-white'
+                  : 'bg-[#2F3D24] text-white'
+                  }`}>
                   {project.status === 'active' ? 'In Progress' : 'Completed'}
                 </span>
               </div>
@@ -153,7 +176,7 @@ export default function ProjectDetailPage() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#2F3D24] mb-8 md:mb-12">
                 Project Gallery
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {project.images.map((image, index) => (
                   <button

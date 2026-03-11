@@ -2,7 +2,6 @@
 
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
-import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 
 interface CardData {
@@ -13,28 +12,11 @@ interface CardData {
   location?: string;
 }
 
-interface ProjectImage {
-  image_url: string;
-  is_cover: boolean;
-}
-
-interface ProjectWithImages {
-  id: string;
-  title: string;
-  description: string | null;
-  location: string | null;
-  project_images?: ProjectImage[];
-}
 
 export default function WorksSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [projects, setProjects] = useState<CardData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const supabase = createClient();
-
-    // Fallback projects if database is empty
-  const fallbackProjects: CardData[] = useMemo(() => [
+  const projects: CardData[] = useMemo(() => [
     {
       id: '1',
       image: '/slide1.jpeg',
@@ -57,51 +39,6 @@ export default function WorksSection() {
       location: 'Hillside Area'
     }
   ], []);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('projects')
-          .select(`
-            id,
-            title,
-            description,
-            location,
-            project_images!project_images_project_id_fkey(image_url, is_cover)
-          `)
-          .in('status', ['active', 'completed'])
-          .order('display_order', { ascending: true });
-
-        if (error) throw error;
-
-        if (data && data.length > 0) {
-          const projectsWithImages = data.map((project: ProjectWithImages) => {
-            const coverImage = project.project_images?.find((img: ProjectImage) => img.is_cover);
-            return {
-              id: project.id,
-              title: project.title,
-              description: project.description || '',
-              location: project.location || '',
-              image: coverImage?.image_url || project.project_images?.[0]?.image_url || '/slide1.jpeg',
-            };
-          });
-          setProjects(projectsWithImages);
-        } else {
-          // Use fallback projects if database is empty
-          setProjects(fallbackProjects);
-        }
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-        // Use fallback projects on error
-        setProjects(fallbackProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, [supabase, fallbackProjects]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -132,7 +69,7 @@ export default function WorksSection() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={scrollContainerRef}
       className="relative bg-[#faf7ed]"
       style={{ height: '400vh' }} // Extended height for horizontal scroll effect
@@ -148,85 +85,74 @@ export default function WorksSection() {
           </p>
         </div>
 
-        {/* Cards Container */}
         <div className="cards-container flex gap-8 px-8">
-          {loading ? (
-            // Loading skeleton
-            [...Array(3)].map((_, i) => (
-              <div
-                key={i}
-                className="shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] rounded-2xl bg-gray-200 animate-pulse"
-              />
-            ))
-          ) : (
-            projects.map((card) => (
-              <div
-                key={card.id}
-                className="shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] perspective-1000"
-              >
-                <div className="relative w-full h-full group">
-                  {/* Card - with flip effect */}
-                  <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
-                    
-                    {/* Front of card */}
-                    <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-2xl">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={card.image}
-                          alt={card.title}
-                          fill
-                          className="object-cover"
-                        />
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-                        
-                        {/* Card title on front */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                          <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
-                            {card.title}
-                          </h3>
-                          {card.location && (
-                            <p className="text-sm md:text-base opacity-90 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                              </svg>
-                              {card.location}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+          {projects.map((card) => (
+            <div
+              key={card.id}
+              className="shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] perspective-1000"
+            >
+              <div className="relative w-full h-full group">
+                {/* Card - with flip effect */}
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
 
-                    {/* Back of card */}
-                    <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-2xl bg-[#3d5320]">
-                      <div className="w-full h-full flex flex-col justify-center items-center p-8 text-white">
-                        <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-center">
+                  {/* Front of card */}
+                  <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+
+                      {/* Card title on front */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
                           {card.title}
                         </h3>
-                        <p className="text-base md:text-lg text-center mb-4 leading-relaxed">
-                          {card.description}
-                        </p>
                         {card.location && (
-                          <div className="flex items-center gap-2 text-[#C8E86C] font-medium mb-4">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                          <p className="text-sm md:text-base opacity-90 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                             </svg>
                             {card.location}
-                          </div>
+                          </p>
                         )}
-                        <Link
-                          href={`/projects/${card.id}`}
-                          className="px-6 py-3 bg-[#C8E86C] text-[#2F3D24] rounded-full font-semibold hover:bg-[#b5d655] transition-colors"
-                        >
-                          View Details
-                        </Link>
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Back of card */}
+                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-2xl bg-[#3d5320]">
+                    <div className="w-full h-full flex flex-col justify-center items-center p-8 text-white">
+                      <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-center">
+                        {card.title}
+                      </h3>
+                      <p className="text-base md:text-lg text-center mb-4 leading-relaxed">
+                        {card.description}
+                      </p>
+                      {card.location && (
+                        <div className="flex items-center gap-2 text-[#C8E86C] font-medium mb-4">
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                          </svg>
+                          {card.location}
+                        </div>
+                      )}
+                      <Link
+                        href={`/projects/${card.id}`}
+                        className="px-6 py-3 bg-[#C8E86C] text-[#2F3D24] rounded-full font-semibold hover:bg-[#b5d655] transition-colors"
+                      >
+                        View Details
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-            ))
-          )}
+            </div>
+          ))}
         </div>
 
         {/* Scroll Indicator */}
@@ -235,7 +161,7 @@ export default function WorksSection() {
             {scrollProgress < 1 ? 'Scroll to explore projects' : 'Continue scrolling'}
           </p>
           <div className="w-48 h-1 bg-gray-300 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-[#3d5320] transition-all duration-300"
               style={{ width: `${scrollProgress * 100}%` }}
             />

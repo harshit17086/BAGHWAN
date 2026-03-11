@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../components/Header';
@@ -18,77 +17,48 @@ interface Project {
   image_count?: number;
 }
 
-interface ProjectData {
-  id: string;
-  title: string;
-  description: string | null;
-  location: string | null;
-  status: string;
-  project_images?: Array<{
-    image_url: string;
-    is_cover: boolean;
-  }>;
-}
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>('all');
-  const supabase = createClient();
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      try {
-        let query = supabase
-          .from('projects')
-          .select(`
-            id,
-            title,
-            description,
-            location,
-            status,
-            project_images!project_images_project_id_fkey(image_url, is_cover)
-          `)
-          .in('status', ['active', 'completed'])
-          .order('display_order', { ascending: true });
+  const allProjects: Project[] = [
+    {
+      id: '1',
+      title: 'Modern Residential Complex',
+      description: 'A stunning 50-unit residential development featuring sustainable materials and contemporary design principles.',
+      location: 'Downtown District',
+      status: 'completed',
+      cover_image: '/slide1.jpeg',
+      image_count: 5
+    },
+    {
+      id: '2',
+      title: 'Commercial Office Tower',
+      description: 'A 25-story commercial building with state-of-the-art facilities and energy-efficient systems.',
+      location: 'Business District',
+      status: 'active',
+      cover_image: '/slide2.jpeg',
+      image_count: 3
+    },
+    {
+      id: '3',
+      title: 'Luxury Villa Estate',
+      description: 'Exclusive residential villas with premium finishes and panoramic views of the city.',
+      location: 'Hillside Area',
+      status: 'completed',
+      cover_image: '/slide3.jpeg',
+      image_count: 8
+    }
+  ];
 
-        if (filter !== 'all') {
-          query = query.eq('status', filter);
-        }
+  const projects = allProjects.filter(project => filter === 'all' || project.status === filter);
 
-        const { data, error } = await query;
-
-        if (error) throw error;
-
-        const projectsWithImages = data?.map((project: ProjectData) => {
-          const coverImage = project.project_images?.find((img: { image_url: string; is_cover: boolean }) => img.is_cover);
-          return {
-            id: project.id,
-            title: project.title,
-            description: project.description || '',
-            location: project.location || '',
-            status: project.status,
-            cover_image: coverImage?.image_url || project.project_images?.[0]?.image_url,
-            image_count: project.project_images?.length || 0,
-          };
-        }) || [];
-
-        setProjects(projectsWithImages);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, [filter, supabase]);
+  // Removed Supabase fetching
 
   return (
     <div className="bg-[#faf7ed]">
       <Header />
-      
+
       {/* Hero Section */}
       <HeroSection
         title="Our Projects"
@@ -105,31 +75,28 @@ export default function ProjectsPage() {
             <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-serif text-sm md:text-base font-medium transition-all duration-300 ${
-                  filter === 'all'
-                    ? 'bg-[#3d5320] text-white shadow-lg'
-                    : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
-                }`}
+                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-serif text-sm md:text-base font-medium transition-all duration-300 ${filter === 'all'
+                  ? 'bg-[#3d5320] text-white shadow-lg'
+                  : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
+                  }`}
               >
                 All Projects
               </button>
               <button
                 onClick={() => setFilter('active')}
-                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-serif text-sm md:text-base font-medium transition-all duration-300 ${
-                  filter === 'active'
-                    ? 'bg-[#3d5320] text-white shadow-lg'
-                    : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
-                }`}
+                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-serif text-sm md:text-base font-medium transition-all duration-300 ${filter === 'active'
+                  ? 'bg-[#3d5320] text-white shadow-lg'
+                  : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
+                  }`}
               >
                 In Progress
               </button>
               <button
                 onClick={() => setFilter('completed')}
-                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-serif text-sm md:text-base font-medium transition-all duration-300 ${
-                  filter === 'completed'
-                    ? 'bg-[#3d5320] text-white shadow-lg'
-                    : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
-                }`}
+                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-serif text-sm md:text-base font-medium transition-all duration-300 ${filter === 'completed'
+                  ? 'bg-[#3d5320] text-white shadow-lg'
+                  : 'bg-white text-[#2F3D24] hover:bg-[#3d5320] hover:text-white border border-[#3d5320]/20'
+                  }`}
               >
                 Completed
               </button>
@@ -142,13 +109,7 @@ export default function ProjectsPage() {
       <section className="relative bg-[#faf7ed] py-12 md:py-20">
         <div className="container mx-auto px-6 md:px-12">
           {/* Projects Grid */}
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-gray-200 rounded-2xl h-[500px] animate-pulse" />
-              ))}
-            </div>
-          ) : projects.length === 0 ? (
+          {projects.length === 0 ? (
             <div className="text-center py-20">
               <svg className="w-20 h-20 mx-auto mb-4 text-[#6B7555]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -184,10 +145,10 @@ export default function ProjectsPage() {
                         </svg>
                       </div>
                     )}
-                    
+
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-                    
+
                     {/* Image Count Badge */}
                     {project.image_count && project.image_count > 0 && (
                       <div className="absolute top-4 right-4 bg-white text-[#2F3D24] px-3 py-1.5 rounded-full text-xs font-semibold font-serif flex items-center gap-1.5">
@@ -197,14 +158,13 @@ export default function ProjectsPage() {
                         {project.image_count}
                       </div>
                     )}
-                    
+
                     {/* Status Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className={`px-4 py-1.5 rounded-full text-xs font-semibold font-serif ${
-                        project.status === 'active' 
-                          ? 'bg-[#3d5320] text-white' 
-                          : 'bg-[#2F3D24] text-white'
-                      }`}>
+                      <span className={`px-4 py-1.5 rounded-full text-xs font-semibold font-serif ${project.status === 'active'
+                        ? 'bg-[#3d5320] text-white'
+                        : 'bg-[#2F3D24] text-white'
+                        }`}>
                         {project.status === 'active' ? 'In Progress' : 'Completed'}
                       </span>
                     </div>
@@ -228,7 +188,7 @@ export default function ProjectsPage() {
                     <p className="text-sm md:text-base text-[#6B7555] mb-4 line-clamp-2 leading-relaxed">
                       {project.description}
                     </p>
-                    
+
                     {/* View Details Link */}
                     <div className="inline-flex items-center gap-2 text-[#3d5320] font-semibold font-serif hover:gap-3 transition-all duration-300">
                       View Project Details

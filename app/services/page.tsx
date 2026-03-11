@@ -1,24 +1,13 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
-import { createClient } from '@/lib/supabase/client';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-interface Service {
-  id: string;
-  name: string;
-  description: string;
-  image_url: string;
-  display_order: number;
-  status: string;
-}
+
 
 export default function ServicesPage() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
-  const supabase = createClient();
 
   // Fallback services if database is empty
   const fallbackServices = useMemo(() => [
@@ -72,53 +61,7 @@ export default function ServicesPage() {
     }
   ], []);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        console.log('Fetching services from database...');
-        const { data, error } = await supabase
-          .from('services')
-          .select('*')
-          .eq('status', 'active')
-          .order('display_order', { ascending: true });
-
-        if (error) {
-          console.error('Error fetching services from database:', error);
-          console.log('Falling back to default services...');
-          setServices(fallbackServices);
-        } else if (data && data.length > 0) {
-          console.log(`Successfully fetched ${data.length} services from database:`, data);
-          setServices(data);
-        } else {
-          console.log('No services found in database, using fallback services...');
-          setServices(fallbackServices);
-        }
-      } catch (error) {
-        console.error('Error fetching services:', error);
-        console.log('Falling back to default services...');
-        setServices(fallbackServices);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, [supabase, fallbackServices]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#faf7ed]">
-        <Header />
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#2F3D24] mx-auto"></div>
-            <p className="mt-4 text-[#6B7555] text-lg">Loading services...</p>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+  const services = fallbackServices;
 
   return (
     <div className="min-h-screen bg-[#faf7ed]">
