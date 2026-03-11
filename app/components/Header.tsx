@@ -53,7 +53,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-700 ease-in-out ${!heroReady ? 'opacity-0 -translate-y-full' : isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'} ${headerScrollBg}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-[1500ms] ease-in-out ${!heroReady ? 'opacity-0 -translate-y-full' : isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'} ${headerScrollBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px]  lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}

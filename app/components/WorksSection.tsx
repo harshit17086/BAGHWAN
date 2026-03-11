@@ -109,7 +109,7 @@ export default function WorksSection() {
             Experience Baghvan
           </h2>
           <p className="text-lg md:text-xl text-[#3d5320] font-serif">
-            Immerse yourself in nature's luxury
+            Immerse yourself in nature&apos;s luxury
           </p>
         </div>
 

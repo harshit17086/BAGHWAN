@@ -38,7 +38,7 @@ export default function Hero() {
 
       {/* Hero Content - fades in after video ends */}
       <div
-        className={`container mt-104 mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10 transition-all duration-1000 ease-out ${videoEnded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        className={`container mt-104 mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10 transition-all duration-[2000ms] ease-in-out ${videoEnded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
       >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 drop-shadow-lg">
