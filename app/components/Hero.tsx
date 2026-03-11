@@ -21,7 +21,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-[90px] overflow-hidden">
+    <section className="relative h-[60vh] md:h-[80vh] lg:min-h-screen flex items-center justify-center pt-[90px] overflow-hidden">
       {/* Video Background - cropped slightly at bottom to hide watermark */}
       <div className="absolute top-0 left-0 w-full h-[105%] overflow-hidden -z-10">
         <video
