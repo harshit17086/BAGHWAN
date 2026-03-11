@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,6 +8,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [heroReady, setHeroReady] = useState(false);
 
   const navLinks = [
     { href: '#', label: 'Instagram' },
@@ -22,6 +23,13 @@ export default function Header() {
   const textScroll = 'text-[#2F3D24]';
   const buttonScrollBg = 'bg-[#3d5320]'; // Dark green button on beige
   const buttonScrollText = 'text-white'; // White text on dark button
+
+  // Listen for hero video ended event
+  useEffect(() => {
+    const handleHeroReady = () => setHeroReady(true);
+    window.addEventListener('heroVideoEnded', handleHeroReady);
+    return () => window.removeEventListener('heroVideoEnded', handleHeroReady);
+  }, []);
 
   // Handle scroll effect
   React.useEffect(() => {
@@ -45,7 +53,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${headerScrollBg}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-700 ease-in-out ${!heroReady ? 'opacity-0 -translate-y-full' : isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'} ${headerScrollBg}`}
     >
       <nav className="container mx-auto px-2 md:px-4 lg:pl-0 lg:pr-2">
         <div className="flex justify-between items-center min-h-[70px]  lg:min-h-[90px]"> {/* Increased responsive min-height for larger logo */}

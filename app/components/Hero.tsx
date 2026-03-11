@@ -1,15 +1,32 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoEnded, setVideoEnded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleEnded = () => {
+      setVideoEnded(true);
+      // Dispatch custom event so Header knows to appear
+      window.dispatchEvent(new CustomEvent('heroVideoEnded'));
+    };
+
+    video.addEventListener('ended', handleEnded);
+    return () => video.removeEventListener('ended', handleEnded);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-[90px] overflow-hidden">
       {/* Video Background - cropped slightly at bottom to hide watermark */}
       <div className="absolute top-0 left-0 w-full h-[105%] overflow-hidden -z-10">
         <video
+          ref={videoRef}
           autoPlay
-          loop
           muted
           playsInline
           className="w-full h-full object-cover object-center"
@@ -19,8 +36,11 @@ export default function Hero() {
         </video>
       </div>
 
-      {/* Hero Content */}
-      <div className="container mt-104 mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10">
+      {/* Hero Content - fades in after video ends */}
+      <div
+        className={`container mt-104 mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10 transition-all duration-1000 ease-out ${videoEnded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+      >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 drop-shadow-lg">
           Welcome to Baghvan
         </h1>
