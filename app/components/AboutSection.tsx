@@ -19,8 +19,8 @@ export default function AboutSection() {
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-          {/* Left Content - Sticky */}
-          <div className="w-full lg:w-1/2 lg:sticky lg:top-32 self-start">
+          {/* Left Content - Sticky on Desktop, Normal on Mobile */}
+          <div className="w-full lg:w-1/2 lg:sticky lg:top-32 self-start mb-12 lg:mb-0">
             <h3 className="text-[#6B5F4F] uppercase tracking-[0.2em] text-sm md:text-base font-semibold mb-6 flex items-center gap-4">
               <span className="w-12 h-[1px] bg-[#6B5F4F]"></span>
               The Estate
@@ -48,46 +48,48 @@ export default function AboutSection() {
           </div>
 
           {/* Right Content - Parallax Image Gallery */}
-          <div className="w-full lg:w-1/2 relative min-h-[600px] lg:min-h-[800px] flex gap-6">
+          <div className="w-full lg:w-1/2 relative min-h-[500px] md:min-h-[600px] lg:min-h-[800px] flex gap-4 md:gap-6">
 
+            {/* Left Column of Parallax (moves up on desktop scroll, normal on mobile) */}
             <motion.div
-              style={{ y: y1 }}
-              className="w-1/2 flex flex-col gap-6 pt-12 lg:pt-24"
+              style={{ y: typeof window !== 'undefined' && window.innerWidth >= 1024 ? y1 : 0 }}
+              className="w-1/2 flex flex-col gap-4 md:gap-6 pt-0 lg:pt-24"
             >
               <div className="relative w-full aspect-[3/4] rounded-t-full overflow-hidden shadow-2xl">
                 <Image
-                  src="/property_random/WhatsApp%20Image%202026-03-10%20at%2012.36.42%20PM.jpeg"
-                  alt="Resort Exterior"
+                  src="/property_exteriros/nightswimmingpool.jpeg"
+                  alt="Night Swimming Pool"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/property_random/WhatsApp%20Image%202026-03-10%20at%2012.36.48%20PM.jpeg"
-                  alt="Resort Pool"
+                  src="/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.25%20PM%20(1).jpeg"
+                  alt="Exterior Property Day"
                   fill
                   className="object-cover"
                 />
               </div>
             </motion.div>
 
+            {/* Right Column of Parallax (moves down on desktop scroll, normal on mobile) */}
             <motion.div
-              style={{ y: y2 }}
-              className="w-1/2 flex flex-col gap-6"
+              style={{ y: typeof window !== 'undefined' && window.innerWidth >= 1024 ? y2 : 0 }}
+              className="w-1/2 flex flex-col gap-4 md:gap-6 pt-12 lg:pt-0"
             >
               <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/property_random/WhatsApp%20Image%202026-03-10%20at%2012.36.52%20PM.jpeg"
-                  alt="Resort Interior"
+                  src="/property_exteriros/roomniterior.jpeg"
+                  alt="Room Interior"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="relative w-full aspect-[3/4] rounded-b-full overflow-hidden shadow-2xl">
                 <Image
-                  src="/property_random/WhatsApp%20Image%202026-03-10%20at%2012.36.55%20PM.jpeg"
-                  alt="Resort Dining"
+                  src="/property_exteriros/propertynight.jpeg"
+                  alt="Property at Night"
                   fill
                   className="object-cover"
                 />
