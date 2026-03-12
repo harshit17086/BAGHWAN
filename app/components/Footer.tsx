@@ -45,14 +45,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Resort Experiences</h3>
             <ul className="space-y-3">
+              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Our Amenities</Link></li>
               <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Luxury Stays</Link></li>
               <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Fine Dining</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Spa & Wellness</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Nature Trails</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Private Pools</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Event Hosting</Link></li>
               <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Wildlife Safaris</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Yoga & Meditation</Link></li>
             </ul>
           </div>
 
@@ -60,39 +56,24 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-4">Guest Services</h3>
             <ul className="space-y-3">
               <li><Link href="/reviews" className="hover:text-[#C8E86C] transition-colors">Guest Reviews</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Room Categories</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Special Packages</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Group Bookings</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Wedding Planning</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Concierge</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Event & Wedding Planning</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Concierge & Reservations</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">About Baghvan</h3>
             <ul className="space-y-3">
-              <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Gallery</Link></li>
               <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">Our Story</Link></li>
-            </ul>
-
-            <h3 className="text-white font-semibold text-lg mb-4 mt-8">Plan Your Visit</h3>
-            <ul className="space-y-3">
-              <li><Link href="/about" className="hover:text-[#C8E86C] transition-colors">How to Reach</Link></li>
-              <li><Link href="/services" className="hover:text-[#C8E86C] transition-colors">Resort Amenities</Link></li>
-            </ul>
-
-            <h3 className="text-white font-semibold text-lg mb-4 mt-8">Resources</h3>
-            <ul className="space-y-3">
               <li><Link href="/projects" className="hover:text-[#C8E86C] transition-colors">Photo Gallery</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Reservations</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="mailto:info@baghvanresort.com" className="hover:text-[#C8E86C] transition-colors">info@baghvanresort.com</a></li>
-              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">For Partners</Link></li>
+              <li><a href="mailto:reservations@baghvanresort.com" className="hover:text-[#C8E86C] transition-colors">reservations@baghvanresort.com</a></li>
+              <li><a href="tel:+919999999999" className="hover:text-[#C8E86C] transition-colors">+91 999 999 9999</a></li>
             </ul>
           </div>
         </div>
