@@ -105,7 +105,7 @@ export default function ParallaxSection() {
         </div>
         <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
           <Image
-            src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg"
+            src="/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.25%20PM%20(1).jpeg"
             alt="Resort Exterior"
             fill
             className="object-cover"
@@ -254,7 +254,7 @@ export default function ParallaxSection() {
       {/* Second big image section */}
       <div className="sticky top-0 h-screen w-full shadow-2xl" style={{ zIndex: 1 }}>
         <Image
-          src="/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg"
+          src="/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.25%20PM%20(1).jpeg"
           alt="Resort Exterior"
           fill
           className="object-cover"
