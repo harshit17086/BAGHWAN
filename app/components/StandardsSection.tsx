@@ -16,47 +16,47 @@ export default function StandardsSection() {
   const cards: CardData[] = [
     {
       id: 1,
-      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.39 PM.jpeg',
+      image: '/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.40%20PM.jpeg',
       title: 'Luxury Stays'
     },
     {
       id: 2,
-      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.34.40 PM.jpeg',
+      image: '/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.35.41%20PM.jpeg',
       title: 'Comfortable Living'
     },
     {
       id: 3,
-      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.35 PM.jpeg',
+      image: '/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.20%20PM%20(2).jpeg',
       title: 'Private Pool'
     },
     {
       id: 4,
-      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.48 PM.jpeg',
+      image: '/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.37.09%20PM.jpeg',
       title: 'Outdoor Dining'
     },
     {
       id: 5,
-      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg',
+      image: '/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.25%20PM%20(1).jpeg',
       title: 'Open Spaces'
     },
     {
       id: 6,
-      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.27 PM.jpeg',
+      image: '/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.22%20PM%20(2).jpeg',
       title: 'Tranquil Ambience'
     },
     {
       id: 7,
-      image: '/property_random/WhatsApp Image 2026-03-10 at 12.36.58 PM.jpeg',
+      image: '/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.55%20PM.jpeg',
       title: 'Exquisite Decor'
     },
     {
       id: 8,
-      image: '/property_interiors/WhatsApp Image 2026-03-10 at 12.35.41 PM.jpeg',
+      image: '/property_exteriros/propertynight.jpeg',
       title: 'Modern Aesthetics'
     },
     {
       id: 9,
-      image: '/property_exteriros/WhatsApp Image 2026-03-10 at 12.38.25 PM.jpeg',
+      image: '/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.21%20PM%20(2).jpeg',
       title: 'Scenic Views'
     }
   ];
