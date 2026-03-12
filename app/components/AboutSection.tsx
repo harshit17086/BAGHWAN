@@ -26,14 +26,23 @@ export default function AboutSection() {
               The Estate
             </h3>
 
-            <h2 className="text-[#2F3D24] text-4xl md:text-6xl font-serif leading-tight mb-8">
-              Where Wilderness Meets <span className="italic">Luxury</span>.
+            <h2 className="text-[#2F3D24] text-4xl md:text-5xl lg:text-6xl font-serif leading-tight mb-8">
+              The Baghvan <br className="hidden lg:block" /> River Corbett Retreat
             </h2>
 
-            <p className="text-[#6B5F4F] text-lg md:text-xl leading-relaxed mb-8 font-serif">
+            <p className="text-[#6B5F4F] text-lg md:text-xl leading-relaxed mb-6 font-serif">
               Experience the untamed beauty of pristine wilderness without compromising on unparalleled luxury.
               Nestled along the tranquil banks of a winding river in the heart of Jim Corbett,
               The Baghvan offers a sanctuary where modern elegance seamlessly intertwines with the raw, rhythmic pulse of nature.
+            </p>
+
+            <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed mb-8">
+              Awaken to the symphony of exotic birds, embark on thrilling safaris through dense, tiger-roamed forests,
+              and unwind in opulent, masterfully crafted interiors as the golden hour paints the vast Indian landscape.
+              From deeply personalized hospitality to star-lit dining experiences by the riverbed,
+              every intricate detail here is designed to provide a harmonious, unforgettable retreat for the soul.
+              Whether you are an impassioned wildlife enthusiast or a serenity seeker escaping the bustle of city life,
+              The Baghvan promises a world uniquely your own.
             </p>
 
             {/* Subtle interactive explore button */}
