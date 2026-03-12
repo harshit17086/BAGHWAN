@@ -1,3 +1,4 @@
+import AboutSection from "./components/AboutSection";
 import Hero from "./components/Hero";
 import WorksSection from "./components/WorksSection";
 import CountrySection from "./components/CountrySection";
@@ -12,7 +13,7 @@ export default function Home() {
     <div>
       <Header />
       <Hero />
-      <WorksSection />
+      <AboutSection />
       <CountrySection />
       <StandardsSection />
       <ParallaxSection />

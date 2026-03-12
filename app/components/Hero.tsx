@@ -34,6 +34,8 @@ export default function Hero() {
           <source src="/new_herohigh.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        {/* Vignette overlay to gracefully darken edges, pulling focus to center and text */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80" />
       </div>
 
       {/* Hero Content - fades in after video ends */}
