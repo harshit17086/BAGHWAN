@@ -42,7 +42,7 @@ export default function Hero() {
           videoEnded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
-        <h1 className="text-4xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-serif text-white mb-6 drop-shadow-lg leading-snug tracking-wide">
+        <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-serif text-white mb-6 drop-shadow-lg leading-snug tracking-wide">
           The Baghvan River Corbett Retreat
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-serif max-w-2xl mx-auto drop-shadow-md">
