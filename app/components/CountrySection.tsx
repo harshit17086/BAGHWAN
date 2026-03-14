@@ -4,13 +4,16 @@ import React from 'react';
 import Stack from './Stack';
 
 const images = [
-  { id: 1, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.42 PM.jpeg" },
-  { id: 2, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.43 PM.jpeg" },
-  { id: 3, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.48 PM.jpeg" },
-  { id: 4, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.50 PM.jpeg" },
-  { id: 5, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.51 PM.jpeg" },
-  { id: 6, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.52 PM.jpeg" },
-  { id: 7, img: "/property_random/WhatsApp Image 2026-03-10 at 12.36.55 PM.jpeg" }
+  { id: 1, img: "/property_exteriros/propertynight.jpeg" },
+  { id: 2, img: "/property_exteriros/WhatsApp%20Image%202026-03-10%20at%2012.38.25%20PM%20(1).jpeg" },
+  { id: 3, img: "/property_exteriros/nightswimmingpool.jpeg" },
+  { id: 4, img: "/property_exteriros/roomniterior.jpeg" },
+  { id: 5, img: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.39%20PM.jpeg" },
+  { id: 6, img: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.40%20PM.jpeg" },
+  { id: 7, img: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.41%20PM.jpeg" },
+  { id: 8, img: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.45%20PM.jpeg" },
+  { id: 9, img: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.47%20PM.jpeg" },
+  { id: 10, img: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.35.41%20PM.jpeg" }
 ];
 
 export default function CountrySection() {
