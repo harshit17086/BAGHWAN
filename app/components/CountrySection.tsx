@@ -19,7 +19,7 @@ const images = [
 
 export default function CountrySection() {
   return (
-    <section className="bg-[#F5F1E8] py-20 md:py-32">
+    <section className="bg-[#F5F1E8] py-12 md:py-24">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           {/* Left side - Stack of images */}

@@ -41,7 +41,7 @@ export default function RoomsSection() {
     ];
 
     return (
-        <section id="rooms" className="bg-[#F5F1E8] py-24 md:py-32 relative text-[#2F3D24]">
+        <section id="rooms" className="bg-[#F5F1E8] py-16 md:py-24 relative text-[#2F3D24]">
             <div className="container mx-auto px-4 md:px-8">
 
                 {/* Section Header */}
@@ -55,7 +55,7 @@ export default function RoomsSection() {
                 </div>
 
                 {/* Rooms Rows */}
-                <div className="flex flex-col gap-16 md:gap-24 max-w-7xl mx-auto">
+                <div className="flex flex-col gap-12 md:gap-24 max-w-7xl mx-auto">
                     {rooms.map((room, idx) => (
                         <div key={idx} className={`flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 md:gap-16 items-center group`}>
 

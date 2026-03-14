@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
     }, [reviews.length]);
 
     return (
-        <section className="relative py-20 md:py-32 overflow-hidden border-t border-[#6B5F4F]/10">
+        <section className="relative py-16 md:py-24 overflow-hidden border-t border-[#6B5F4F]/10">
             {/* Background Image Setup */}
             <Image
                 src="/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.35.41%20PM.jpeg"

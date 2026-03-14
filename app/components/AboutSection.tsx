@@ -15,7 +15,7 @@ export default function AboutSection() {
   const y2 = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
   return (
-    <section ref={containerRef} className="bg-[#F5F1E8] py-20 md:py-32 relative overflow-hidden">
+    <section ref={containerRef} className="bg-[#F5F1E8] py-12 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
