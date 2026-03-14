@@ -43,8 +43,8 @@ export default function Hero() {
         className={`container mt-104 mx-auto px-4 md:px-8 lg:px-16 text-center relative z-10 transition-all duration-[2000ms] ease-in-out ${videoEnded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-serif text-white mb-6 drop-shadow-lg break-words leading-tight px-4 md:px-0">
-          The Baghvan River Corbett Retreat
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white mb-6 drop-shadow-lg break-words leading-[1.1] md:leading-tight px-4 md:px-0">
+          The Baghvan River<br className="md:hidden" /> Corbett Retreat
         </h1>
         <p className="text-xl md:text-2xl text-white/90 font-serif max-w-2xl mx-auto drop-shadow-md">
           A luxury resort experience naturally nestled in serenity.
