@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function TestimonialsSection() {
     const reviews = [
@@ -48,15 +49,26 @@ export default function TestimonialsSection() {
     }, [reviews.length]);
 
     return (
-        <section className="bg-[#F5F1E8] py-20 md:py-32 relative overflow-hidden border-t border-[#6B5F4F]/10">
-            <div className="container mx-auto px-4 md:px-8">
+        <section className="relative py-20 md:py-32 overflow-hidden border-t border-[#6B5F4F]/10">
+            {/* Background Image Setup */}
+            <Image
+                src="/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.35.41%20PM.jpeg"
+                alt="Baghvan Interior Background"
+                fill
+                className="object-cover object-center z-0"
+                priority
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-                {/* SEO Optimized Headings (Beige Theme Text) */}
-                <div className="text-center mb-16 relative z-10">
-                    <h2 className="text-[#6B5F4F] text-sm md:text-base font-semibold tracking-[0.2em] uppercase mb-4">
+            <div className="container mx-auto px-4 md:px-8 relative z-10">
+
+                {/* SEO Optimized Headings (Light theme for dark bg) */}
+                <div className="text-center mb-16">
+                    <h2 className="text-[#C8E86C] text-sm md:text-base font-semibold tracking-[0.2em] uppercase mb-4">
                         Guest Feedback & Reviews
                     </h2>
-                    <h3 className="text-[#2F3D24] text-3xl md:text-4xl lg:text-5xl font-serif max-w-3xl mx-auto leading-tight">
+                    <h3 className="text-[#F5F1E8] text-3xl md:text-4xl lg:text-5xl font-serif max-w-3xl mx-auto leading-tight">
                         What People Say About the Best Luxury Resort in Jim Corbett
                     </h3>
                 </div>
@@ -105,7 +117,7 @@ export default function TestimonialsSection() {
                             <button
                                 key={idx}
                                 onClick={() => setCurrentIndex(idx)}
-                                className={`transition-all duration-300 rounded-full ${currentIndex === idx ? 'w-8 h-2 bg-[#2F3D24]' : 'w-2 h-2 bg-[#6B5F4F]/30 hover:bg-[#6B5F4F]/60'}`}
+                                className={`transition-all duration-300 rounded-full ${currentIndex === idx ? 'w-8 h-2 bg-[#C8E86C]' : 'w-2 h-2 bg-white/40 hover:bg-white/80'}`}
                                 aria-label={`Go to slide ${idx + 1}`}
                             />
                         ))}
