@@ -79,11 +79,21 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-8 pt-4 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex gap-6 text-sm">
-            <p>©{new Date().getFullYear()} Baghvan Resort</p>
-            <Link href="/privacy" className="hover:text-[#C8E86C] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[#C8E86C] transition-colors">Terms of Use</Link>
+        <div className="mt-8 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="flex flex-col gap-4">
+            <div className="text-sm text-gray-400">
+              <span className="font-semibold text-white">Marketed by: EWD HOTELS</span>
+              <br className="md:hidden" />
+              <span className="md:ml-2">PLOT NO 49, GF, NITI KHAND 1, INDIRAPURAM, GHAZIABAD</span>
+              <br className="md:hidden" />
+              <span className="md:ml-2">88828 24465, 9599295382</span>
+            </div>
+
+            <div className="flex flex-wrap gap-4 md:gap-6 text-sm">
+              <p>©{new Date().getFullYear()} Baghvan Resort</p>
+              <Link href="/privacy" className="hover:text-[#C8E86C] transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#C8E86C] transition-colors">Terms of Use</Link>
+            </div>
           </div>
 
           {/* Social Media Icons */}
