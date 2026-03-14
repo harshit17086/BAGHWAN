@@ -18,7 +18,7 @@ export default function MapSection() {
                 {/* Map Container */}
                 <div className="w-full max-w-6xl mx-auto h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl relative border border-[#6B5F4F]/20">
                     <iframe
-                        src="https://maps.google.com/maps?q=The+Baghvan+River+Corbett+Retreat&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        src="https://maps.google.com/maps?q=29°17'55.5%22N+79°12'21.5%22E&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
