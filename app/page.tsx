@@ -1,5 +1,6 @@
 import AboutSection from "./components/AboutSection";
 import RoomsSection from "./components/RoomsSection";
+import MapSection from "./components/MapSection";
 import Hero from "./components/Hero";
 import WorksSection from "./components/WorksSection";
 import CountrySection from "./components/CountrySection";
@@ -20,6 +21,7 @@ export default function Home() {
       <StandardsSection />
       <ParallaxSection />
       <RoomsSection />
+      <MapSection />
       <TestimonialsSection />
       <StatsSection />
       <Footer />
