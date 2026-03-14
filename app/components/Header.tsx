@@ -12,8 +12,7 @@ export default function Header() {
 
   const navLinks = [
     { href: '#', label: 'Instagram' },
-    { href: '#', label: 'YouTube' },
-    // { href: '#', label: 'How it Works' },
+    { href: '/#rooms', label: 'Rooms' },
     { href: '/projects', label: 'Gallery' },
     { href: '/reviews', label: 'Reviews' },
   ];
