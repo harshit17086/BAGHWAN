@@ -9,8 +9,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HRC - Constructions Made Easy",
-  description: "Building your dreams with our expert construction services",
+  title: "The Baghvan",
+  description: "Experience the ultimate luxury retreat nestled in the serene wilderness of Jim Corbett, Ramnagar.",
+  icons: {
+    icon: "/finallogo9.png",
+  },
 };
 
 export default function RootLayout({
@@ -20,12 +23,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/finallogo9.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/finallogo9.png" />
+      </head>
       <body className={`${inter.className} antialiased bg-slate-50`} suppressHydrationWarning>
-        
+
         <main className="min-h-screen">
           {children}
         </main>
-        
+
       </body>
     </html>
   );
