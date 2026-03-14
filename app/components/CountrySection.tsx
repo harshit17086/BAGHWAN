@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Stack from './Stack';
+import Link from 'next/link';
 
 const images = [
   { id: 1, img: "/property_exteriros/propertynight.jpeg" },
@@ -55,15 +56,19 @@ export default function CountrySection() {
               Tucked away from the bustling city, Baghvan Resort offers a peaceful escape surrounded by nature. Experience the perfect blend of wildlife, luxury, and tranquility.
             </p>
 
+            <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed max-w-2xl">
+              Immerse yourself in carefully curated aesthetic spaces, from rustic village-style cottages to grand premium suites. Discover a visual journey of expansive lawns, glowing evening pools, and bespoke jungle luxury that defines the true essence of Jim Corbett.
+            </p>
+
             {/* CTA Buttons */}
             <div className="flex items-center gap-4 pt-4">
-              <button className="bg-transparent border-2 border-[#2F3D24] text-[#2F3D24] font-medium text-base md:text-lg px-8 py-3 rounded-full hover:bg-[#2F3D24] hover:text-white transition-all duration-300">
-                Explore The Resort
-              </button>
-              <div className="bg-transparent border-2 border-[#2F3D24] rounded-full p-3 hover:bg-[#2F3D24] hover:text-white transition-all duration-300 cursor-pointer group">
+              <Link href="/projects" className="bg-transparent border-2 border-[#2F3D24] text-[#2F3D24] font-medium text-base md:text-lg px-8 py-3 rounded-full hover:bg-[#2F3D24] hover:text-white transition-all duration-300 flex items-center justify-center">
+                Explore The Gallery
+              </Link>
+              <Link href="/projects" className="bg-transparent border-2 border-[#2F3D24] rounded-full p-3 hover:bg-[#2F3D24] hover:text-white transition-all duration-300 cursor-pointer group flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-[#2F3D24] group-hover:text-white"
+                  className="h-6 w-6 text-[#2F3D24] group-hover:text-white transition-colors duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -71,7 +76,7 @@ export default function CountrySection() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
