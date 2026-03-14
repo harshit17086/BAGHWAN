@@ -26,16 +26,16 @@ export default function AboutSection() {
               The Estate
             </h3>
 
-            <h2 className="text-[#2F3D24] text-4xl md:text-5xl lg:text-5xl font-serif leading-tight mb-6">
-              Corbett Adventure Resort
+            <h2 className="text-[#2F3D24] text-4xl md:text-5xl lg:text-6xl font-serif leading-tight mb-6">
+              The Baghvan <br className="hidden lg:block" /> River Corbett Retreat
             </h2>
 
             <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed mb-6 font-serif">
-              Welcome to Corbett Adventure Resort, your serene escape nestled in the lush greenery of Ramnagar, Uttarakhand. Conveniently located near the renowned Corbett National Park and the sacred Garjiya Temple, our resort is a haven for leisure travellers who cherish wildlife and nature. Experience home-like hospitality, as our dedicated team ensures your stay is memorable.
+              Welcome to The Baghvan River Corbett Retreat, your serene escape nestled in the lush greenery of Ramnagar, Uttarakhand. Conveniently located near the renowned Corbett National Park and the sacred Garjiya Temple, our resort is a haven for leisure travellers who cherish wildlife and nature. Experience home-like hospitality, as our dedicated team ensures your stay is memorable.
             </p>
 
             <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed mb-6">
-              Our resort is a playground for all ages, boasting an array of activities. Dive into adventure with our in-house adventure park, unwind in our expansive lush lawns, or challenge friends at the paintball arena. Savour delicious cuisine, relax in our swimming pool and find your perfect stay in family-themed rooms. Whether you're seeking a peaceful retreat or an adventure-filled holiday, Corbett Adventure Resort is your ideal destination.
+              Our retreat serves as the perfect luxury basecamp for all ages to explore the surrounding wonders. Dive into adventure by visiting nearby adventure parks, unwind on our expansive lush lawns, or challenge friends at the local paintball arenas. Savour delicious cuisine, relax in our tranquil swimming pool and find your perfect stay in family-themed rooms. Whether you're seeking a peaceful woodland retreat or an adventure-filled holiday exploring Jim Corbett, The Baghvan is your ideal destination.
             </p>
 
             <h3 className="text-[#2F3D24] text-xl font-serif font-semibold mt-8 mb-4">
@@ -43,7 +43,7 @@ export default function AboutSection() {
             </h3>
 
             <p className="text-[#6B5F4F] text-base md:text-lg leading-relaxed mb-8">
-              At Corbett Adventure Resort, comfort meets elegance. Choose from our three distinct accommodations: the luxurious Premium Rooms, the rustic charm of Deluxe Village Cottages, or the spacious Family Luxury Cottages. Each category is designed to provide a unique experience, blending modern amenities with nature's tranquillity. Immerse yourself in comfort as you create unforgettable memories.
+              At The Baghvan, comfort meets elegance. Choose from our three distinct accommodations: the luxurious Premium Rooms, the rustic charm of Deluxe Village Cottages, or the spacious Family Luxury Cottages. Each category is designed to provide a unique experience, blending modern amenities with nature's tranquillity. Immerse yourself in comfort as you create unforgettable memories.
             </p>
 
             {/* Subtle interactive explore button */}
