@@ -52,14 +52,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Guest Services</h3>
-            <ul className="space-y-3">
-              <li><Link href="/reviews" className="hover:text-[#C8E86C] transition-colors">Guest Reviews</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Event & Wedding Planning</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8E86C] transition-colors">Concierge & Reservations</Link></li>
-            </ul>
-          </div>
 
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">About Baghvan</h3>
