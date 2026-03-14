@@ -10,7 +10,7 @@ const galleryImages = [
   '/property_exteriros/nightswimmingpool.jpeg',
   '/property_exteriros/propertynight.jpeg',
   '/property_exteriros/roomniterior.jpeg',
-  '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.26 PM.jpeg',
+  '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.30 PM.jpeg',
   '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.27 PM.jpeg',
   '/property_exteriros/WhatsApp Image 2026-03-10 at 12.36.31 PM.jpeg',
   '/property_exteriros/WhatsApp Image 2026-03-10 at 12.37.09 PM.jpeg',
