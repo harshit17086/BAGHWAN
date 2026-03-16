@@ -86,7 +86,7 @@ export default function Footer() {
               <br className="md:hidden" />
               <span className="md:ml-2">PLOT NO 49, GF, NITI KHAND 1, INDIRAPURAM, GHAZIABAD</span>
               <br className="md:hidden" />
-              <span className="md:ml-2">88828 24465, 9599295382</span>
+              <span className="md:ml-2">8882824465, 9599295382</span>
             </div>
 
             <div className="flex flex-wrap gap-4 md:gap-6 text-sm">
