@@ -9,33 +9,30 @@ export default function RoomsSection() {
             title: "Lawn View Standard Room",
             image: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.40%20PM.jpeg",
             features: [
-                { label: "Available", value: "2 Rooms" },
-                { label: "Room Size", value: "12 × 17 ft" },
-                { label: "Washroom", value: "8 × 5 ft" },
-                { label: "Bed Size", value: "6 × 6 ft" }
+                { label: "Vibe", value: "Cozy & Refreshing" },
+                { label: "View", value: "Green Gardens" },
+                { label: "Design", value: "Elegant & Earthy" },
+                { label: "Perfect For", value: "Relaxing Escapes" }
             ]
         },
         {
             title: "Lawn View Deluxe Room",
             image: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.54%20PM.jpeg",
             features: [
-                { label: "Available", value: "4 Rooms" },
-                { label: "Room Size", value: "12 × 16 ft" },
-                { label: "Dressing Area", value: "7 × 6 ft" },
-                { label: "Washroom", value: "8 × 5 ft" },
-                { label: "Bed Size", value: "6 × 6 ft" }
+                { label: "Vibe", value: "Spacious & Luxurious" },
+                { label: "View", value: "Lush Grand Lawns" },
+                { label: "Comfort", value: "Premium Linens" },
+                { label: "Highlight", value: "Private Dressing Area" }
             ]
         },
         {
             title: "Jungle View Deluxe Room",
             image: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.35.05%20PM.jpeg",
             features: [
-                { label: "Available", value: "6 Rooms" },
-                { label: "Room Size", value: "12 × 16 ft" },
-                { label: "Balcony", value: "14 × 7 ft" },
-                { label: "Dressing Area", value: "7 × 6 ft" },
-                { label: "Washroom", value: "8 × 5 ft" },
-                { label: "Bed Size", value: "6 × 6 ft" }
+                { label: "Vibe", value: "Wild & Romantic" },
+                { label: "View", value: "Deep Forest Canopy" },
+                { label: "Balcony", value: "Private Sit-out" },
+                { label: "Highlight", value: "Nature Immersion" }
             ]
         }
     ];
