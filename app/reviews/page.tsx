@@ -6,10 +6,15 @@ import Footer from '../components/Footer';
 
 export default function ReviewsPage() {
   const reviews = [
-    { name: "Sarah L.", loc: "London, UK", text: "The Baghvan was an absolute dream. Seeing a tiger in the wild just miles from our luxury suite was unparalleled." },
-    { name: "Arjun M.", loc: "Delhi, India", text: "Impeccable hospitality. The attention to detail in the dining experience made our anniversary truly special." },
-    { name: "Dr. Chen", loc: "Singapore", text: "A rare blend of high-end luxury and genuine ecological responsibility. The nature trails were breathtaking." },
-    { name: "Emma W.", loc: "Sydney, AU", text: "I've travelled the world, but the serenity at Baghvan is unmatched. The spa therapies reconnected my soul." }
+    { name: "Mitali Joshi", loc: "Google Review", text: "We had a wonderful experience at BaghVan The resort is beautifully maintained and surrounded by a very peaceful and refreshing atmosphere, making it a perfect place to relax and unwind." },
+    { name: "Jagriti Chhimwal", loc: "Google Review", text: "I loved it! I felt at ease from the moment I stepped in. Very friendly staff, elegant decor, and a peaceful, soothing atmosphere. Ideal for both work trips and short break. It was the ideal place to relax after a long, hectic day." },
+    { name: "Vedika Bisht", loc: "Google Review", text: "Just visited Baghvan and wow, the sunset view there is straight-up unreal. The whole place has this calm, luxury-in-the-wild vibe, and once the sun starts dipping behind the trees, the sky turns into pure golden magic." },
+    { name: "Anshi Kaw", loc: "Google Review", text: "Great food and service. Property is very well maintained. Must visit." },
+    { name: "Pranjay Rawat", loc: "Google Review", text: "Had an amazing experience at my stay there. I feel like this property being the best in Corbett." },
+    { name: "Mansi Arya", loc: "Google Review", text: "I had a very pleasant stay at the Bagh Van. The rooms were clean, comfortable, and well maintained. The staff members were polite and always ready to help. The surroundings were beautiful and peaceful. The food was also delicious." },
+    { name: "Chitra Bhatt", loc: "Google Review", text: "Resort gives visitors a pleasant and memorable dining experience. The place is clean, comfortable, and beautifully decorated. The staff welcome guests politely and provide friendly service. The food is fresh, tasty, and prepared with good-quality ingredients." },
+    { name: "Kiran Lohani", loc: "Google Review", text: "Had a great experience at Baag Van and River Resort. The resort is very beautiful and peaceful, making it a perfect place to relax. The staff was polite, helpful, and very cooperative throughout our stay." },
+    { name: "Hemu Sati", loc: "Google Review", text: "I had a wonderful stay at The Baghvan. The place was very clean and peaceful. The staff was polite and helpful, and the food was delicious. It is a great place to relax and enjoy nature. Highly recommended! 😊" }
   ];
 
   return (

@@ -7,33 +7,33 @@ import Image from 'next/image';
 export default function TestimonialsSection() {
     const reviews = [
         {
-            name: "Anjali Desai",
-            role: "Luxury Traveler",
-            text: "The Baghvan River Corbett Retreat is hands down the best luxury resort in Jim Corbett. The family cottages and hospitality were unmatched.",
+            name: "Mitali Joshi",
+            role: "Google Review",
+            text: "We had a wonderful experience at BaghVan The resort is beautifully maintained and surrounded by a very peaceful and refreshing atmosphere, making it a perfect place to relax and unwind.",
             rating: 5
         },
         {
-            name: "Rohan Sharma",
-            role: "Wildlife Photographer",
-            text: "If you're looking for an adventure-filled holiday near Garjiya Temple with premium forest views, this Ramnagar resort is exceptional.",
+            name: "Jagriti Chhimwal",
+            role: "Google Review",
+            text: "I loved it! I felt at ease from the moment I stepped in. Very friendly staff, elegant decor, and a peaceful, soothing atmosphere. Ideal for both work trips and short break. It was the ideal place to relax after a long, hectic day.",
             rating: 5
         },
         {
-            name: "Priya & Siddharth",
-            role: "Honeymoon Couple",
-            text: "From the serene swimming pool to the luxurious premium rooms, Corbett Adventure Resort provided the perfect romantic escape.",
+            name: "Vedika Bisht",
+            role: "Google Review",
+            text: "Just visited Baghvan and wow, the sunset view there is straight-up unreal. The whole place has this calm, luxury-in-the-wild vibe, and once the sun starts dipping behind the trees, the sky turns into pure golden magic.",
             rating: 5
         },
         {
-            name: "Dr. Vikram Singh",
-            role: "Nature Enthusiast",
-            text: "A truly immersive jungle experience without sacrificing an ounce of comfort. The bespoke safari tours were the highlight of our stay.",
+            name: "Mansi Arya",
+            role: "Google Review",
+            text: "I had a very pleasant stay at the Bagh Van. The rooms were clean, comfortable, and well maintained. The staff members were polite and always ready to help. The surroundings were beautiful and peaceful. The food was also delicious.",
             rating: 5
         },
         {
-            name: "Meera Kapoor",
-            role: "Event Planner",
-            text: "We hosted an intimate family gathering here, and the lush lawns paired with the stellar culinary team made it an unforgettable night.",
+            name: "Hemu Sati",
+            role: "Google Review",
+            text: "I had a wonderful stay at The Baghvan. The place was very clean and peaceful. The staff was polite and helpful, and the food was delicious. It is a great place to relax and enjoy nature. Highly recommended! 😊",
             rating: 5
         }
     ];
@@ -74,7 +74,7 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* Carousel Container */}
-                <div className="relative max-w-4xl mx-auto h-[350px] md:h-[280px]">
+                <div className="relative max-w-4xl mx-auto mb-20">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentIndex}
@@ -82,9 +82,9 @@ export default function TestimonialsSection() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -50 }}
                             transition={{ duration: 0.6, ease: "easeInOut" }}
-                            className="absolute inset-0"
+                            className="w-full"
                         >
-                            <div className="bg-white/60 p-10 md:p-12 rounded-3xl shadow-sm border border-[#6B5F4F]/10 h-full flex flex-col justify-between backdrop-blur-md">
+                            <div className="bg-white/60 p-8 md:p-12 rounded-3xl shadow-sm border border-[#6B5F4F]/10 flex flex-col justify-between backdrop-blur-md min-h-[420px] sm:min-h-[350px] md:min-h-[280px]">
                                 <div>
                                     <div className="flex text-[#2F3D24] mb-6 gap-1">
                                         {[...Array(reviews[currentIndex].rating)].map((_, i) => (
