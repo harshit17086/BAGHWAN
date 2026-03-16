@@ -72,7 +72,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
               <li><a href="mailto:thebaghvanriver@gmail.com" className="hover:text-[#C8E86C] transition-colors">thebaghvanriver@gmail.com</a></li>
-              <li><a href="tel:+917455847579" className="hover:text-[#C8E86C] transition-colors">+91 74558 47579</a></li>
+              <li><a href="tel:+918882824465" className="hover:text-[#C8E86C] transition-colors">+91 8882824465, +91 9599295382</a></li>
               <li><a href="https://wa.me/918171736969" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">WhatsApp: +91 81717 36969</a></li>
             </ul>
           </div>

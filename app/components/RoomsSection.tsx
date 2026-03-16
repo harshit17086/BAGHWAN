@@ -9,6 +9,7 @@ export default function RoomsSection() {
             title: "Lawn View Standard Room",
             image: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.40%20PM.jpeg",
             features: [
+                { label: "Available", value: "2 Rooms" },
                 { label: "Vibe", value: "Cozy & Refreshing" },
                 { label: "View", value: "Green Gardens" },
                 { label: "Design", value: "Elegant & Earthy" },
@@ -19,6 +20,7 @@ export default function RoomsSection() {
             title: "Lawn View Deluxe Room",
             image: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.34.54%20PM.jpeg",
             features: [
+                { label: "Available", value: "4 Rooms" },
                 { label: "Vibe", value: "Spacious & Luxurious" },
                 { label: "View", value: "Lush Grand Lawns" },
                 { label: "Comfort", value: "Premium Linens" },
@@ -29,6 +31,7 @@ export default function RoomsSection() {
             title: "Jungle View Deluxe Room",
             image: "/property_interiors/WhatsApp%20Image%202026-03-10%20at%2012.35.05%20PM.jpeg",
             features: [
+                { label: "Available", value: "12 Rooms" },
                 { label: "Vibe", value: "Wild & Romantic" },
                 { label: "View", value: "Deep Forest Canopy" },
                 { label: "Balcony", value: "Private Sit-out" },

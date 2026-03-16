@@ -28,7 +28,7 @@ export default function ContactPage() {
             <div className="flex flex-col md:flex-row items-center justify-between border-b border-[#6B5F4F]/20 pb-8">
               <div className="text-center md:text-left mb-6 md:mb-0">
                 <h3 className="text-sm font-semibold tracking-widest text-[#6B5F4F] uppercase mb-2">Official Mobile Number</h3>
-                <p className="text-2xl md:text-3xl font-serif text-[#2F3D24]">+91 74558 47579 <br className="md:hidden" /> <span className="hidden md:inline">|</span> +91 81717 36969</p>
+                <p className="text-2xl md:text-3xl font-serif text-[#2F3D24]">+91 81717 36969 <br className="md:hidden" /> <span className="hidden md:inline">|</span> +91 81717 36969</p>
               </div>
               <a href="tel:+917455847579" className="bg-[#2F3D24] text-white px-8 py-4 rounded-full font-semibold tracking-wider uppercase text-sm hover:bg-[#1a2817] transition-colors w-full md:w-auto text-center">
                 Call Now
