@@ -23,7 +23,7 @@ export default function Home() {
       <RoomsSection />
       <MapSection />
       <TestimonialsSection />
-      <StatsSection />
+     
       <Footer />
     </div>
   );

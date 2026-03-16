@@ -75,60 +75,15 @@ export default function StatsSection() {
           </h2>
         </div>
 
-        {/* Stats Grid - Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left Column - Larger Stats */}
-          <div className="space-y-16">
-            {/* Stat 1 */}
-            <div className="border-b border-[#3d5320]/20 pb-12">
-              <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
-                <AnimatedStat end={10} suffix="K+" />
-              </h3>
-              <p className="text-base md:text-lg text-[#6B7555]">
-                happy guests hosted at our resort
-              </p>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="border-b border-[#3d5320]/20 pb-12">
-              <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
-                <AnimatedStat end={4} suffix=".9★" duration={2000} />
-              </h3>
-              <p className="text-base md:text-lg text-[#6B7555]">
-                Average guest rating across all platforms
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column - Smaller Stats with Icons */}
-          <div className="space-y-16">
-            {/* Stat 3 */}
-            <div className="border-b border-[#3d5320]/20 pb-12">
-              <div className="flex items-start gap-4 mb-4">
-                <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24]">
-                  <AnimatedStat end={25} duration={1500} />
-                </h3>
-                {/* Decorative stars */}
-
-              </div>
-              <p className="text-base md:text-lg text-[#6B7555]">
-                Luxury rooms & suites available for your perfect getaway
-              </p>
-            </div>
-
-            {/* Stat 4 */}
-            <div className="border-b border-[#3d5320]/20 pb-12">
-              <div className="flex items-start gap-4 mb-4">
-                <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24]">
-                  <AnimatedStat end={50} suffix="+" duration={2500} />
-                </h3>
-
-
-              </div>
-              <p className="text-base md:text-lg text-[#6B7555]">
-                curated experiences and activities to choose from
-              </p>
-            </div>
+        {/* Stats - Single Highlight */}
+        <div className="flex justify-start md:justify-center">
+          <div className="border-b border-[#3d5320]/20 pb-12 w-full md:w-auto md:text-center md:px-12">
+            <h3 className="text-6xl md:text-7xl lg:text-8xl font-serif text-[#2F3D24] mb-4">
+              <AnimatedStat end={4} suffix=".9★" duration={2000} />
+            </h3>
+            <p className="text-base md:text-lg text-[#6B7555]">
+              Average guest rating across all platforms
+            </p>
           </div>
         </div>
       </div>
