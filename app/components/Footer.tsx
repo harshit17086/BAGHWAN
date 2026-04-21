@@ -72,7 +72,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
               <li><a href="mailto:thebaghvanriver@gmail.com" className="hover:text-[#C8E86C] transition-colors">thebaghvanriver@gmail.com</a></li>
-              <li><a href="tel:+918882824465" className="hover:text-[#C8E86C] transition-colors">+91 8882824465, +91 9599295382</a></li>
+              <li><a href="tel:+918171736969" className="hover:text-[#C8E86C] transition-colors">+91 81717 36969</a></li>
               <li><a href="https://wa.me/918171736969" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8E86C] transition-colors">WhatsApp: +91 81717 36969</a></li>
             </ul>
           </div>
@@ -81,14 +81,6 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="mt-8 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex flex-col gap-4">
-            <div className="text-sm text-gray-400">
-              <span className="font-semibold text-white">Marketed by: EWD HOTELS</span>
-              <br className="md:hidden" />
-              <span className="md:ml-2">PLOT NO 49, GF, NITI KHAND 1, INDIRAPURAM, GHAZIABAD</span>
-              <br className="md:hidden" />
-              <span className="md:ml-2">8882824465, 9599295382</span>
-            </div>
-
             <div className="flex flex-wrap gap-4 md:gap-6 text-sm">
               <p>©{new Date().getFullYear()} Baghvan Resort</p>
               <Link href="/privacy" className="hover:text-[#C8E86C] transition-colors">Privacy Policy</Link>
