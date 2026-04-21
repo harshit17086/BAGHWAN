@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 interface CardData {
@@ -10,9 +10,6 @@ interface CardData {
 }
 
 export default function StandardsSection() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
   const cards: CardData[] = [
     {
       id: 1,
@@ -61,55 +58,25 @@ export default function StandardsSection() {
     }
   ];
 
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const sectionTop = container.offsetTop;
-    const sectionHeight = container.offsetHeight;
-    const windowHeight = window.innerHeight;
-
-    const handleScroll = () => {
-      const scrolled = window.scrollY - sectionTop;
-      const maxScroll = sectionHeight - windowHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
-      setScrollProgress(progress);
-
-      // Horizontal scroll the cards
-      const scrollContainer = container.querySelector('.cards-container') as HTMLElement;
-      if (scrollContainer) {
-        const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-        scrollContainer.style.transform = `translateX(-${progress * maxScrollLeft}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <section
-      ref={scrollContainerRef}
-      className="relative bg-[#faf7ed]"
-      style={{ height: '400vh' }} // Extended height for horizontal scroll effect
-    >
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+    <section className="relative bg-[#faf7ed] py-20">
+      <div className="flex flex-col justify-center">
         {/* Section Header */}
         <div className="text-center mb-8 px-4">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#2F3D24] mb-4">
             World-class Amenities...
           </h2>
-
         </div>
 
         {/* Cards Container */}
-        <div className="cards-container flex gap-8 px-8">
+        <div 
+          className="cards-container flex gap-8 px-8 overflow-x-auto snap-x snap-mandatory pb-8 [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {cards.map((card) => (
             <div
               key={card.id}
-              className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+              className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw] h-[500px] rounded-2xl overflow-hidden shadow-2xl snap-center"
             >
               <div className="relative w-full h-full">
                 <Image
@@ -129,19 +96,6 @@ export default function StandardsSection() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-          <p className="text-[#3d5320] text-sm font-serif mb-2">
-            {scrollProgress < 1 ? 'Scroll to explore standards' : 'Continue scrolling'}
-          </p>
-          <div className="w-48 h-1 bg-gray-300 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-[#3d5320] transition-all duration-300"
-              style={{ width: `${scrollProgress * 100}%` }}
-            />
-          </div>
         </div>
       </div>
     </section>
