@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import MarketedBySection from './MarketedBySection';
 
 export default function Footer() {
   return (
+    <>
+      <MarketedBySection />
     <footer className="bg-[#1a2817] text-gray-300">
       {/* CTA Section */}
       <div className="bg-[#C8E86C] py-8 px-6">
@@ -99,5 +102,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
